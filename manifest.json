@@ -1,7 +1,7 @@
 {
 	  	   "commerceSuiteVersion": "1808.0",
 	   	   "extensions": [
-	       "optcustomerfacade",
+	       
 	       "mcc",
 	       "backoffice",
 	       "platformbackoffice",
