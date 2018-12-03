@@ -1,1 +1,175 @@
-123
+{
+	  	   "commerceSuiteVersion": "1808.0",
+	   	   "extensions": [
+	       "optcustomerfacade",
+	       "mcc",
+	       "backoffice",
+	       "platformbackoffice",
+	       "basecommercebackoffice",  
+	       "adaptivesearchsolr",
+	       "adaptivesearchbackoffice",
+	       "adaptivesearchsamplesaddon",
+	       "adaptivesearchwebservices",
+	       "commerceservicesbackoffice",
+	       "solrfacetsearchbackoffice",
+	       "yacceleratorcockpits",
+	       "yacceleratorinitialdata",
+	       "yacceleratorfulfilmentprocess",
+	       "yacceleratorstorefront",
+	       "ycommercewebservices",
+	       "ycommercewebservicestest",
+	       "electronicsstore",
+	       "acceleratorwebservicesaddon",
+	       "orderselfserviceaddon",
+	       "customersupportbackoffice",
+	       "customerticketingaddon",
+	       "commerceorgsamplesaddon",
+	       "rulebuilderbackoffice",
+	       "couponbackoffice",
+	       "droolsruleengineservices",
+	       "couponfacades",
+	       "promotionenginesamplesaddon",
+	       "cmswebservices",
+	       "smarteditwebservices",
+	       "cmssmarteditwebservices",
+	       "permissionswebservices",
+	       "smarteditaddon",
+	       "cmssmartedit",
+	       "cmsbackoffice",
+	       "cmsmulticountrycockpit",
+	       "multicountrysampledataaddon",
+	       "previewpersonalizationweb",
+	       "personalizationcmsweb",
+	       "personalizationsmartedit",
+	       "personalizationpromotionssmartedit",
+	       "personalizationsampledataaddon",
+	       "personalizationpromotions",
+	       "personalizationpromotionsweb",
+	       "personalizationservicesbackoffice",
+	       "personalizationpromotionsbackoffice",
+	       "personalizationcmsbackoffice",
+	       "personalizationsearchbackoffice",
+	       "personalizationsearchsmartedit",
+	       "personalizationsearchweb",
+	       "personalizationsearchsamplesaddon",
+	       "textfieldconfiguratortemplatebackoffice",
+	       "textfieldconfiguratortemplateaddon",
+	       "assistedservicestorefront",
+	       "assistedservicewebservices",
+	       "assistedservicepromotionaddon",
+	       "ccv2storefront",
+	       "pcmbackofficesamplesaddon"
+	   ],
+	   "properties": [
+	        {
+	            "key": "test.property.1",
+	            "value": "test.property.1.value"
+	        },
+	        {
+	            "key": "test.property.2",
+	            "value": "global"
+	        },
+	        {
+	            "key": "test.property.3",
+	            "value": "persona.development",
+	            "persona": "development"
+	        },
+	        {
+	            "key": "test.property.4",
+	            "value": "persona.staging",
+	            "persona": "staging"
+	        },
+	        {
+	            "key": "test.property.5",
+	            "value": "persona.production",
+	            "persona": "production"
+	        }
+	        
+	    ],
+	   "aspects": [
+	         {
+	            "name": "backoffice",
+	            "properties": [],
+	            "webapps": [
+	                {
+	                    "name": "hac",
+	                    "contextPath": "/hac"
+	                },
+	                {
+	                    "name": "mediaweb",
+	                    "contextPath": "/medias"
+	                },
+	                {
+	                    "name": "backoffice",
+	                    "contextPath": "/backoffice"
+	                }
+	            ]
+	        },
+	        {
+	            "name": "accstorefront",
+	            "properties": [
+	               {
+	                    "key": "regioncache.queryregion.evictionpolicy",
+	                    "value": "LRU"
+	                }
+	            ],
+	            "webapps": [
+	                {
+	                    "name": "hac",
+	                    "contextPath": "/hac"
+	                },
+	                {
+	                    "name": "mediaweb",
+	                    "contextPath": "/medias"
+	                },
+	                {
+	                    "name": "ccv2storefront",
+	                    "contextPath": "/ccv2storefront"
+	                }
+	            ]
+	        },
+	       {
+	            "name": "backgroundProcessing",
+	            "properties": [
+	                {
+	                   "key": "cluster.node.groups",
+	                    "value": "backgroundProcessing"
+	                },
+	                {
+	                    "key": "task.workers.max",
+	                    "value": "40"
+	                },
+	                {
+	                    "key": "impex.import.workers",
+	                    "value": "8"
+	                },
+	                {
+	                    "key": "catalog.sync.workers",
+	                    "value": "8"
+	                },
+	               {
+	                    "key": "task.polling.interval",
+	                    "value": "1"
+	                },
+	                {
+	                    "key": "processengine.process.canjoinpreviousnode.default",
+	                    "value": "true"
+	                },
+	                {
+	                    "key": "yacceleratorfulfilmentprocess.fraud.scoreLimit",
+	                    "value": "10000"
+	                }                  
+	            ],
+	            "webapps": [
+	                {
+	                    "name": "hac",
+	                    "contextPath": "/hac"
+	                },
+	                {
+	                    "name": "mediaweb",
+	                    "contextPath": "/medias"
+	                }
+	            ]
+	        }
+	    ]
+	}
