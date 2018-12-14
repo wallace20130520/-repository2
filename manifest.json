@@ -86,6 +86,13 @@
 	        }
 	        
 	    ],
+	"storefrontAddons": [
+        {
+            "addon": "smarteditaddon",
+            "storefront": "mycustomstorefront",
+            "template": "yacceleratorstorefront"
+        }
+    ],
 	   "aspects": [
 	         {
 	            "name": "backoffice",
