@@ -89,7 +89,7 @@
 	"storefrontAddons": [
         {
             "addon": "smarteditaddon",
-            "storefront": "mycustomstorefront",
+            "storefront": "yacceleratorstorefront",
             "template": "yacceleratorstorefront"
         }
     ],
