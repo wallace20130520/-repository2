@@ -207,11 +207,11 @@
       },
       {
          "key":"website.powertools.http",
-         "value":"http://accstorefront.cs2u0q33d7-bordersta1-d1-public.model-t.cc.commerce.ondemand.com/yb2bacceleratorstorefront"
+         "value":"http://accstorefront.cs2u0q33d7-bordersta1-d1-public.model-t.cc.commerce.ondemand.com/yacceleratorstorefront"
       },
       {
          "key":"website.powertools.https",
-         "value":"https://accstorefront.cs2u0q33d7-bordersta1-d1-public.model-t.cc.commerce.ondemand.com/yb2bacceleratorstorefront"
+         "value":"https://accstorefront.cs2u0q33d7-bordersta1-d1-public.model-t.cc.commerce.ondemand.com/yacceleratorstorefront"
       },
       {
          "key":"test.property.2",
@@ -240,7 +240,7 @@
             },
             {
                "key":"storefrontContextRoot",
-               "value":"/yb2bacceleratorstorefront"
+               "value":"/yacceleratorstorefront"
             }
          ],
          "webapps":[
@@ -261,8 +261,8 @@
                "contextPath":"/acceleratorservices"
             },
             {
-               "name":"yb2bacceleratorstorefront",
-               "contextPath":"/yb2bacceleratorstorefront"
+               "name":"yacceleratorstorefront",
+               "contextPath":"/yacceleratorstorefront"
             }
          ]
       },
