@@ -68,100 +68,98 @@
       "configurablebundlecockpits",
       "configurablebundleaddon",
       "consignmenttrackingoccaddon",
-      "yb2bacceleratorstorefront",
       "modeltacceleratorservices"
    ],
-   "storeFrontExtension":"yb2bacceleratorstorefront",
-   "storeFrontWebRoot":"/yb2bacceleratorstorefront",
+
    "storefrontAddons":[
       {
          "addon":"b2bacceleratoraddon",
-         "storefront":"yb2bacceleratorstorefront",
+         "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
       {
          "addon":"commerceorgaddon",
-         "storefront":"yb2bacceleratorstorefront",
+         "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
       {
          "addon":"commerceorgsamplesaddon",
-         "storefront":"yb2bacceleratorstorefront",
+         "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
       {
          "addon":"b2bpunchoutaddon",
-         "storefront":"yb2bacceleratorstorefront",
+         "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
       {
          "addon":"secureportaladdon",
-         "storefront":"yb2bacceleratorstorefront",
+         "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
       {
          "addon":"accountsummaryaddon",
-         "storefront":"yb2bacceleratorstorefront",
+         "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
       {
          "addon":"assistedservicestorefront",
-         "storefront":"yb2bacceleratorstorefront",
+         "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
       {
          "addon":"captchaaddon",
-         "storefront":"yb2bacceleratorstorefront",
+         "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
       {
          "addon":"customerticketingaddon",
-         "storefront":"yb2bacceleratorstorefront",
+         "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
       {
          "addon":"promotionenginesamplesaddon",
-         "storefront":"yb2bacceleratorstorefront",
+         "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
       {
          "addon":"textfieldconfiguratortemplateaddon",
-         "storefront":"yb2bacceleratorstorefront",
+         "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
       {
          "addon":"orderselfserviceaddon",
-         "storefront":"yb2bacceleratorstorefront",
+         "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
       {
          "addon":"smarteditaddon",
-         "storefront":"yb2bacceleratorstorefront",
+         "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
       {
          "addon":"adaptivesearchsamplesaddon",
-         "storefront":"yb2bacceleratorstorefront",
+         "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
       {
          "addon":"consignmenttrackingaddon",
-         "storefront":"yb2bacceleratorstorefront",
+         "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
       {
          "addon":"configurablebundleaddon",
-         "storefront":"yb2bacceleratorstorefront",
+         "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
       {
          "addon":"pcmbackofficesamplesaddon",
-         "storefront":"yb2bacceleratorstorefront",
+         "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
       {
          "addon":"personalizationsearchsamplesaddon",
-         "storefront":"yb2bacceleratorstorefront",
+         "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
       {
