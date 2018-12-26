@@ -319,41 +319,7 @@
                 }
          ]
       },
-      {
-         "name":"webservices",
-         "properties": [
-                    {
-                        "key":"xss.filter.header.X-Frame-Options",
-                        "value":""
-                    }
-            ],
-         "webapps":[
-            {
-                    "name": "ycommercewebservices",
-                    "contextPath": "/rest"
-                },
-                {
-                    "name": "oauth2",
-                    "contextPath": "/authorizationserver"
-                },
-                {
-                    "name": "cmswebservices",
-                    "contextPath": "/cmswebservices"
-                },
-                {
-                    "name": "hac",
-                    "contextPath": "/hac"
-                },
-                {
-                    "name": "permissionswebservices",
-                    "contextPath": "/permissionswebservices"
-                },
-            {
-               "name":"hac",
-               "contextPath":"/hac"
-            }
-         ]
-      },            
+    
       {
          "name":"backgroundProcessing",
          "properties":[
