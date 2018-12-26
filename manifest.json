@@ -36,9 +36,6 @@
       "promotionenginesamplesaddon",
       "textfieldconfiguratortemplatebackoffice",
       "textfieldconfiguratortemplateaddon",
-      
-      "promotionengineatddtests",
-      "textfieldconfiguratortemplateatddtests",
       "cmswebservices",
       "smarteditwebservices",
       "permissionswebservices",
@@ -67,7 +64,7 @@
       "consignmenttrackingmock",
       "consignmenttrackingbackoffice",
       "pcmbackofficesamplesaddon",
-      "configurablebundleatddtests",
+     
       "configurablebundlecockpits",
       "configurablebundleaddon",
       "consignmenttrackingoccaddon",
