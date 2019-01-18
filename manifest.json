@@ -68,7 +68,7 @@
       "configurablebundlecockpits",
       "configurablebundleaddon",
       "consignmenttrackingoccaddon", 
-      "platform",
+      "solrserver",
       "gigyacommon",
       "gigyaconsent",
       "gigyads",
