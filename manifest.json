@@ -110,7 +110,7 @@
 		"addon": "gigyacommon",
 		"storefront": "yacceleratorstorefront",
 		"template": "yacceleratorstorefront"
-	  }
+	  },
       {
          "addon":"accountsummaryaddon",
          "storefront":"yacceleratorstorefront",
