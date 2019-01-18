@@ -68,6 +68,10 @@
       "configurablebundlecockpits",
       "configurablebundleaddon",
       "consignmenttrackingoccaddon",
+      "gigyacommon",
+      "gigyaconsent",
+      "gigyads",
+      "gigyalogin",
       "modeltacceleratorservices"
    ],
 
@@ -97,6 +101,16 @@
          "storefront":"yacceleratorstorefront",
          "template":"yacceleratorstorefront"
       },
+      {
+		"addon": "gigyalogin",
+		"storefront": "yacceleratorstorefront",
+		"template": "yacceleratorstorefront"
+	  },
+	  {
+		"addon": "gigyacommon",
+		"storefront": "yacceleratorstorefront",
+		"template": "yacceleratorstorefront"
+	  }
       {
          "addon":"accountsummaryaddon",
          "storefront":"yacceleratorstorefront",
