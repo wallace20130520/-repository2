@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- [y] hybris Platform Copyright (c) 2000-2014 hybris AG All rights reserved. This 
+	software is the confidential and proprietary information of hybris ("Confidential 
+	Information"). You shall not disclose such Confidential Information and shall use 
+	it only in accordance with the terms of the license agreement you entered into with 
+	hybris. -->
+<configuration xmlns="hybris.de/schemas/hmc/generic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="hybris.de/schemas/hmc/generic hmc.xsd">
+
+
+    <!-- Configuration for extension gigyacommon -->
+
+    <explorertree>
+        <group name="gigya" mode="append">
+            <typeref type="GigyaConfig" description="Gigya version 2.0"/>
+            <typeref type="GigyaSessionConfiguration"/>
+            <typeref type="GigyaFieldMapping" description="Gigya field mapping"/>
+        </group>
+    </explorertree>
+    <type name="GigyaConfig" mode="append">
+        <organizer>
+            <search mode="replace">
+                <condition attribute="gigyaApiKey"/>
+            </search>
+            <result defaultview="list">
+                <listview mode="append">
+                    <itemlayout>
+                        <attribute name="gigyaApiKey" width="200"/>
+                        <attribute name="site" width="200"/>
+                        <attribute name="gigyaDataCenter" width="200"/>
+                        <attribute name="gigyaSiteSecret" width="200"/>
+                        <attribute name="gigyaUserKey" width="200"/>
+                        <attribute name="gigyaMaskUserSecret" width="200"/>
+                        <attribute name="loginSynchronization" width="100"/>
+                        <attribute name="profileUpdateSynchronization" width="100"/>
+                        <attribute name="backendSynchronization" width="100"/>
+                        <attribute name="mode" width="200"/>
+                        <attribute name="gigyaPurchaseCounter" width="200"/>
+                        <attribute name="language" width="200"/>
+                        <attribute name="providers" width="200"/>
+                    </itemlayout>
+                </listview>
+            </result>
+            <editor>
+                <exclude>
+                    <exclusion attribute="gigyaUserSecret"/>
+                </exclude>
+                <tab name="gigyaparmes" position="0">
+                    <section name="advanced">
+                        <listlayout>
+                            <attribute name="gigyaGlobalAdvanced" width="400">
+                                <textareaeditor expanded="true" wrap="false" rows="25"/>
+                            </attribute>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+        <defaultreference>
+            <itemlayout>
+                <attribute name="site"/>
+            </itemlayout>
+        </defaultreference>
+    </type>
+
+    <type name="GigyaSessionConfiguration" mode="append">
+        <organizer>
+            <search mode="replace">
+                <condition attribute="gigyaConfigurations"/>
+            </search>
+            <result defaultview="list">
+                <listview mode="append">
+                    <itemlayout>
+                        <attribute name="sessionType"/>
+                        <attribute name="sessionLead"/>
+                        <attribute name="sessionDuration"/>
+                        <attribute name="gigyaConfigurations"/>
+                    </itemlayout>
+                </listview>
+            </result>
+            <editor>
+                <exclude>
+                    <exclusion attribute="durationInSeconds"/>
+                </exclude>
+                <tab name="main" position="0">
+                    <section name="main">
+                        <listlayout>
+                            <attribute name="sessionType"/>
+                            <attribute name="sessionLead"/>
+                            <attribute name="sessionDuration"/>
+                            <attribute name="gigyaConfigurations"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="GigyaFieldMapping" mode="append">
+        <organizer>
+            <search mode="replace">
+                <condition attribute="code"/>
+                <condition attribute="gigyaAttributeName"/>
+            </search>
+            <result defaultview="list" mode="replace">
+                <listview mode="replace">
+                    <itemlayout>
+                        <attribute name="code"/>
+                        <attribute name="syncDirection"/>
+                        <attribute name="hybrisAttributeName"/>
+                        <attribute name="gigyaAttributeName"/>
+                        <attribute name="gigyaConfig"/>
+                    </itemlayout>
+                </listview>
+            </result>
+            <editor>
+                <tab name="general" position="0">
+                    <section name="main">
+                        <listlayout>
+                            <attribute name="code"/>
+                        </listlayout>
+                    </section>
+                    <section name="sync">
+                        <listlayout>
+                            <attribute name="syncDirection"/>
+                        </listlayout>
+                    </section>
+                    <section name="attributes">
+                        <listlayout>
+                            <attribute name="hybrisAttributeName"/>
+                            <attribute name="gigyaAttributeName"/>
+                            <attribute name="hybrisType"/>
+                            <attribute name="custom"/>
+                            <attribute name="gigyaConfig"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+</configuration>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2014 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<config xmlns="http://www.hybris.com/cockpit/config"
+        xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config"
+        xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea"
+        xmlns:explorer-tree="http://www.hybris.com/cockpitng/config/explorertree"
+        xmlns:df="http://www.hybris.com/cockpitng/component/dynamicForms">
+
+
+    <context type="Consent" component="listview" merge-by="type">
+        <list:list-view xmlns:list="http://www.hybris.com/cockpitng/component/listView">
+            <list:column qualifier="consentGranted" label="gigya.user.consent.consentGranted" position="99"/>
+        </list:list-view>
+    </context>
+
+</config>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- [y] hybris Platform Copyright (c) 2000-2014 hybris AG All rights reserved. This 
+	software is the confidential and proprietary information of hybris ("Confidential 
+	Information"). You shall not disclose such Confidential Information and shall use 
+	it only in accordance with the terms of the license agreement you entered into with 
+	hybris. -->
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- Dynamic attribute handlers -->
+    <bean id="gigyaMaskUserSecretAttributeHandler" class="com.gigya.common.dynamic.GigyaMaskUserSecretAttributeHandler" />
+
+    <bean id="gigyaSessionConfigurationDurationAttributeHandler" class="com.gigya.common.dynamic.GigyaSessionConfigurationDurationAttributeHandler" />
+
+    <!-- Listeners -->
+    <bean id="gigyacommonCoreDataImportedEventListener" parent="abstractCoreDataImportedEventListener">
+        <property name="supportedChannels">
+            <list value-type="de.hybris.platform.commerceservices.enums.SiteChannel">
+                <value>B2C</value>
+            </list>
+        </property>
+        <property name="addonExtensionMetadata">
+            <bean class="de.hybris.platform.addonsupport.data.AddonExtensionMetadata">
+                <property name="suffixChannel" value="false"/>
+                <property name="baseExtensionName" value="gigyacommon"/>
+            </bean>
+        </property>
+    </bean>
+
+    <alias name="defaultGigyaService" alias="gigyaService"/>
+    <bean id="defaultGigyaService" parent="abstractBusinessService"
+          class="com.gigya.common.service.impl.DefaultGigyaService">
+        <property name="gigyaConfigDao" ref="gigyaConfigDao"/>
+    </bean>
+
+    <alias name="defaultGigyaConfigDao" alias="gigyaConfigDao"/>
+    <bean id="defaultGigyaConfigDao" parent="abstractItemDao"
+          class="com.gigya.common.dao.impl.DefaultGigyaConfigDao"/>
+
+    <bean id="gigyaConfigValidationInterceptor"
+          class="com.gigya.common.interceptors.GigyaConfigValidation"/>
+
+    <bean id="gigyaConfigInterceptorMapping"
+          class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="gigyaConfigValidationInterceptor"/>
+        <property name="typeCode" value="GigyaConfig"/>
+    </bean>
+
+
+    <alias name="defaultGigyaFieldMappingDao" alias="gigyaFieldMappingDao"/>
+    <bean id="defaultGigyaFieldMappingDao" class="com.gigya.common.dao.impl.DefaultGigyaFieldMappingDao">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,33 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform 
+# 
+# Copyright (c) 2000-2013 hybris AG
+# All rights reserved.
+#  
+# This software is the confidential and proprietary information of hybris 
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with hybris.
+#
+#  
+# -----------------------------------------------------------------------
+
+# you can put key/value pairs here.
+# Use Config.getParameter(..) to retrieve the values during runtime.
+
+gigyacommon.key=value
+
+# Specifies the location of the spring context file added automatically to the global platform application context.
+gigyacommon.application-context=gigyacommon-spring.xml
+
+yacceleratorstorefront.additionalWebSpringConfigs.gigyacommon=classpath:/gigyacommon/web/spring/gigyacommon-web-spring.xml
+
+gigyacommon.javascript.paths.desktop=/desktop/common/js/gigyacommon.js
+gigyacommon.javascript.paths.mobile=/desktop/common/js/gigyacommon.js
+
+gigyacommon.javascript.paths.responsive=/responsive/common/js/gigyacommon.js
+
+gigyacommon.css.paths.desktop=/desktop/common/css/gigyacommon.css
+gigyacommon.css.paths.mobile=/mobile/common/css/gigyacommon.css
+
+gigyacommon.css.paths.responsive=/responsive/common/css/gigyacommon.css

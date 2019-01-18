@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2014 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<config xmlns="http://www.hybris.com/cockpit/config"
+        xmlns:y="http://www.hybris.com/cockpit/config/hybris"
+        xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config"
+        xmlns:list-view="http://www.hybris.com/cockpitng/component/listView"
+        xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea"
+        xmlns:explorer-tree="http://www.hybris.com/cockpitng/config/explorertree"
+        xmlns:simple-search="http://www.hybris.com/cockpitng/config/simplesearch">
+
+    <context merge-by="module" component="explorer-tree" parent="auto">
+        <explorer-tree:explorer-tree xmlns:explorer-tree="http://www.hybris.com/cockpitng/config/explorertree">
+            <explorer-tree:navigation-node id="gigyagroup" merge-mode="append">
+                <explorer-tree:type-node code="GigyaUser" id="gigyauserbackofficeid"/>
+                <explorer-tree:type-node code="GigyaRaasComponent" id="gigyaraascomponentbackofficeid"/>
+                <explorer-tree:type-node code="GigyaAuthenticationComponent" id="gigyaauthenticationbackofficeid"/>
+                <explorer-tree:type-node code="GigyaSyncTask" id="gigyasynctaskbackofficeid"/>
+            </explorer-tree:navigation-node>
+        </explorer-tree:explorer-tree>
+    </context>
+
+    <context merge-by="type" type="GigyaRaasComponent" component="create-wizard" module="gigyalogin">
+        <wz:flow xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config" id="GigyaRaasComponentWizard"
+                 title="create.gigyaraascomponent.title">
+            <wz:prepare id="newItemPrepare">
+                <wz:initialize property="newItem" type="GigyaRaasComponent"/>
+            </wz:prepare>
+            <wz:step id="step1" label="create.gigyaraascomponent.step1.label" sublabel="create.gigyaraascomponent.step1.sublabel"
+                     position="0">
+                <wz:content>
+                    <wz:property-list root="newItem">
+                        <wz:property qualifier="uid"/>
+                        <wz:property qualifier="name"/>
+                        <wz:property qualifier="catalogVersion"/>
+                        <wz:property qualifier="embed"/>
+                        <wz:property qualifier="continerID"/>
+                        <wz:property qualifier="linkText"/>
+                        <wz:property qualifier="showAnonymous"/>
+                        <wz:property qualifier="showLogedIn"/>
+                    </wz:property-list>
+                </wz:content>
+                <wz:navigation id="step1.navigation">
+                    <wz:cancel/>
+                    <wz:next
+                            visible="newItem.embed!=null AND !#empty(newItem.linkText) AND newItem.showAnonymous!=null AND newItem.showLogedIn!=null"/>
+                    <wz:done
+                            visible="newItem.embed!=null AND !#empty(newItem.linkText) AND newItem.showAnonymous!=null AND newItem.showLogedIn!=null AND !#empty(newItem.screenSet) AND !#empty(newItem.mobileScreenSet) AND !#empty(newItem.startScreen) AND newItem.profileEdit!=null">
+                        <wz:save property="newItem"/>
+                    </wz:done>
+                </wz:navigation>
+            </wz:step>
+            <wz:step id="step2" label="create.gigyaraascomponent.step2.label" sublabel="create.gigyaraascomponent.step2.sublabel"
+                     position="1">
+                <wz:content>
+                    <wz:property-list root="newItem">
+                        <wz:property qualifier="screenSet"/>
+                        <wz:property qualifier="mobileScreenSet"/>
+                        <wz:property qualifier="startScreen"/>
+                        <wz:property qualifier="profileEdit"/>
+                    </wz:property-list>
+                </wz:content>
+                <wz:navigation>
+                    <wz:back/>
+                    <wz:cancel/>
+                    <wz:next
+                            visible="!#empty(newItem.screenSet) AND !#empty(newItem.mobileScreenSet) AND !#empty(newItem.startScreen) AND newItem.profileEdit!=null"/>
+                    <wz:done
+                            visible="newItem.embed!=null AND !#empty(newItem.linkText) AND newItem.showAnonymous!=null AND newItem.showLogedIn!=null AND !#empty(newItem.screenSet) AND !#empty(newItem.mobileScreenSet) AND !#empty(newItem.startScreen) AND newItem.profileEdit!=null">
+                        <wz:save property="newItem"/>
+                    </wz:done>
+                </wz:navigation>
+            </wz:step>
+            <wz:step id="step3" label="create.gigyaraascomponent.step3.label" sublabel="create.gigyaraascomponent.step3.sublabel"
+                     position="2">
+                <wz:content>
+                    <wz:property-list root="newItem">
+                        <wz:property qualifier="advancedConfiguration"/>
+                    </wz:property-list>
+                </wz:content>
+                <wz:navigation>
+                    <wz:back/>
+                    <wz:cancel/>
+                    <wz:done
+                            visible="newItem.embed!=null AND !#empty(newItem.linkText) AND newItem.showAnonymous!=null AND newItem.showLogedIn!=null AND !#empty(newItem.screenSet) AND !#empty(newItem.mobileScreenSet) AND !#empty(newItem.startScreen) AND newItem.profileEdit!=null">
+                        <wz:save property="newItem"/>
+                    </wz:done>
+                </wz:navigation>
+            </wz:step>
+        </wz:flow>
+    </context>
+
+    <context merge-by="type" type="GigyaAuthenticationComponent" component="create-wizard" module="gigyalogin">
+        <wz:flow xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config" id="GigyaAuthenticationComponentWizard"
+                 title="create.gigyaauthenticationcomponent.title">
+            <wz:prepare id="newItemPrepare">
+                <wz:initialize property="newItem" type="GigyaAuthenticationComponent"/>
+            </wz:prepare>
+            <wz:step id="step1" label="create.gigyaauthenticationcomponent.step1.label"
+                     sublabel="create.gigyaauthenticationcomponent.step1.sublabel" position="0">
+                <wz:content>
+                    <wz:property-list root="newItem">
+                        <wz:property qualifier="uid"/>
+                        <wz:property qualifier="name"/>
+                        <wz:property qualifier="catalogVersion"/>
+                        <wz:property qualifier="embed"/>
+                        <wz:property qualifier="containerID"/>
+                        <wz:property qualifier="loginText"/>
+                        <wz:property qualifier="logoutText"/>
+                        <wz:property qualifier="loginScreenSet"/>
+                        <wz:property qualifier="loginScreen"/>
+                        <wz:property qualifier="mobileScreenSet"/>
+                        <wz:property qualifier="advancedConfiguration"/>
+                    </wz:property-list>
+                </wz:content>
+                <wz:navigation id="step1.navigation">
+                    <wz:cancel/>
+                    <wz:done
+                            visible="newItem.embed!=null AND !#empty(newItem.loginText) AND !#empty(newItem.logoutText) AND !#empty(newItem.loginScreenSet) AND !#empty(newItem.mobileScreenSet) AND !#empty(newItem.loginScreen) AND !#empty(newItem.uid) AND !#empty(newItem.name)">
+                        <wz:save property="newItem"/>
+                    </wz:done>
+                </wz:navigation>
+            </wz:step>
+        </wz:flow>
+    </context>
+
+    <context merge-by="type" type="GigyaUser" component="create-wizard" module="gigyalogin">
+        <wz:flow xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config" id="GigyaUserWizard"
+                 title="create.gigyauser.title">
+            <wz:prepare id="newItemPrepare">
+                <wz:initialize property="newCust" type="GigyaUser"/>
+            </wz:prepare>
+            <wz:step id="step1" label="create.gigyauser.step1.label" sublabel="create.gigyauser.step1.sublabel" position="0">
+                <wz:content>
+                    <wz:property-list root="newCust">
+                        <wz:property qualifier="uid"/>
+                        <wz:property qualifier="name"/>
+                        <wz:property qualifier="gigyaApiKey"/>
+                        <wz:property qualifier="gigyaUID"/>
+                    </wz:property-list>
+                </wz:content>
+                <wz:navigation id="step1.navigation">
+                    <wz:cancel/>
+                    <wz:done
+                            visible="!#empty(newCust.uid) AND !#empty(newCust.name) AND !#empty(newCust.gigyaApiKey) AND !#empty(newCust.gigyaUID)">
+                        <wz:save property="newCust"/>
+                    </wz:done>
+                </wz:navigation>
+            </wz:step>
+        </wz:flow>
+    </context>
+
+    <context merge-by="type" type="GigyaRaasComponent" component="editor-area">
+        <editorArea:editorArea xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea">
+            <editorArea:tab name="gigyaraascomponent.gigya.tab" position="1" merge-mode="append">
+                <editorArea:section name="gigyaraascomponent.main.section">
+                    <editorArea:attribute qualifier="name"/>
+                    <editorArea:attribute qualifier="catalogVersion"/>
+                    <editorArea:attribute qualifier="embed"/>
+                    <editorArea:attribute qualifier="continerID"/>
+                    <editorArea:attribute qualifier="linkText"/>
+                    <editorArea:attribute qualifier="showAnonymous"/>
+                    <editorArea:attribute qualifier="showLogedIn"/>
+                </editorArea:section>
+                <editorArea:section name="gigyaraascomponent.screens.section">
+                    <editorArea:attribute qualifier="screenSet"/>
+                    <editorArea:attribute qualifier="mobileScreenSet"/>
+                    <editorArea:attribute qualifier="startScreen"/>
+                    <editorArea:attribute qualifier="profileEdit"/>
+                </editorArea:section>
+                <editorArea:section name="gigyaraascomponent.advanced.section">
+                    <editorArea:attribute qualifier="advancedConfiguration"/>
+                </editorArea:section>
+            </editorArea:tab>
+        </editorArea:editorArea>
+    </context>
+
+    <context merge-by="type" type="GigyaAuthenticationComponent" component="editor-area">
+        <editorArea:editorArea xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea">
+            <editorArea:tab name="gac.gigya.tab" position="1">
+                <editorArea:section name="gac.main.section">
+                    <editorArea:attribute qualifier="uid"/>
+                    <editorArea:attribute qualifier="name"/>
+                    <editorArea:attribute qualifier="catalogVersion"/>
+                    <editorArea:attribute qualifier="embed"/>
+                    <editorArea:attribute qualifier="containerID"/>
+                </editorArea:section>
+                <editorArea:section name="gac.screens.section">
+                    <editorArea:attribute qualifier="loginText"/>
+                    <editorArea:attribute qualifier="logoutText"/>
+                    <editorArea:attribute qualifier="loginScreenSet"/>
+                    <editorArea:attribute qualifier="loginScreen"/>
+                </editorArea:section>
+                <editorArea:section name="gac.advanced.section">
+                    <editorArea:attribute qualifier="advancedConfiguration"/>
+                </editorArea:section>
+            </editorArea:tab>
+        </editorArea:editorArea>
+    </context>
+
+    <context type="GigyaUser" component="editor-area" merge-by="type">
+        <editorArea:editorArea xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea">
+            <editorArea:tab name="gigyauser.gigya.tab" position="2" merge-mode="append">
+                <editorArea:section name="gigyauser.main.section">
+                    <editorArea:attribute qualifier="gigyaUID"/>
+                    <editorArea:attribute qualifier="created"/>
+                    <editorArea:attribute qualifier="createdTimestamp"/>
+                    <editorArea:attribute qualifier="isActive"/>
+                    <editorArea:attribute qualifier="isLockedOut"/>
+                    <editorArea:attribute qualifier="isRegistered"/>
+                    <editorArea:attribute qualifier="isVerified"/>
+                    <editorArea:attribute qualifier="lastLoginTimestamp"/>
+                    <editorArea:attribute qualifier="lastUpdated"/>
+                    <editorArea:attribute qualifier="lastUpdatedTimestamp"/>
+                    <editorArea:attribute qualifier="loginProvider"/>
+                    <editorArea:attribute qualifier="oldestDataUpdated"/>
+                    <editorArea:attribute qualifier="oldestDataUpdatedTimestamp"/>
+                    <editorArea:attribute qualifier="registered"/>
+                    <editorArea:attribute qualifier="registeredTimestamp"/>
+                    <editorArea:attribute qualifier="socialProviders"/>
+                    <editorArea:attribute qualifier="verified"/>
+                    <editorArea:attribute qualifier="verifiedTimestamp"/>
+                    <editorArea:attribute qualifier="data"/>
+                </editorArea:section>
+            </editorArea:tab>
+        </editorArea:editorArea>
+    </context>
+
+    <context merge-by="type" type="GigyaSyncTask" component="create-wizard">
+        <wz:flow xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config" id="GigyaSyncTaskWizard"
+                 title="create.gigyasynctask.title">
+            <wz:prepare id="newItemPrepare">
+                <wz:initialize property="newItem" type="GigyaSyncTask"/>
+            </wz:prepare>
+            <wz:step id="step1" label="create.gigyasynctask.step1.label" sublabel="create.gigyasynctask.step1.sublabel"
+                     position="0">
+                <wz:content>
+                    <wz:property-list root="newItem">
+                        <wz:property qualifier="user"/>
+                        <wz:property qualifier="configuration"/>
+                        <wz:property qualifier="syncDirection"/>
+                        <wz:property qualifier="executionDate"/>
+                    </wz:property-list>
+                </wz:content>
+                <wz:navigation>
+                    <wz:cancel/>
+                    <wz:done visible="newItem.user!=null AND newItem.configuration!=null AND newItem.syncDirection!=null">
+                        <wz:save property="newItem"/>
+                    </wz:done>
+                </wz:navigation>
+            </wz:step>
+        </wz:flow>
+    </context>
+
+    <context merge-by="type" type="GigyaSyncTask" component="editor-area">
+        <editorArea:editorArea xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea">
+            <editorArea:tab name="gigyasynctask.gigya.tab">
+                <editorArea:section name="gigyasynctask.main.section">
+                    <editorArea:attribute qualifier="user"/>
+                    <editorArea:attribute qualifier="configuration"/>
+                    <editorArea:attribute qualifier="syncDirection"/>
+                    <editorArea:attribute qualifier="executionDate"/>
+                </editorArea:section>
+            </editorArea:tab>
+        </editorArea:editorArea>
+    </context>
+
+</config>

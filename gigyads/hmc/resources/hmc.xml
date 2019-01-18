@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2015 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+
+  
+-->
+<configuration xmlns="hybris.de/schemas/hmc/generic"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="hybris.de/schemas/hmc/generic hmc.xsd">
+
+
+    <!-- Configuration for extension gigyads -->
+
+    <explorertree mode="append">
+        <group name="gigyads">
+            <typeref type="DSObject"/>
+            <typeref type="DSFieldMapping"/>
+            <typeref type="DSUpdateCronjob"/>
+        </group>
+    </explorertree>
+
+    <type name="DSFieldMapping" mode="append">
+        <organizer>
+            <search>
+                <condition attribute="code"/>
+                <condition attribute="oid"/>
+                <condition attribute="uid"/>
+                <condition attribute="gigyaType"/>
+                <condition attribute="gigyaConfig"/>
+            </search>
+            <result>
+                <listview>
+                    <itemlayout>
+                        <attribute name="code"/>
+                        <attribute name="uid"/>
+                        <attribute name="syncDirection"/>
+                        <attribute name="fields"/>
+                        <attribute name="gigyaType"/>
+                        <attribute name="gigyaConfig"/>
+                    </itemlayout>
+                </listview>
+            </result>
+            <editor>
+                <tab name="main">
+                    <section name="general">
+                        <listlayout>
+                            <attribute name="code"/>
+                            <attribute name="oid"/>
+                            <attribute name="uid"/>
+                            <attribute name="gigyaType"/>
+                        </listlayout>
+                    </section>
+                    <section name="fields">
+                        <listlayout>
+                            <attribute name="fields">
+                                <referencecollectioneditor create="true" add="true" remove="true">
+                                    <itemeditorlayout mode="replace">
+                                        <attribute name="dsAttributeName"  position="0"/>
+                                        <attribute name="hybrisAttributeName" width="150" position="1"/>
+                                        <attribute name="hybrisType" width="150" position="2"/>
+                                    </itemeditorlayout>
+                                </referencecollectioneditor>
+                            </attribute>
+                        </listlayout>
+                    </section>
+                    <section name="configuration">
+                        <listlayout>
+                            <attribute name="gigyaConfig"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="DSUpdateCronjob" mode="append">
+        <organizer>
+            <editor mode="append">
+                <tab name="main">
+                    <section name="general">
+                        <listlayout>
+                            <attribute name="oids"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="GigyaUser" mode="append">
+        <organizer>
+            <editor>
+                <tab name="gigyausermaintab" mode="append">
+                    <section name="ds">
+                        <listlayout>
+                            <attribute name="dSData">
+                                <referenceeditor attribute="dsData"/>
+                            </attribute>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="Field">
+        <organizer>
+            <editor>
+                <tab name="main">
+                    <section name="general">
+                        <listlayout>
+                            <attribute name="dsAttributeName"/>
+                            <attribute name="hybrisAttributeName"/>
+                            <attribute name="hybrisType"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+        <defaultreference>
+            <itemlayout>
+                <attribute name=""/>
+            </itemlayout>
+        </defaultreference>
+    </type>
+
+    <type name="GigyaConfig" mode="append">
+        <organizer>
+            <editor mode="append">
+                <tab name="ds" mode="append" position="2">
+                    <section name="general" mode="append">
+                        <listlayout>
+                            <attribute name="searchConfig"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+
+</configuration>

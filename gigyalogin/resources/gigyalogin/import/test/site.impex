@@ -1,0 +1,2 @@
+INSERT_UPDATE CMSSite; uid[unique=true];defaultCatalog(id);active[default=true];
+;testSite;testCatalog;;

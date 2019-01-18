@@ -1,0 +1,28 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform 
+# 
+# Copyright (c) 2000-2015 hybris AG
+# All rights reserved.
+#  
+# This software is the confidential and proprietary information of hybris 
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with hybris.
+#
+#  
+# -----------------------------------------------------------------------
+
+# you can put key/value pairs here.
+# Use Config.getParameter(..) to retrieve the values during runtime.
+
+gigyads.key=value
+
+# Specifies the location of the spring context file added automatically to the global platform application context.
+gigyads.application-context=gigyads-spring.xml
+
+yacceleratorstorefront.additionalWebSpringConfigs.gigyads=classpath:/gigyads/web/spring/gigyads-web-spring.xml
+
+gigyads.javascript.paths.desktop=/desktop/common/js/gigyads.js
+gigyads.javascript.paths.mobile=/desktop/common/js/gigyads.js
+gigyads.css.paths.desktop=/desktop/common/css/gigyads.css
+gigyads.css.paths.mobile=/mobile/common/css/gigyads.css

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- [y] hybris Platform Copyright (c) 2000-2014 hybris AG All rights reserved. This 
+	software is the confidential and proprietary information of hybris ("Confidential 
+	Information"). You shall not disclose such Confidential Information and shall use 
+	it only in accordance with the terms of the license agreement you entered into with 
+	hybris. -->
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+
+           http://www.springframework.org/schema/context
+		   http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+    <context:annotation-config/>
+    <bean id="gigyaloginCoreDataImportedEventListener" parent="abstractCoreDataImportedEventListener">
+        <property name="supportedChannels">
+            <list value-type="de.hybris.platform.commerceservices.enums.SiteChannel">
+                <value>B2C</value>
+                <!-- <value>B2B</value> -->
+            </list>
+        </property>
+        <property name="addonExtensionMetadata">
+            <bean class="de.hybris.platform.addonsupport.data.AddonExtensionMetadata">
+                <property name="suffixChannel" value="false"/>
+                <property name="baseExtensionName" value="gigyalogin"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="gigyaloginSampleDataEventListener" parent="abstractGenericAddOnSampleDataEventListener">
+        <property name="extensionName" value="gigyalogin"/>
+    </bean>
+
+    <alias name="defaultGigyaUserDao" alias="gigyaUserDao"/>
+    <bean id="defaultGigyaUserDao" class="com.gigya.login.dao.impl.DefaultGigyaUserDao">
+        <property name="modelService" ref="modelService"/>
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+        <property name="sessionService" ref="sessionService"/>
+    </bean>
+
+    <alias name="defaultGigyaLoginService" alias="gigyaLoginService"/>
+    <bean id="defaultGigyaLoginService"
+          class="com.gigya.login.service.impl.DefaultGigyaLoginService" parent="abstractBusinessService">
+        <property name="gigyaService" ref="gigyaService"/>
+        <property name="gigyaUserDao" ref="gigyaUserDao"/>
+        <property name="gigyaConfigDao" ref="gigyaConfigDao"/>
+        <property name="modelService" ref="modelService"/>
+        <property name="commonI18NService" ref="commonI18NService"/>
+        <property name="configurationService" ref="configurationService"/>
+        <property name="customerNameStrategy" ref="customerNameStrategy"/>
+    </bean>
+
+    <bean id="gigyaRegistrationEventListener" class="com.gigya.login.event.RegistrationEventListener"
+          parent="abstractSiteEventListener">
+        <property name="gigyaLoginService" ref="gigyaLoginService"/>
+        <property name="gigyaConfigDao" ref="gigyaConfigDao"/>
+        <property name="cmsSiteService" ref="cmsSiteService"/>
+        <property name="sessionService" ref="sessionService"/>
+    </bean>
+
+    <bean id="gigyaOrderComplateEventListener" class="com.gigya.login.event.OrderCompleteEventListener"
+          parent="abstractSiteEventListener">
+        <property name="gigyaService" ref="gigyaService"/>
+        <property name="gigyaConfigDao" ref="gigyaConfigDao"/>
+    </bean>
+
+    <bean id="gigyaLoginEventListener" class="com.gigya.login.event.LoginEventListener"
+          parent="abstractEventListener">
+        <property name="gigyaLoginService" ref="gigyaLoginService"/>
+        <property name="gigyaConfigDao" ref="gigyaConfigDao"/>
+        <property name="cmsSiteService" ref="cmsSiteService"/>
+        <property name="sessionService" ref="sessionService"/>
+        <property name="userService" ref="userService"/>
+    </bean>
+
+    <!-- Converters -->
+    <alias name="defaultGigyaLikeConvertor" alias="gigyaLikeConvertor"/>
+    <bean id="defaultGigyaLikeConvertor" class="com.gigya.login.converter.DefaultGigyaLikeConverter"
+          parent="abstractPopulatingConverter">
+        <property name="modelService" ref="modelService"/>
+    </bean>
+
+    <alias name="defaultGigyaFavoriteConvertor" alias="gigyaFavoriteConvertor"/>
+    <bean id="defaultGigyaFavoriteConvertor"
+          class="com.gigya.login.converter.DefaultGigyaFavoriteConverter"
+          parent="abstractPopulatingConverter">
+        <property name="modelService" ref="modelService"/>
+    </bean>
+
+    <alias name="defaultGigyaSkillConvertor" alias="gigyaSkillConvertor"/>
+    <bean id="defaultGigyaSkillConvertor" class="com.gigya.login.converter.DefaultGigyaSkillConverter"
+          parent="abstractPopulatingConverter">
+        <property name="modelService" ref="modelService"/>
+    </bean>
+
+    <alias name="defaultGigyaEducationConvertor" alias="gigyaEducationConvertor"/>
+    <bean id="defaultGigyaEducationConvertor"
+          class="com.gigya.login.converter.DefaultGigyaEducationConvertor"
+          parent="abstractPopulatingConverter">
+        <property name="modelService" ref="modelService"/>
+    </bean>
+
+    <!-- Populators -->
+    <alias name="defaultGigyaLikesPopulator" alias="gigyaLikesPopulator"/>
+    <bean id="defaultGigyaLikesPopulator"
+          class="com.gigya.login.converter.populator.DefaultGigyaLikesPopulator">
+        <property name="gigyaLikeConvertor" ref="gigyaLikeConvertor"/>
+    </bean>
+
+    <alias name="defaultGigyaFavoritesPopulator" alias="gigyaFavoritesPopulator"/>
+    <bean id="defaultGigyaFavoritesPopulator"
+          class="com.gigya.login.converter.populator.DefaultGigyaFavoritesPopulator">
+        <property name="gigyaFavoriteConvertor" ref="gigyaFavoriteConvertor"/>
+    </bean>
+
+    <alias name="defaultGigyaSkillsPopulator" alias="gigyaSkillsPopulator"/>
+    <bean id="defaultGigyaSkillsPopulator"
+          class="com.gigya.login.converter.populator.DefaultGigyaSkillsPopulator">
+        <property name="gigyaSkillConvertor" ref="gigyaSkillConvertor"/>
+    </bean>
+
+    <alias name="defaultGigyaEducationsPopulator" alias="gigyaEducationsPopulator"/>
+    <bean id="defaultGigyaEducationsPopulator"
+          class="com.gigya.login.converter.populator.DefaultGigyaEducationsPopulator">
+        <property name="gigyaEducationConvertor" ref="gigyaEducationConvertor"/>
+    </bean>
+
+    <alias name="defaultGigyaAddressPopulator" alias="gigyaAddressPopulator"/>
+    <bean id="defaultGigyaAddressPopulator"
+          class="com.gigya.login.converter.populator.DefaultGigyaAddressPopulator">
+    </bean>
+
+    <!-- Interceptors -->
+    <bean id="gigyaSocialLoginInterceptor" class="com.gigya.login.interceptor.GigyaSocialLoginConfValidtion">
+    </bean>
+
+    <bean id="gigyaGenericPluginInterceptor" class="com.gigya.login.interceptor.GigyaGenericPluginConfValidtion">
+    </bean>
+
+    <bean id="gigyaSocialLoginInterceptorMapping"
+          class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="gigyaSocialLoginInterceptor"/>
+        <property name="typeCode" value="GigyaSocialLoginComponent"/>
+    </bean>
+
+    <bean id="gigyaGenericPluginInterceptorMapping"
+          class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="gigyaGenericPluginInterceptor"/>
+        <property name="typeCode" value="GigyaGenericPluginComponent"/>
+    </bean>
+
+    <bean id="gigyaUserPrepareInterceptor" class="com.gigya.login.interceptor.GigyaUserPrepareInterceptor"/>
+
+    <bean id="gigyaUserPrepareInterceptorMapping"
+          class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="gigyaUserPrepareInterceptor"/>
+        <property name="typeCode" value="GigyaUser"/>
+    </bean>
+
+    <bean id="gigyaSyncTaskPrepareInterceptor" class="com.gigya.login.interceptor.GigyaSyncTaskPrepareInterceptor"/>
+
+    <bean id="gigyaSyncTaskPrepareInterceptorMapping"
+          class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="gigyaSyncTaskPrepareInterceptor"/>
+        <property name="typeCode" value="GigyaSyncTask"/>
+    </bean>
+
+    <bean id="gigyaFieldMappingValidateInterceptor" class="com.gigya.login.interceptor.GigyaFieldMappingValidateInterceptor"/>
+
+    <bean id="gigyaFieldMappingValidateInterceptorMapping"
+          class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="gigyaFieldMappingValidateInterceptor"/>
+        <property name="typeCode" value="GigyaFieldMapping"/>
+    </bean>
+
+    <bean id="gigyaSessionConfigurationPrepareInterceptor"
+          class="com.gigya.login.interceptor.GigyaSessionConfigurationPrepareInterceptor">
+    </bean>
+
+    <bean id="gigyaSessionConfigurationPrepareInterceptorMapping"
+          class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="gigyaSessionConfigurationPrepareInterceptor"/>
+        <property name="typeCode" value="GigyaSessionConfiguration"/>
+    </bean>
+
+    <!--Interceptors-->
+
+    <!--Populators-->
+
+    <bean id="gigyaCustomerAccountConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="com.gigya.login.model.GigyaUserModel"/>
+        <property name="populators">
+            <list merge="true">
+                <ref bean="gigyaCustomerAccountPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="gigyaCustomerAccountPopulator"
+          class="com.gigya.login.converter.populator.GigyaCustomerAccountPopulator"/>
+
+
+    <bean id="gigyaCustomDataConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="com.gigya.login.model.GigyaCustomDataModel"/>
+        <property name="populators">
+            <list merge="true">
+                <ref bean="gigyaCustomDataPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="gigyaCustomDataPopulator" class="com.gigya.login.converter.populator.GigyaCustomDataPopulator"/>
+
+    <bean id="gigyaCustomerDataPopulator"
+          class="com.gigya.login.converter.populator.GigyaCustomerDataPopulator"/>
+
+    <bean parent="modifyPopulatorList">
+        <property name="list" ref="gigyaCustomerAccountConverter"/>
+        <property name="add" ref="gigyaCustomerDataPopulator"/>
+    </bean>
+
+    <bean id="gigyaCustomerAccountReversePopulator"
+          class="com.gigya.login.converter.populator.GigyaCustomerAccountReversePopulator"/>
+
+    <bean id="gigyaCustomerAccountReverseConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="com.gigya.socialize.GSObject"/>
+        <property name="populators">
+            <list merge="true">
+                <ref bean="gigyaCustomerAccountReversePopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="gigyaCustomDataReversePopulator"
+          class="com.gigya.login.converter.populator.GigyaCustomDataReversePopulator"/>
+    <bean id="gigyaCustomDataReverseConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="com.gigya.socialize.GSObject"/>
+        <property name="populators">
+            <list merge="true">
+                <ref bean="gigyaCustomDataReversePopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <!--Populators-->
+
+    <!--Events-->
+
+    <bean id="gigyaUserAfterSaveEventListener" class="com.gigya.login.event.GigyaUserAfterSaveListener">
+        <property name="gigyaUserDao" ref="gigyaUserDao"/>
+        <property name="gigyaSynchronizationService" ref="gigyaSynchronizationService"/>
+        <property name="gigyaConfigDao" ref="gigyaConfigDao"/>
+    </bean>
+
+    <!--Events-->
+
+    <!--Tasks-->
+    <bean id="gigyaTaskRunner" class="com.gigya.login.task.GigyaTaskRunner">
+        <property name="gigyaSynchronizationService" ref="gigyaSynchronizationService"/>
+        <property name="configurationService" ref="configurationService"/>
+    </bean>
+    <!--Task-->
+
+    <bean id="defaultGigyaSynchronizationService" class="com.gigya.login.synchronization.impl.DefaultGigyaSynchronizationService">
+        <property name="configurationService" ref="configurationService"/>
+        <property name="gigyaService" ref="gigyaService"/>
+        <property name="cmsSiteService" ref="cmsSiteService"/>
+        <property name="modelService" ref="modelService"/>
+        <property name="taskService" ref="taskService"/>
+        <property name="gigyaCustomerAccountConverter" ref="gigyaCustomerAccountConverter"/>
+        <property name="gigyaCustomerAccountReverseConverter" ref="gigyaCustomerAccountReverseConverter"/>
+        <property name="gigyaUserDao" ref="gigyaUserDao"/>
+    </bean>
+
+    <alias name="defaultGigyaSynchronizationService" alias="gigyaSynchronizationService"/>
+
+    <bean id="gigyaToHybrisSyncJobPerformable" class="com.gigya.login.jobs.GigyaToHybrisSyncJobPerformable"
+          parent="abstractJobPerformable"/>
+
+    <bean id="hybrisToGigyaSyncJobPerformable" class="com.gigya.login.jobs.HybrisToGigyaSyncJobPerformable"
+          parent="abstractJobPerformable"/>
+
+</beans>

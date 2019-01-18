@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2015 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
+
+    <!--
+        Example Data POJO
+
+    <bean class="yemptypackage.data.MyPojo">
+        <property name="id" type="String"/>
+        <property name="flag" type="boolean"/>
+    </bean>
+    -->
+
+    <bean class="com.gigya.ds.beans.GigyaSearchParameter">
+        <property name="oid" type="java.lang.String"/>
+        <property name="gigyaConfig" type="com.gigya.common.model.GigyaConfigModel"/>
+        <property name="mappings" type="java.util.List&lt;com.gigya.common.model.GigyaFieldMappingModel>"/>
+    </bean>
+</beans>

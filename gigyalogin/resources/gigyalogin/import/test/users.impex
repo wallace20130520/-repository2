@@ -1,0 +1,2 @@
+INSERT_UPDATE GigyaUser; uid[unique = true]; gigyaApiKey; gigyaUID     ;
+                       ; uid          ; testApiKey ; testGigyaUID ;

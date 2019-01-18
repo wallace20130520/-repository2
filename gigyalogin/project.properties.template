@@ -1,0 +1,34 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform 
+# 
+# Copyright (c) 2000-2013 hybris AG
+# All rights reserved.
+#  
+# This software is the confidential and proprietary information of hybris 
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with hybris.
+#
+#  
+# -----------------------------------------------------------------------
+
+# you can put key/value pairs here.
+# Use Config.getParameter(..) to retrieve the values during runtime.
+
+gigyalogin.key=value
+
+# Specifies the location of the spring context file added automatically to the global platform application context.
+gigyalogin.application-context=gigyalogin-spring.xml
+
+yacceleratorstorefront.additionalWebSpringConfigs.gigyalogin=classpath:/gigyalogin/web/spring/gigyalogin-web-spring.xml
+
+gigyalogin.javascript.paths.desktop=/desktop/common/js/gigyalogin.js;/desktop/common/js/gigyaGenericPlugin.js
+gigyalogin.javascript.paths.mobile=/desktop/common/js/gigyalogin.js;/desktop/common/js/gigyaGenericPlugin.js
+gigyalogin.javascript.paths.responsive=/responsive/common/js/gigyalogin.js;/responsive/common/js/gigyaGenericPlugin.js
+
+gigyalogin.css.paths.desktop=/desktop/common/css/gigyalogin.css
+gigyalogin.css.paths.mobile=/mobile/common/css/gigyalogin.css
+gigyalogin.css.paths.responsive=/responsive/common/css/gigyalogin.css
+
+gconnector.version = 6.8.1
+login.token.name = GigyaSessionToken

@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- [y] hybris Platform Copyright (c) 2000-2014 hybris AG All rights reserved. This 
+	software is the confidential and proprietary information of hybris ("Confidential 
+	Information"). You shall not disclose such Confidential Information and shall use 
+	it only in accordance with the terms of the license agreement you entered into with 
+	hybris. -->
+<!-- ATTENTION: This is just an example file. You have to edit it according to your 
+	needs. -->
+
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="items.xsd">
+
+    <enumtypes>
+        <enumtype code="GigyaLanguageEnum">
+            <value code="fromSystem"/>
+            <value code="en"/>
+            <value code="ar"/>
+            <value code="ca"/>
+            <value code="zh_cn"/>
+            <value code="zh_hk"/>
+            <value code="zh_tw"/>
+            <value code="cs"/>
+            <value code="da"/>
+            <value code="nl"/>
+            <value code="nl_inf"/>
+            <value code="fi"/>
+            <value code="fr"/>
+            <value code="fr_inf"/>
+            <value code="de"/>
+            <value code="de_inf"/>
+            <value code="el"/>
+            <value code="he"/>
+            <value code="hu"/>
+            <value code="id"/>
+            <value code="it"/>
+            <value code="ja"/>
+            <value code="ko"/>
+            <value code="ms"/>
+            <value code="no"/>
+            <value code="fa"/>
+            <value code="pl"/>
+            <value code="pt"/>
+            <value code="pt_br"/>
+            <value code="ro"/>
+            <value code="ru"/>
+            <value code="sl"/>
+            <value code="es"/>
+            <value code="es_inf"/>
+            <value code="es_mx"/>
+            <value code="sv"/>
+            <value code="tl"/>
+            <value code="th"/>
+            <value code="tr"/>
+            <value code="uk"/>
+            <value code="vi"/>
+        </enumtype>
+
+        <enumtype code="GigyaLoginBehaviorEnum">
+            <value code="loginExistingUser"/>
+            <value code="alwaysLogin"/>
+        </enumtype>
+
+        <enumtype code="GigyaUserManagementMode">
+            <value code="social"/>
+            <value code="raas"/>
+        </enumtype>
+
+        <enumtype code="GigyaSyncDirection">
+            <value code="G2H"/>
+            <value code="H2G"/>
+            <value code="both"/>
+        </enumtype>
+
+        <enumtype code="GigyaSynchronizationStrategy">
+            <value code="synchronous"/>
+            <value code="asynchronous"/>
+        </enumtype>
+
+        <enumtype code="AttributeType">
+            <value code="integer"/>
+            <value code="boolean"/>
+            <value code="long"/>
+            <value code="date"/>
+            <value code="string"/>
+            <value code="complex"/>
+        </enumtype>
+
+        <enumtype code="GigyaSessionType">
+            <value code="sliding"/>
+            <value code="fixed"/>
+            <value code="forever"/>
+            <value code="browserClosed"/>
+        </enumtype>
+
+        <enumtype code="GigyaSessionLead">
+            <value code="gigya"/>
+            <value code="hybris"/>
+        </enumtype>
+    </enumtypes>
+
+    <relations>
+        <relation localized="false" code="GigyaConfigToFieldMapping">
+            <sourceElement type="GigyaFieldMapping" qualifier="gigyaFieldMappings"
+                           cardinality="many" collectiontype="set">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </sourceElement>
+            <targetElement type="GigyaConfig" qualifier="gigyaConfig"
+                           cardinality="one">
+                <modifiers read="true" write="true" search="true" optional="false"/>
+            </targetElement>
+        </relation>
+
+        <relation code="GigyaConfigToSessionConfig" localized="false">
+
+            <sourceElement type="GigyaSessionConfiguration" cardinality="one" qualifier="sessionConfiguration">
+                <modifiers initial="false" search="true" write="true" read="true"/>
+            </sourceElement>
+
+            <targetElement type="GigyaConfig" cardinality="many" qualifier="gigyaConfigurations" collectiontype="set">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </targetElement>
+
+        </relation>
+    </relations>
+
+    <itemtypes>
+
+        <itemtype code="GigyaFieldMapping" extends="GenericItem" jaloonly="false">
+
+            <deployment table="gigyafieldmapping" typecode="22001"/>
+
+            <attributes>
+
+                <attribute qualifier="code" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers write="true" optional="true" unique="true" read="true" search="true"/>
+                </attribute>
+
+                <attribute qualifier="syncDirection" type="GigyaSyncDirection">
+                    <persistence type="property"/>
+                    <modifiers write="false" read="true" optional="false" initial="true"/>
+                </attribute>
+
+                <attribute qualifier="hybrisAttributeName" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers read="true" optional="false" initial="true" write="false" unique="true"/>
+                </attribute>
+
+                <attribute qualifier="gigyaAttributeName" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers read="true" optional="false" initial="true" write="false"/>
+                </attribute>
+
+                <attribute qualifier="hybrisType" type="AttributeType">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="false" optional="false" initial="true"/>
+                </attribute>
+
+                <attribute qualifier="custom" type="boolean">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="false" optional="false" initial="true"/>
+                </attribute>
+
+            </attributes>
+
+        </itemtype>
+
+        <itemtype code="GigyaSessionConfiguration" extends="GenericItem">
+            <deployment table="sessionconfiguration" typecode="22302"/>
+
+            <attributes>
+
+                <attribute qualifier="sessionType" type="GigyaSessionType">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" optional="false" initial="true"/>
+                </attribute>
+
+                <attribute qualifier="sessionLead" type="GigyaSessionLead">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" optional="false" initial="true"/>
+                    <defaultvalue>em().getEnumerationValue("gigyaSessionLead", "gigya")</defaultvalue>
+                </attribute>
+
+                <attribute qualifier="sessionDuration"  type="int">
+                    <description>Duration for the session in minutes</description>
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" optional="false" initial="true"/>
+                    <defaultvalue>30</defaultvalue>
+                </attribute>
+
+                <attribute qualifier="durationInSeconds" type="int">
+                    <persistence type="dynamic" attributeHandler="gigyaSessionConfigurationDurationAttributeHandler"/>
+                    <modifiers read="true"/>
+                    <custom-properties>
+                        <property name="hiddenForUI">
+                            <value>Boolean.TRUE</value>
+                        </property>
+                    </custom-properties>
+                </attribute>
+
+            </attributes>
+
+        </itemtype>
+
+        <itemtype code="GigyaConfig" extends="GenericItem"
+                  jaloclass="com.gigya.common.jalo.GigyaConfig" singleton="false"
+                  jaloonly="false">
+
+            <deployment table="gigyaconfiguration" typecode="22000"/>
+
+            <attributes>
+
+                <attribute qualifier="gigyaApiKey" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="true" encrypted="false"
+                               optional="false" removable="true" initial="true" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+
+                <attribute qualifier="gigyaDataCenter" type="java.lang.String">
+                    <defaultvalue>
+                        new java.lang.String( "us1.gigya.com" )
+                    </defaultvalue>
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="true" encrypted="false"
+                               optional="false" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+
+                <attribute qualifier="gigyaGlobalAdvanced" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="true" encrypted="false"
+                               optional="true" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+
+                <attribute qualifier="gigyaLoginBehavior" type="GigyaLoginBehaviorEnum">
+                    <defaultvalue>em().getEnumerationValue("gigyaLoginBehaviorEnum", "loginExistingUser")</defaultvalue>
+
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="true" encrypted="false"
+                               optional="false" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+
+                <attribute qualifier="gigyaSiteSecret" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="false" encrypted="true"
+                               optional="true" removable="false" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+
+                <attribute qualifier="gigyaPurchaseCounter" type="java.lang.Boolean">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="false" encrypted="false"
+                               optional="true" removable="false" initial="false" unique="false" private="false"
+                               partof="false"/>
+                    <defaultvalue>new java.lang.Boolean( "false" )</defaultvalue>
+                </attribute>
+
+                <attribute qualifier="gigyaUserKey" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="true" encrypted="false"
+                               optional="true" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+
+                <attribute qualifier="gigyaUserSecret" type="java.lang.String">
+                    <custom-properties>
+                        <property name="hiddenForUI">
+                            <value>Boolean.TRUE</value>
+                        </property>
+                    </custom-properties>
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="true" encrypted="true"
+                               optional="true" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="gigyaMaskUserSecret">
+                    <persistence type="dynamic" attributeHandler="gigyaMaskUserSecretAttributeHandler"/>
+                    <modifiers read="true" write="true"/>
+                </attribute>
+
+                <attribute qualifier="mode" type="GigyaUserManagementMode">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="false" encrypted="false"
+                               optional="false" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                    <defaultvalue>em().getEnumerationValue("gigyaUserManagementMode", "raas")</defaultvalue>
+                </attribute>
+
+                <attribute qualifier="language" type="GigyaLanguageEnum">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="false" encrypted="false"
+                               optional="false" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                    <defaultvalue>em().getEnumerationValue("gigyaLanguageEnum", "fromSystem")</defaultvalue>
+                </attribute>
+
+                <attribute qualifier="providers" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="true" encrypted="false"
+                               optional="false" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                    <description>A comma-delimited list of providers "*" is from all</description>
+                    <defaultvalue>"*"</defaultvalue>
+                </attribute>
+
+                <attribute type="CMSSite" qualifier="site">
+                    <persistence type="property"/>
+                    <modifiers read="true" optional="false" initial="true" unique="true"/>
+                </attribute>
+
+                <attribute qualifier="loginSynchronization" type="GigyaSynchronizationStrategy">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" optional="false" initial="true"/>
+                    <defaultvalue>em().getEnumerationValue("GigyaSynchronizationStrategy", "asynchronous")</defaultvalue>
+                </attribute>
+
+                <attribute qualifier="profileUpdateSynchronization" type="GigyaSynchronizationStrategy">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" optional="false" initial="true"/>
+                    <defaultvalue>em().getEnumerationValue("GigyaSynchronizationStrategy", "asynchronous")</defaultvalue>
+                </attribute>
+
+                <attribute qualifier="backendSynchronization" type="GigyaSynchronizationStrategy">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" optional="false" initial="true"/>
+                    <defaultvalue>em().getEnumerationValue("GigyaSynchronizationStrategy", "asynchronous")</defaultvalue>
+                </attribute>
+
+            </attributes>
+        </itemtype>
+
+
+    </itemtypes>
+</items>

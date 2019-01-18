@@ -1,0 +1,2 @@
+INSERT_UPDATE GigyaConfig[disable.interceptor.beans='gigyaConfigValidationInterceptor'];gigyaApiKey[unique=true];gigyaUserKey;gigyaUserSecret;site(uid);
+                                                                                       ;APIKEY;USER_KEY;USER_SECRET;testSite;

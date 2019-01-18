@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_71"/>
+	<classpathentry kind="src" path="/platform"/>
+	<classpathentry exported="true" kind="src" path="/hmc"/>
+	<classpathentry exported="true" kind="src" path="/addonsupport"/>
+	<classpathentry exported="true" kind="lib" path="resources"/>
+	<classpathentry kind="src" output="eclipsebin/classes" path="src"/>
+	<classpathentry kind="src" output="eclipsebin/hmc/classes" path="hmc/src"/>
+	<classpathentry kind="src" output="eclipsebin/classes" path="testsrc"/>
+	<classpathentry kind="src" output="eclipsebin/classes" path="gensrc"/>
+	<classpathentry exported="true" kind="lib" path="lib/java-sdk-3.1.1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/classificationsystems"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/virtualjdbc"/>
+	<classpathentry kind="output" path="eclipsebin/notused"/>
+</classpath>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2015 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+    <bean id="gigyadsCoreDataImportedEventListener" parent="abstractCoreDataImportedEventListener">
+        <property name="supportedChannels">
+            <list value-type="de.hybris.platform.commerceservices.enums.SiteChannel">
+                <value>B2C</value>
+                <!--
+                                <value>B2B</value>
+                -->
+            </list>
+        </property>
+        <property name="addonExtensionMetadata">
+            <bean class="de.hybris.platform.addonsupport.data.AddonExtensionMetadata">
+                <property name="suffixChannel" value="false"/>
+                <property name="baseExtensionName" value="gigyads"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dsDataGeneralPopulator" class="com.gigya.ds.populators.DSDataGeneralPopulator"/>
+
+    <bean id="dsConverter" parent="abstractPopulatingConverter">
+        <property name="populators">
+            <list merge="true">
+                <ref bean="dsDataGeneralPopulator"/>
+            </list>
+        </property>
+        <property name="targetClass" value="com.gigya.login.model.GigyaUserModel"/>
+    </bean>
+
+    <bean id="dsFieldMappingDao" class="com.gigya.ds.dao.impl.DefaultDSFieldMappingDao"/>
+
+    <bean id="dsSearchService" class="com.gigya.ds.services.impl.GigyaDSSearchService" parent="abstractBusinessService">
+        <property name="gigyaService" ref="gigyaService"/>
+    </bean>
+
+    <bean id="dsGigyaUserUpdateInterceptor" class="com.gigya.ds.interceptors.DSGigyaUserPrepareInterceptor"/>
+
+    <bean id="dsGigyaUserUpdateInterceptorMapping" class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="dsGigyaUserUpdateInterceptor"/>
+        <property name="typeCode" value="GigyaUser"/>
+    </bean>
+
+    <alias name="defaultDSDataDao" alias="dsDataDao"/>
+
+    <bean id="defaultDSDataDao" class="com.gigya.ds.dao.impl.DefaultDSDataDao">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+        <property name="modelService" ref="modelService"/>
+    </bean>
+
+    <bean id="dsDataUpdateInterceptor" class="com.gigya.ds.interceptors.DSDataUpdateInterceptor">
+        <property name="dsDataDao" ref="dsDataDao"/>
+        <property name="gigyaSynchronizationService" ref="gigyaSynchronizationService"/>
+        <property name="gigyaConfigDao" ref="gigyaConfigDao"/>
+    </bean>
+
+    <bean id="dsDataUpdateInterceptorMapping" class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="dsDataUpdateInterceptor"/>
+        <property name="typeCode" value="DSData"/>
+    </bean>
+
+    <alias name="dsGigyaSynchronizationService" alias="gigyaSynchronizationService"/>
+
+    <bean id="dsGigyaSynchronizationService" class="com.gigya.ds.services.impl.DSGigyaSynchronizationService" parent="defaultGigyaSynchronizationService">
+        <property name="configurationService" ref="configurationService"/>
+        <property name="dsFieldMappingDao" ref="dsFieldMappingDao"/>
+        <property name="gigyaService" ref="gigyaService"/>
+        <property name="cmsSiteService" ref="cmsSiteService"/>
+        <property name="gigyaCustomerAccountReverseConverter" ref="gigyaCustomerAccountReverseConverter"/>
+        <property name="gigyaLoginService" ref="gigyaLoginService"/>
+        <property name="gigyaUserDao" ref="gigyaUserDao"/>
+        <property name="dsSearchService" ref="dsSearchService"/>
+        <property name="dsConverter" ref="dsConverter"/>
+        <property name="taskService" ref="taskService"/>
+        <property name="gigyaCustomerAccountConverter" ref="gigyaCustomerAccountConverter"/>
+    </bean>
+
+</beans>

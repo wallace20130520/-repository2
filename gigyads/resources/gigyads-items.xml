@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2015 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+
+  
+-->
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="items.xsd">
+
+    <collectiontypes>
+        <collectiontype code="Fields" elementtype="Field" type="set"/>
+    </collectiontypes>
+
+    <enumtypes>
+        <enumtype code="SearchConfig">
+            <value code="search"/>
+            <value code="get"/>
+        </enumtype>
+    </enumtypes>
+
+    <relations>
+        <relation localized="false" code="GigyaConfigToDSFieldMapping">
+            <sourceElement type="DSFieldMapping" qualifier="dSFieldMappings"
+                           cardinality="many" collectiontype="set">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </sourceElement>
+            <targetElement type="GigyaConfig" qualifier="gigyaConfig"
+                           cardinality="one">
+                <modifiers read="true" write="true" search="true" optional="false"/>
+            </targetElement>
+        </relation>
+    </relations>
+
+    <itemtypes>
+
+        <itemtype code="DSSyncTask" extends="Task">
+            <attributes>
+
+                <attribute qualifier="user" type="GigyaUser">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" initial="true" optional="false"/>
+                </attribute>
+
+                <attribute qualifier="configuration" type="GigyaConfig">
+                    <persistence type="property"/>
+                    <modifiers write="true" read="true" optional="false" initial="true"/>
+                </attribute>
+
+                <attribute qualifier="syncDirection" type="GigyaSyncDirection">
+                    <persistence type="property"/>
+                    <modifiers write="true" read="true" initial="true" optional="false"/>
+                </attribute>
+
+            </attributes>
+        </itemtype>
+
+        <itemtype code="DSFieldMapping" extends="GenericItem" jaloonly="false">
+
+            <deployment table="dsfieldmapping" typecode="22090"/>
+            <attributes>
+
+                <attribute qualifier="code" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers write="true" optional="true" read="true" search="true"/>
+                </attribute>
+
+                <attribute qualifier="oid" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" optional="false" initial="true"/>
+                </attribute>
+
+                <attribute qualifier="gigyaType" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers write="true" read="true" optional="false" initial="true"/>
+                </attribute>
+
+                <attribute qualifier="fields" type="Fields">
+                    <modifiers write="true" read="true" initial="true" search="false"/>
+                    <persistence type="property"/>
+                </attribute>
+
+            </attributes>
+        </itemtype>
+
+        <itemtype code="Field" extends="GenericItem">
+
+            <deployment table="field" typecode="22096"/>
+            <attributes>
+
+                <attribute qualifier="hybrisType" type="AttributeType">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" optional="false" initial="true"/>
+                </attribute>
+
+                <attribute qualifier="hybrisAttributeName" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" initial="true" optional="false"/>
+                </attribute>
+
+                <attribute qualifier="dsAttributeName" type="java.lang.String">
+                    <modifiers write="true" read="true" initial="true" optional="false"/>
+                    <persistence type="property"/>
+                </attribute>
+
+            </attributes>
+        </itemtype>
+
+        <itemtype code="GigyaUser" autocreate="false" generate="false">
+            <attributes>
+
+                <attribute qualifier="dSData" type="DSData">
+                    <!--TODO:Consider Relation! Need to change backoffice wizard!-->
+                    <modifiers write="true" read="true" initial="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+            </attributes>
+        </itemtype>
+
+        <itemtype code="GigyaConfig" autocreate="false" generate="false">
+            <attributes>
+
+                <attribute qualifier="searchConfig" type="SearchConfig">
+                    <defaultvalue>em().getEnumerationValue("SearchConfig","get")</defaultvalue>
+                    <modifiers write="true" read="true" optional="false"/>
+                    <persistence type="property"/>
+                </attribute>
+
+            </attributes>
+        </itemtype>
+
+        <itemtype code="DSData" extends="GenericItem">
+
+            <deployment table="dsdata" typecode="22095"/>
+            <attributes>
+
+                <!--Extend with custom attributes-->
+
+            </attributes>
+        </itemtype>
+    </itemtypes>
+</items>

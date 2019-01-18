@@ -1,0 +1,5 @@
+INSERT_UPDATE GigyaFieldMapping; syncDirection(code); hybrisAttributeName[unique = true]; gigyaAttributeName; custom; gigyaConfig(gigyaApiKey); hybrisType(code);
+                               ; G2H                ; testHybrisName                    ; testGigyaName     ; false ; APIKEY                  ; string          ;
+
+INSERT_UPDATE GigyaFieldMapping; syncDirection(code); hybrisAttributeName[unique = true]; gigyaAttributeName; custom; gigyaConfig(gigyaApiKey); hybrisType(code);
+                               ; G2H                ; testName                          ; testName          ; false ; APIKEY                  ; boolean         ;

@@ -1,0 +1,6 @@
+INSERT_UPDATE ComponentTypeGroups2ComponentType; source(code)[unique = true]; target(code)[unique = true]
+; wide ; GigyaSocialLoginComponent
+; wide ; GigyaRaasComponent
+; wide ; GigyaAddConnectionUIComponent
+; wide ; GigyaGenericPluginComponent
+; wide ; GigyaAuthenticationComponent

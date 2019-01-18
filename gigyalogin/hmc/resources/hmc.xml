@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2014 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+
+  
+-->
+<configuration xmlns="hybris.de/schemas/hmc/generic"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="hybris.de/schemas/hmc/generic hmc.xsd">
+
+
+    <!-- Configuration for extension gigyalogin -->
+
+    <explorertree>
+        <group name="gigya" mode="append">
+            <typeref type="GigyaUser"/>
+            <typeref type="GigyaFbLike"/>
+            <typeref type="GigyaSkill"/>
+            <typeref type="GigyaEducation"/>
+            <typeref type="GigyaFbFavorite"/>
+            <typeref type="GigyaAddress"/>
+            <typeref type="AbstractGigyaComponent"/>
+            <typeref type="GigyaSocialLoginComponent"/>
+            <typeref type="GigyaRaasComponent"/>
+            <typeref type="GigyaAuthenticationComponent"/>
+            <typeref type="GigyaAddConnectionUIComponent"/>
+            <typeref type="GigyaGenericPluginComponent"/>
+            <typeref type="GigyaUpdateCronjob"/>
+            <typeref type="LoginIDs"/>
+            <typeref type="Emails"/>
+            <typeref type="GigyaCustomData"/>
+        </group>
+    </explorertree>
+
+
+    <type name="GigyaUser" mode="append">
+        <organizer>
+            <search mode="append">
+                <condition attribute="gigyaUID"/>
+            </search>
+            <result mode="append">
+                <listview>
+                    <itemlayout>
+                        <attribute name="gigyaUID"/>
+                    </itemlayout>
+                </listview>
+            </result>
+            <editor>
+                <tab name="gigyausermaintab" position="2">
+                    <section name="attributesnames">
+                        <listlayout>
+                            <attribute name="gigyaUID"/>
+                            <attribute name="created"/>
+                            <attribute name="createdTimestamp"/>
+                            <attribute name="isActive"/>
+                            <attribute name="isLockedOut"/>
+                            <attribute name="isRegistered"/>
+                            <attribute name="isVerified"/>
+                            <attribute name="lastLoginTimestamp"/>
+                            <attribute name="lastUpdated"/>
+                            <attribute name="lastUpdatedTimestamp"/>
+                            <attribute name="loginProvider"/>
+                            <attribute name="oldestDataUpdated"/>
+                            <attribute name="oldestDataUpdatedTimestamp"/>
+                            <attribute name="registered"/>
+                            <attribute name="registeredTimestamp"/>
+                            <attribute name="socialProviders"/>
+                            <attribute name="verified"/>
+                            <attribute name="verifiedTimestamp"/>
+                            <attribute name="data"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="GigyaFbLike" mode="append">
+        <organizer>
+            <editor>
+                <tab name="GigyaFbLikeainTab" position="2">
+                    <section name="attributesnames">
+                        <listlayout>
+                            <attribute name="name"/>
+                            <attribute name="category"/>
+                            <attribute name="timestamp"/>
+                            <attribute name="id"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="GigyaSkill" mode="append">
+        <organizer>
+            <editor>
+                <tab name="GigyaSkillMainTab" position="2">
+                    <section name="attributesnames">
+                        <listlayout>
+                            <attribute name="skill"/>
+                            <attribute name="level"/>
+                            <attribute name="years"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="GigyaEducation" mode="append">
+        <organizer>
+            <editor>
+                <tab name="GigyaEducationMainTab" position="2">
+                    <section name="attributesnames">
+                        <listlayout>
+                            <attribute name="school"/>
+                            <attribute name="schoolType"/>
+                            <attribute name="fieldOfStudy"/>
+                            <attribute name="degree"/>
+                            <attribute name="startYear"/>
+                            <attribute name="endYear"/>
+                            <attribute name="educationLevel"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="GigyaFbFavorite" mode="append">
+        <organizer>
+            <editor>
+                <tab name="GigyaFbFavoriteMainTab" position="2">
+                    <section name="attributesnames">
+                        <listlayout>
+                            <attribute name="category"/>
+                            <attribute name="name"/>
+                            <attribute name="id"/>
+                            <attribute name="type"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="GigyaAddress" mode="append">
+        <organizer>
+            <editor>
+                <tab name="GigyaAddressMainTab" position="2">
+                    <section name="attributesnames">
+                        <listlayout>
+                            <attribute name="relationshipStatus"/>
+                            <attribute name="locale"/>
+                            <attribute name="gigyaCountry"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="GigyaRaasComponent" mode="append">
+        <organizer>
+            <editor>
+                <tab name="GigyaRaasComponentMainTab" position="2">
+                    <section name="attributesnames">
+                        <listlayout>
+                            <attribute name="embed"/>
+                            <attribute name="continerID"/>
+                            <attribute name="screenSet"/>
+                            <attribute name="mobileScreenSet"/>
+                            <attribute name="startScreen"/>
+                            <attribute name="linkText"/>
+                            <attribute name="profileEdit"/>
+                            <attribute name="advancedConfiguration"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="GigyaAuthenticationComponent" mode="append">
+        <organizer>
+            <editor>
+                <tab name="gigyaauthenticationcomponentmain" position="1">
+                    <section name="attributesnames">
+                        <listlayout>
+                            <attribute name="embed"/>
+                            <attribute name="containerID"/>
+                            <attribute name="loginScreen"/>
+                            <attribute name="loginScreenSet"/>
+                            <attribute name="mobileScreenSet"/>
+                            <attribute name="loginText"/>
+                            <attribute name="logoutText"/>
+                        </listlayout>
+                    </section>
+                    <section name="advanced">
+                        <listlayout>
+                            <attribute name="advancedConfiguration" width="300">
+                                <textareaeditor rows="20" wrap="false" expanded="true"/>
+                            </attribute>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="GigyaUpdateCronjob" mode="append">
+        <organizer>
+            <editor>
+                <tab name="GigyaUpdateCronjobMainTab" position="2">
+                    <section name="attributesnames">
+                        <listlayout>
+                            <attribute name="gigyaUIDList"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+</configuration>

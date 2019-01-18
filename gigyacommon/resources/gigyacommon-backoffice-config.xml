@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2014 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<config xmlns="http://www.hybris.com/cockpit/config"
+        xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config"
+        xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea"
+        xmlns:explorer-tree="http://www.hybris.com/cockpitng/config/explorertree"
+        xmlns:df="http://www.hybris.com/cockpitng/component/dynamicForms">
+
+    <context merge-by="module" component="explorer-tree" parent="auto">
+        <explorer-tree:explorer-tree xmlns:explorer-tree="http://www.hybris.com/cockpitng/config/explorertree">
+            <explorer-tree:navigation-node id="gigyagroup" merge-mode="append">
+                <explorer-tree:type-node code="GigyaConfig" id="gigyaconfigbackofficeid"/>
+                <explorer-tree:type-node code="GigyaSessionConfiguration" id="gigyasessionconfiguration"/>
+                <explorer-tree:type-node code="GigyaFieldMapping" id="gigyafieldmappingbackofficeid"/>
+            </explorer-tree:navigation-node>
+        </explorer-tree:explorer-tree>
+    </context>
+
+    <context merge-by="type" type="GigyaConfig" component="create-wizard" module="gigyacommon">
+        <wz:flow xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config" id="GigyaConfigWizard"
+                 title="create.gigyaconfig.title">
+            <wz:prepare id="newItemPrepare">
+                <wz:initialize property="newItem" type="GigyaConfig"/>
+            </wz:prepare>
+            <wz:step id="step1" label="create.gigyaconfig.step1.label" sublabel="create.gigyaconfig.step1.sublabel"
+                     position="0">
+                <wz:content>
+                    <wz:property-list root="newItem">
+                        <wz:property qualifier="gigyaApiKey"/>
+                        <wz:property qualifier="gigyaDataCenter"/>
+                        <wz:property qualifier="gigyaSiteSecret"/>
+                        <wz:property qualifier="gigyaUserKey"/>
+                        <wz:property qualifier="gigyaMaskUserSecret"/>
+                        <wz:property qualifier="site"/>
+                        <wz:property qualifier="mode"/>
+                        <wz:property qualifier="gigyaLoginBehavior"/>
+                    </wz:property-list>
+                </wz:content>
+                <wz:navigation id="step1.navigation">
+                    <wz:cancel/>
+                    <wz:next
+                            visible="!#empty(newItem.gigyaApiKey) AND ((!#empty(newItem.gigyaUserKey) AND !#empty(newItem.gigyaMaskUserSecret)) OR !#empty(newItem.gigyaSiteSecret)) AND newItem.site!=null AND newItem.mode!=null AND newItem.gigyaLoginBehavior!=null AND newItem.language!=null AND !#empty(newItem.providers)"/>
+                    <wz:done visible="false"/>
+                </wz:navigation>
+            </wz:step>
+            <wz:step id="step2" label="create.gigyaconfig.step2.label"  sublabel="create.gigyaconfig.step2.sublabel" position="1">
+                <wz:content>
+                    <wz:property-list root="newItem">
+                        <wz:property qualifier="loginSynchronization"/>
+                        <wz:property qualifier="profileUpdateSynchronization"/>
+                        <wz:property qualifier="backendSynchronization"/>
+                    </wz:property-list>
+                </wz:content>
+                <wz:navigation>
+                    <wz:back/>
+                    <wz:cancel/>
+                    <wz:next visible="newItem.loginSynchronization!=null AND newItem.profileUpdateSynchronization!=null AND newItem.backendSynchronization!=null"/>
+                </wz:navigation>
+            </wz:step>
+            <wz:step id="step3" label="create.gigyaconfig.step3.label" sublabel="create.gigyaconfig.step3.sublabel"
+                     position="2">
+                <wz:content>
+                    <wz:property-list root="newItem">
+                        <wz:property qualifier="gigyaGlobalAdvanced"/>
+                        <wz:property qualifier="gigyaPurchaseCounter"/>
+                        <wz:property qualifier="language"/>
+                        <wz:property qualifier="providers"/>
+                    </wz:property-list>
+                </wz:content>
+                <wz:navigation>
+                    <wz:back/>
+                    <wz:cancel/>
+                    <wz:done visible="newItem.language!=null AND !#empty(newItem.providers)">
+                        <wz:save property="newItem"/>
+                    </wz:done>
+                </wz:navigation>
+            </wz:step>
+        </wz:flow>
+    </context>
+
+    <context merge-by="type" type="GigyaSessionConfiguration" component="create-wizard" module="gigyacommon">
+        <wz:flow xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config" id="GigyaSessionConfigurationWizard"
+                 title="create.gigyasession.title">
+            <wz:prepare id="newItemPrepare">
+                <wz:initialize property="newItem" type="GigyaSessionConfiguration"/>
+            </wz:prepare>
+            <wz:step id="step1" label="create.gigyasession.step1.label" sublabel="create.gigyasession.step1.sublabel"
+                     position="0">
+                <wz:content>
+                    <wz:property-list root="newItem">
+                        <wz:property qualifier="sessionLead"/>
+                        <wz:property qualifier="sessionType"/>
+                        <wz:property qualifier="sessionDuration"/>
+                        <wz:property qualifier="gigyaConfigurations"/>
+                    </wz:property-list>
+                </wz:content>
+                <wz:navigation id="step1.navigation">
+                    <wz:cancel/>
+                    <wz:done
+                            visible="newItem.sessionLead.code == 'hybris' OR (newItem.sessionLead!=null AND newItem.sessionType!=null AND newItem.sessionDuration!=null)">
+                        <wz:save property="newItem"/>
+                    </wz:done>
+                </wz:navigation>
+            </wz:step>
+        </wz:flow>
+    </context>
+    <context type="GigyaSessionConfiguration"  component="configurableFlowDynamicForms" merge-by="type">
+        <df:dynamicForms  modelProperty="newItem">
+            <df:attribute id="sessionT" qualifier="sessionType" triggeredOn="sessionLead" visibleIf="sessionLead.name()=='GIGYA'" />
+            <df:attribute id="duration" qualifier="sessionDuration" triggeredOn="sessionType,sessionLead" visibleIf="(sessionType.name()=='SLIDING' OR sessionType.name()=='FIXED') AND sessionLead.name()=='GIGYA'"/>
+        </df:dynamicForms>
+    </context>
+
+    <context merge-by="type" type="GigyaFieldMapping" component="create-wizard" module="gigyalogin">
+        <wz:flow xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config" id="gigyaFieldMappingWizard"
+                 title="create.gigyafieldmapping.title">
+            <wz:prepare id="newItemPrepare">
+                <wz:initialize property="newItem" type="GigyaFieldMapping"/>
+            </wz:prepare>
+            <wz:step id="step1" label="create.gigyafieldmapping.step1.label"
+                     sublabel="create.gigyafieldmapping.step1.sublabel" position="1">
+                <wz:content>
+                    <wz:property-list root="newItem">
+                        <wz:property qualifier="code"/>
+                        <wz:property qualifier="gigyaConfig"/>
+                        <wz:property qualifier="syncDirection"/>
+                        <wz:property qualifier="hybrisAttributeName"/>
+                        <wz:property qualifier="gigyaAttributeName"/>
+                        <wz:property qualifier="hybrisType"/>
+                        <wz:property qualifier="custom"/>
+                    </wz:property-list>
+                </wz:content>
+                <wz:navigation id="step1.navigation">
+                    <wz:cancel/>
+                    <wz:done
+                            visible="!#empty(newItem.hybrisAttributeName) AND newItem.gigyaConfig!=null AND newItem.syncDirection!=null AND !#empty(newItem.gigyaAttributeName) AND newItem.hybrisType!=null AND newItem.custom!=null">
+                        <wz:save property="newItem"/>
+                    </wz:done>
+                </wz:navigation>
+            </wz:step>
+        </wz:flow>
+    </context>
+
+    <context merge-by="type" type="GigyaConfig" component="editor-area">
+        <editorArea:editorArea xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea">
+            <editorArea:tab name="gigyaconfig.main.tab" position="1" merge-mode="append">
+                <editorArea:section name="gigyaconfig.main.section">
+                    <editorArea:attribute qualifier="gigyaApiKey"/>
+                    <editorArea:attribute qualifier="gigyaDataCenter"/>
+                    <editorArea:attribute qualifier="gigyaSiteSecret"/>
+                    <editorArea:attribute qualifier="gigyaUserKey"/>
+                    <editorArea:attribute qualifier="gigyaMaskUserSecret"/>
+                    <editorArea:attribute qualifier="site"/>
+                    <editorArea:attribute qualifier="mode"/>
+                    <editorArea:attribute qualifier="gigyaFieldMappings"/>
+                </editorArea:section>
+                <editorArea:section name="gigyaconfig.synchronization.section">
+                    <editorArea:attribute qualifier="loginSynchronization"/>
+                    <editorArea:attribute qualifier="profileUpdateSynchronization"/>
+                    <editorArea:attribute qualifier="backendSynchronization"/>
+                </editorArea:section>
+                <editorArea:section name="gigyaconfig.advanced.section">
+                    <editorArea:attribute qualifier="gigyaGlobalAdvanced"/>
+                    <editorArea:attribute qualifier="gigyaPurchaseCounter"/>
+                    <editorArea:attribute qualifier="language"/>
+                    <editorArea:attribute qualifier="providers"/>
+                    <editorArea:attribute qualifier="gigyaLoginBehavior"/>
+                </editorArea:section>
+            </editorArea:tab>
+        </editorArea:editorArea>
+    </context>
+
+    <context type="GigyaConfig" component="editorAreaDynamicForms" merge-by="type">
+        <df:dynamicForms>
+            <df:attribute id="userSecret" triggeredOn="*" qualifier="gigyaUserSecret" visibleIf="false" />
+        </df:dynamicForms>
+    </context>
+
+    <context merge-by="type" type="GigyaSessionConfiguration" component="editor-area">
+        <editorArea:editorArea xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea">
+            <editorArea:tab name="gigyasession.main.tab" position="1" merge-mode="append">
+                <editorArea:section name="gigyasession.main.section">
+                    <editorArea:attribute qualifier="sessionLead"/>
+                    <editorArea:attribute qualifier="sessionType"/>
+                    <editorArea:attribute qualifier="sessionDuration" description="The session duration in minutes."/>
+                    <editorArea:attribute qualifier="gigyaConfigurations"/>
+                </editorArea:section>
+            </editorArea:tab>
+        </editorArea:editorArea>
+    </context>
+    <context type="GigyaSessionConfiguration" component="editorAreaDynamicForms" merge-by="type">
+        <df:dynamicForms>
+            <df:attribute id="sessionT" qualifier="sessionType" triggeredOn="sessionLead" visibleIf="sessionLead.name()=='GIGYA'" />
+            <df:attribute id="duration" qualifier="sessionDuration" triggeredOn="sessionType,sessionLead" visibleIf="(sessionType.name()=='SLIDING' OR sessionType.name()=='FIXED') AND sessionLead.name()=='GIGYA'"/>
+        </df:dynamicForms>
+    </context>
+
+    <context merge-by="type" type="GigyaFieldMapping" component="editor-area">
+        <editorArea:editorArea xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea">
+            <editorArea:tab name="gigyafieldmapping.main.tab" position="1" merge-mode="append">
+                <editorArea:section name="gigyafieldmapping.main.section">
+                    <editorArea:attribute qualifier="code"/>
+                    <editorArea:attribute qualifier="gigyaConfig"/>
+                </editorArea:section>
+                <editorArea:section name="gigyafieldmapping.sync.section">
+                    <editorArea:attribute qualifier="syncDirection"/>
+                </editorArea:section>
+                <editorArea:section name="gigyafieldmapping.attributes.section">
+                    <editorArea:attribute qualifier="hybrisAttributeName"/>
+                    <editorArea:attribute qualifier="gigyaAttributeName"/>
+                    <editorArea:attribute qualifier="hybrisType"/>
+                    <editorArea:attribute qualifier="custom"/>
+                </editorArea:section>
+            </editorArea:tab>
+        </editorArea:editorArea>
+    </context>
+
+</config>

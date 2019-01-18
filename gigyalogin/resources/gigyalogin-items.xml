@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- [y] hybris Platform Copyright (c) 2000-2014 hybris AG All rights reserved. This 
+	software is the confidential and proprietary information of hybris ("Confidential 
+	Information"). You shall not disclose such Confidential Information and shall use 
+	it only in accordance with the terms of the license agreement you entered into with 
+	hybris. -->
+<!-- ATTENTION: This is just an example file. You have to edit it according to your 
+	needs. -->
+
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="items.xsd">
+
+    <collectiontypes>
+
+        <collectiontype code="GigyaStringSet" type="set" elementtype="java.lang.String"/>
+
+    </collectiontypes>
+
+    <enumtypes>
+        <enumtype code="GigyaGenderEnum">
+            <value code="f"/>
+            <value code="m"/>
+            <value code="u"/>
+        </enumtype>
+        <enumtype code="GigyaFbFavoriteTypeEnum">
+            <value code="interests"/>
+            <value code="activities"/>
+            <value code="books"/>
+            <value code="music"/>
+            <value code="movies"/>
+            <value code="television"/>
+        </enumtype>
+        <enumtype code="GigyaLoginButtonsStyle">
+            <value code="standard"/>
+            <value code="fullLogo"/>
+            <value code="fullLogoColored"/>
+            <value code="signInWith"/>
+        </enumtype>
+    </enumtypes>
+
+    <relations>
+
+        <relation localized="false" code="GdgyaUser2GigyaFbLike">
+            <deployment table="gigyaUser2GigFbLike" typecode="22112"/>
+            <sourceElement type="GigyaUser" qualifier="gigyaUser"
+                           cardinality="many" ordered="false">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </sourceElement>
+            <targetElement type="GigyaFbLike" qualifier="gigyaFbLike"
+                           cardinality="many" ordered="false" collectiontype="set">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </targetElement>
+        </relation>
+
+        <relation localized="false" code="GigyaUser2GigyaFbFavorite">
+            <deployment table="gigyaUser2GigFbFavorite" typecode="22113"/>
+            <sourceElement type="GigyaUser" qualifier="gigyaUser"
+                           cardinality="many" ordered="false">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </sourceElement>
+            <targetElement type="GigyaFbFavorite" qualifier="gigyaFbFavorite"
+                           cardinality="many" ordered="false" collectiontype="set">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </targetElement>
+        </relation>
+
+        <relation localized="false" code="GigyaUser2GigyaSkill">
+            <deployment table="gigyaUser2GigSkill" typecode="22114"/>
+            <sourceElement type="GigyaUser" qualifier="gigyaUser"
+                           cardinality="many" ordered="false">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </sourceElement>
+            <targetElement type="GigyaSkill" qualifier="gigyaSkill"
+                           cardinality="many" ordered="false" collectiontype="set">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </targetElement>
+        </relation>
+
+        <relation localized="false" code="GigyaUser2GigyaEducation">
+            <deployment table="gigyaUser2GigEdu" typecode="22115"/>
+            <sourceElement type="GigyaUser" qualifier="gigyaUser"
+                           cardinality="many" ordered="false">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </sourceElement>
+            <targetElement type="GigyaEducation" qualifier="gigyaEdu"
+                           cardinality="many" ordered="false" collectiontype="set">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </targetElement>
+        </relation>
+
+    </relations>
+
+    <itemtypes>
+        <itemtype code="GigyaUser" extends="Customer">
+
+            <attributes>
+                <attribute qualifier="gigyaApiKey" type="java.lang.String">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="gigyaUID">
+                    <modifiers read="true" write="true" search="true" initial="true" optional="false"/>
+                    <description>User UID at gigya</description>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="created" type="java.lang.String">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="createdTimestamp" type="long">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="isActive" type="boolean">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="isLockedOut" type="boolean">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="isRegistered" type="boolean">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="isVerified" type="boolean">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="lastLoginTimestamp" type="long">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="lastUpdated" type="java.lang.String">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="lastUpdatedTimestamp" type="long">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="loginProvider" type="java.lang.String">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="oldestDataUpdated" type="java.lang.String">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="oldestDataUpdatedTimestamp" type="long">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="registered" type="java.lang.String">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="registeredTimestamp" type="java.lang.String">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="socialProviders" type="java.lang.String">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="verified" type="java.lang.String">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="verifiedTimestamp" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true"/>
+                </attribute>
+
+                <!--TODO: Consider Relation! Need to change the backoffice in this case!-->
+                <attribute qualifier="data" type="GigyaCustomData">
+                    <persistence type="property"/>
+                    <modifiers write="true" read="true" initial="true"/>
+                </attribute>
+
+            </attributes>
+        </itemtype>
+
+        <itemtype code="GigyaFbLike">
+            <deployment table="gigyaFbLike" typecode="22002"/>
+
+            <attributes>
+                <attribute type="java.lang.String" qualifier="name">
+                    <description>Facebook like name</description>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="category">
+                    <description>Facebook like category</description>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.Long" qualifier="timestamp">
+                    <description>Facebook like created timestamp</description>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.Long" qualifier="id">
+                    <description>Facebook like id</description>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+
+        </itemtype>
+
+        <itemtype code="GigyaSkill">
+            <deployment table="gigyaSkill" typecode="22003"/>
+
+            <attributes>
+                <attribute type="java.lang.String" qualifier="skill">
+                    <description>User skill</description>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="level">
+                    <description>User skill level</description>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.Integer" qualifier="years">
+                    <description>User skill duration years</description>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+
+        </itemtype>
+
+        <itemtype code="GigyaEducation">
+            <deployment table="gigyaEducation" typecode="22004"/>
+
+            <attributes>
+                <attribute type="java.lang.String" qualifier="school">
+                    <description>User school name</description>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="schoolType">
+                    <description>User school Type</description>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="fieldOfStudy">
+                    <description>User field Of Study</description>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="degree">
+                    <description>User degree</description>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.Integer" qualifier="startYear">
+                    <description>The user's education start year</description>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.Integer" qualifier="endYear">
+                    <description>The user's education end year</description>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="educationLevel">
+                    <description>User education level</description>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+
+        </itemtype>
+
+        <itemtype code="GigyaFbFavorite">
+            <deployment table="gigyaFbFavorite" typecode="22005"/>
+            <attributes>
+
+                <attribute type="java.lang.String" qualifier="category">
+                    <description>The category of the user's favorite</description>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="name">
+                    <description>The name of the user's favorite</description>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.Long" qualifier="id">
+                    <description>The id of the user's favorite</description>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="gigyaFbFavoriteTypeEnum" qualifier="type">
+                    <description>The type of the user's favorite</description>
+                    <persistence type="property"/>
+                </attribute>
+
+            </attributes>
+        </itemtype>
+
+        <itemtype code="GigyaAddress" extends="Address">
+            <description>Extending Address type with additional attributes.</description>
+
+            <attributes>
+                <attribute type="java.lang.String" qualifier="relationshipStatus">
+                    <modifiers read="true" write="true" search="true" optional="true"/>
+                    <description>User relationship status</description>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="locale">
+                    <modifiers read="true" write="true" search="true" optional="true"/>
+                    <description>User locale</description>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="gigyaCountry">
+                    <modifiers read="true" write="true" search="true" optional="true"/>
+                    <description>User country</description>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+
+        </itemtype>
+
+        <!-- CMS Component -->
+        <itemtype code="AbstractGigyaComponent" extends="SimpleCMSComponent"
+                  abstract="true">
+            <attributes>
+                <attribute type="java.lang.Boolean" qualifier="showAnonymous">
+                    <description>Should this be shown to an anonymous user</description>
+                    <defaultvalue>new java.lang.Boolean("true")</defaultvalue>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute type="java.lang.Boolean" qualifier="showLogedIn">
+                    <description>Should this be shown to a logged in user</description>
+                    <defaultvalue>new java.lang.Boolean("true")</defaultvalue>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="GigyaSocialLoginComponent" extends="AbstractGigyaComponent"
+                  jaloclass="com.gigya.login.jalo.GigyaSocialLoginComponent"
+                  singleton="false" jaloonly="false" metatype="CMSComponentType"
+                  abstract="false">
+            <description>Gigya Social login component</description>
+            <deployment table="gigyasociallogin" typecode="21131"/>
+            <attributes>
+                <attribute qualifier="buttonsStyle"
+                           type="gigyaLoginButtonsStyle">
+                    <persistence type="property" qualifier=""/>
+                    <modifiers read="true" write="true" search="false" encrypted="false"
+                               optional="false" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                    <defaultvalue>em().getEnumerationValue("gigyaLoginButtonsStyle", "fullLogo")</defaultvalue>
+                </attribute>
+                <attribute qualifier="containerID"
+                           type="java.lang.String">
+                    <defaultvalue>
+                        new java.lang.String( "gigya-login" )
+                    </defaultvalue>
+                    <persistence type="property" qualifier=""/>
+                    <modifiers read="true" write="true" search="false" encrypted="false"
+                               optional="false" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+                <attribute qualifier="showTermsLink"
+                           type="java.lang.Boolean">
+                    <defaultvalue>
+                        new java.lang.Boolean( "false" )
+                    </defaultvalue>
+                    <persistence type="property" qualifier=""/>
+                    <modifiers read="true" write="true" search="false" encrypted="false"
+                               optional="false" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+                <attribute qualifier="height"
+                           type="java.lang.Integer">
+                    <defaultvalue>
+                        new java.lang.Integer( 110 )
+                    </defaultvalue>
+                    <persistence type="property" qualifier=""/>
+                    <modifiers read="true" write="true" search="false" encrypted="false"
+                               optional="false" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+                <attribute qualifier="width"
+                           type="java.lang.String">
+                    <defaultvalue>
+                        new java.lang.String( "210" )
+                    </defaultvalue>
+                    <persistence type="property" qualifier=""/>
+                    <modifiers read="true" write="true" search="false" encrypted="false"
+                               optional="false" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+                <attribute qualifier="advancedConfig"
+                           type="java.lang.String">
+                    <persistence type="property" qualifier=""/>
+                    <modifiers read="true" write="true" search="false" encrypted="false"
+                               optional="true" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="GigyaRaasComponent" extends="AbstractGigyaComponent"
+                  abstract="false" jaloonly="false"
+                  metatype="CMSComponentType" jaloclass="com.gigya.login.jalo.GigyaRaasComponent">
+            <description>Gigya RaaS component</description>
+            <deployment table="gigyaraascomponent" typecode="21132"/>
+            <attributes>
+                <attribute type="java.lang.Boolean" qualifier="embed">
+                    <persistence type="property"/>
+                    <defaultvalue>new java.lang.Boolean("false")</defaultvalue>
+                    <description>Should this screen set be embedded (true) or a modal window</description>
+                    <modifiers read="true" write="true" search="false" encrypted="false"
+                               optional="false" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="continerID">
+                    <description>If embedded the id of the div that the component would be embedded</description>
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="false" encrypted="false"
+                               optional="true" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="screenSet">
+                    <description>The name of the screen-set to be presented</description>
+                    <persistence type="property"/>
+                    <defaultvalue>"Default-RegistrationLogin"</defaultvalue>
+                    <modifiers read="true" write="true" search="false" encrypted="false"
+                               optional="false" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="mobileScreenSet">
+                    <description>The name of the mobile screen-set to be presented</description>
+                    <persistence type="property"/>
+                    <defaultvalue>"Default-RegistrationLogin"</defaultvalue>
+                    <modifiers read="true" write="true" search="false" encrypted="false"
+                               optional="false" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="startScreen">
+                    <persistence type="property"/>
+                    <description>The name of the start screen</description>
+                    <defaultvalue>"gigya-login-screen"</defaultvalue>
+                    <modifiers read="true" write="true" search="false" encrypted="false"
+                               optional="false" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="linkText">
+                    <persistence type="property"/>
+                    <description>The text that would appear on the link if not embedded</description>
+                    <defaultvalue>"Login"</defaultvalue>
+                    <modifiers read="true" write="true" search="false" encrypted="false"
+                               optional="false" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+
+                <attribute type="java.lang.Boolean" qualifier="profileEdit">
+                    <description>Indicates whether a component is used for updating the customer data</description>
+                    <defaultvalue>new java.lang.Boolean("false")</defaultvalue>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="advancedConfiguration">
+                    <description>JSON of advanced configuration to pass to the component</description>
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="false" encrypted="false"
+                               optional="true" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+
+            </attributes>
+        </itemtype>
+
+        <itemtype code="GigyaAuthenticationComponent" abstract="false"
+                  extends="SimpleCMSComponent"
+                  jaloonly="false" jaloclass="com.gigya.login.jalo.GigyaAuthenticationComponent">
+
+            <description>Component for Login and Logout</description>
+            <deployment table="gigyaauth" typecode="21137"/>
+
+            <attributes>
+                <attribute qualifier="embed" type="boolean">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true"/>
+                </attribute>
+
+                <attribute qualifier="containerID" type="java.lang.String">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+
+                <attribute qualifier="loginScreen" type="java.lang.String">
+                    <description>The name of the screen.</description>
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true"/>
+                    <defaultvalue>"gigya-login-screen"</defaultvalue>
+                </attribute>
+
+                <attribute qualifier="loginScreenSet" type="java.lang.String">
+                    <description>The name of the screen.</description>
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true"/>
+                    <defaultvalue>"Default-RegistrationLogin"</defaultvalue>
+                </attribute>
+
+                <attribute qualifier="mobileScreenSet" type="java.lang.String">
+                    <description>The name of the mobile screen</description>
+                    <defaultvalue>"Default-RegistrationLogin"</defaultvalue>
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true"/>
+                </attribute>
+
+                <attribute qualifier="loginText" type="java.lang.String">
+                    <description>The text that will be displayed for anonymous users if the component is not embed.
+                    </description>
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true"/>
+                    <defaultvalue>"Login"</defaultvalue>
+                </attribute>
+
+                <attribute qualifier="logoutText" type="java.lang.String">
+                    <description>The text that will be displayed for logged users if the component is not embed.
+                    </description>
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true"/>
+                    <defaultvalue>"Logout"</defaultvalue>
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="advancedConfiguration">
+                    <description>JSON of advanced configuration to pass to the component</description>
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true"/>
+                </attribute>
+
+            </attributes>
+        </itemtype>
+
+        <itemtype code="GigyaAddConnectionUIComponent" extends="AbstractGigyaComponent"
+                  abstract="false" singleton="false" jaloonly="false"
+                  jaloclass="com.gigya.login.jalo.GigyaAddConnectionUIComponent">
+            <deployment table="gigyaaddconnectionui" typecode="21134"/>
+            <attributes>
+                <attribute qualifier="advancedConfig"
+                           type="java.lang.String">
+                    <persistence type="property" qualifier=""/>
+                    <modifiers read="true" write="true" search="true" encrypted="false"
+                               optional="true" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+                <attribute qualifier="containerID"
+                           type="java.lang.String">
+                    <defaultvalue>
+                        new java.lang.String( "gigya-addConnection" )
+                    </defaultvalue>
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="true" encrypted="false"
+                               optional="true" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+                <attribute qualifier="height"
+                           type="java.lang.Integer">
+                    <defaultvalue>
+                        new java.lang.Integer( 100 )
+                    </defaultvalue>
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="true" encrypted="false"
+                               optional="true" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+                <attribute qualifier="width" type="java.lang.Integer">
+                    <defaultvalue>
+                        new java.lang.Integer( 320 )
+                    </defaultvalue>
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="true" encrypted="false"
+                               optional="true" removable="true" initial="false" unique="false" private="false"
+                               partof="false"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="GigyaGenericPluginComponent" extends="AbstractGigyaComponent"
+                  abstract="false" jaloclass="com.gigya.login.jalo.GigyaGenericPluginComponent">
+            <deployment table="gigyagenericplugin" typecode="21135"/>
+            <attributes>
+                <attribute type="java.lang.String" qualifier="function">
+                    <persistence type="property"/>
+                    <description>The full name of the js function to be excuted</description>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="parmeters">
+                    <persistence type="property"/>
+                    <description>A json string with the parmeters to be passed to gigya plugin</description>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="GigyaSyncTask" extends="Task">
+            <attributes>
+
+                <attribute qualifier="user" type="GigyaUser">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" initial="true" optional="false"/>
+                </attribute>
+
+                <attribute qualifier="configuration" type="GigyaConfig">
+                    <persistence type="property"/>
+                    <modifiers write="true" read="true" optional="false" initial="true"/>
+                </attribute>
+
+                <attribute qualifier="syncDirection" type="GigyaSyncDirection">
+                    <persistence type="property"/>
+                    <modifiers write="true" read="true" initial="true" optional="false"/>
+                </attribute>
+
+            </attributes>
+        </itemtype>
+
+        <itemtype code="GigyaCustomData" extends="GenericItem">
+            <deployment table="customgigyadata" typecode="12430"/>
+
+        </itemtype>
+
+        <itemtype code="GigyaUpdateCronjob" extends="CronJob"><!--Deprecated-->
+
+            <attributes>
+
+                <attribute qualifier="gigyaUIDList" type="GigyaStringSet">
+                    <persistence type="property"/>
+                    <modifiers write="true" read="true" initial="true"/>
+                </attribute>
+
+            </attributes>
+
+        </itemtype>
+
+    </itemtypes>
+</items>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- [y] hybris Platform Copyright (c) 2000-2014 hybris AG All rights reserved. This 
+	software is the confidential and proprietary information of hybris ("Confidential 
+	Information"). You shall not disclose such Confidential Information and shall use 
+	it only in accordance with the terms of the license agreement you entered into with 
+	hybris. -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/context
+		   http://www.springframework.org/schema/context/spring-context-3.1.xsd
+           http://www.springframework.org/schema/security
+		   http://www.springframework.org/schema/security/spring-security.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <context:component-scan base-package="com.gigya.login"/>
+
+    <bean id="gigyaSocialLoginComponentRenderer"
+          class="com.gigya.login.component.renderer.GigyaSocialLoginComponentRenderer"
+          parent="addOnJspIncludeCMSComponentRenderer"/>
+
+    <bean id="gigyaAddConnectionUIComponentRenderer"
+          class="com.gigya.login.component.renderer.GigyaAddConnectionUIComponentRenderer"
+          parent="addOnJspIncludeCMSComponentRenderer"/>
+
+    <bean id="gigyaRaasComponentRenderer"
+          class="com.gigya.login.component.renderer.GigyaRaasComponentRenderer"
+          parent="addOnJspIncludeCMSComponentRenderer"/>
+
+    <bean id="gigyaGenericPluginComponentRenderer"
+          class="com.gigya.login.component.renderer.GigyaGenericComponentRenderer"
+          parent="addOnJspIncludeCMSComponentRenderer"/>
+
+    <bean id="gigyaSocialLoginComponentRendererMapping" parent="addonCmsComponentRendererMapping">
+        <property name="typeCode" value="GigyaSocialLoginComponent"/>
+        <property name="renderer" ref="gigyaSocialLoginComponentRenderer"/>
+    </bean>
+    <bean id="gigyaAddConnectionUIComponentRendererMapping" parent="addonCmsComponentRendererMapping">
+        <property name="typeCode" value="GigyaAddConnectionUIComponent"/>
+        <property name="renderer" ref="gigyaAddConnectionUIComponentRenderer"/>
+    </bean>
+    <bean id="gigyaRaasComponentRendererMapping" parent="addonCmsComponentRendererMapping">
+        <property name="typeCode" value="GigyaRaasComponent"/>
+        <property name="renderer" ref="gigyaRaasComponentRenderer"/>
+    </bean>
+    <bean id="gigyaGenericPluginComponentRendererMapping" parent="addonCmsComponentRendererMapping">
+        <property name="typeCode" value="GigyaGenericPluginComponent"/>
+        <property name="renderer" ref="gigyaGenericPluginComponentRenderer"/>
+    </bean>
+    <bean id="gigyaCookieFilterListMergeDirective" depends-on="storefrontTenantDefaultFilterChainList"
+          parent="listMergeDirective">
+        <property name="add" ref="gigyaLoginFilter"/>
+    </bean>
+
+    <bean id="gltCookieGenerator" class="com.gigya.login.util.GigyaGltExpCookieGenerator"/>
+
+    <alias name="defaultGigyaAutoLoginStrategy" alias="gigyaAutoLoginStrategy"/>
+    <bean id="defaultGigyaAutoLoginStrategy" class="com.gigya.login.security.impl.DefaultGigyaAutoLoginStrategy">
+        <property name="customerFacade" ref="customerFacade"/>
+        <property name="guidCookieStrategy" ref="guidCookieStrategy"/>
+        <property name="rememberMeServices" ref="rememberMeServices"/>
+        <property name="userService" ref="userService"/>
+        <property name="generator" ref="gltCookieGenerator"/>
+        <property name="sessionService" ref="sessionService"/>
+        <property name="gigyaConfigDao" ref="gigyaConfigDao"/>
+        <property name="gigyaSynchronizationService" ref="gigyaSynchronizationService"/>
+    </bean>
+
+    <bean id="gigyaLoginFilter" class="com.gigya.login.service.web.filters.GigyaLoginFilter">
+        <property name="sessionService" ref="sessionService"/>
+    </bean>
+
+    <bean id="gigyaAuthenticationComponentRenderer"
+          class="com.gigya.login.component.renderer.GigyaAuthenticationComponentRenderer"
+          parent="addOnJspIncludeCMSComponentRenderer"/>
+
+    <bean id="gigyaAuthenticationComponentRendererMapping" parent="addonCmsComponentRendererMapping">
+        <property name="typeCode" value="GigyaAuthenticationComponent"/>
+        <property name="renderer" ref="gigyaAuthenticationComponentRenderer"/>
+    </bean>
+
+    <alias name="gigyaLogoutSuccessHandler" alias="logoutSuccessHandler"/>
+    <bean id="gigyaLogoutSuccessHandler" class="com.gigya.login.security.GigyaLogoutSuccessHandler">
+        <property name="useReferer" value="true"/>
+        <property name="guidCookieStrategy" ref="guidCookieStrategy"/>
+        <property name="sessionService" ref="sessionService"/>
+        <property name="restrictedPages" ref="logoutRestrictedPages"/>
+        <property name="defaultTargetUrl" value="/?logout=true"/>
+    </bean>
+
+    <util:list id="logoutRestrictedPages" value-type="java.lang.String">
+        <value>/my-account</value>
+        <value>/checkout</value>
+        <value>/quote</value>
+    </util:list>
+
+</beans>

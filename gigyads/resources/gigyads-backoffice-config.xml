@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2014 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<config xmlns="http://www.hybris.com/cockpit/config"
+		xmlns:y="http://www.hybris.com/cockpit/config/hybris"
+		xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config"
+		xmlns:list-view="http://www.hybris.com/cockpitng/component/listView"
+		xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea"
+		xmlns:explorer-tree="http://www.hybris.com/cockpitng/config/explorertree"
+		xmlns:simple-search="http://www.hybris.com/cockpitng/config/simplesearch">
+
+	<context merge-by="module" component="explorer-tree">
+		<explorer-tree:explorer-tree xmlns:explorer-tree="http://www.hybris.com/cockpitng/config/explorertree">
+			<explorer-tree:navigation-node id="gigyadsgroup" merge-mode="append">
+				<explorer-tree:type-node code="DSFieldMapping" id="dsfieldmappingbackofficeid"/>
+				<explorer-tree:type-node code="DSUpdateCronjob" id="dsupdatecronjobbackofficeid"/>
+			</explorer-tree:navigation-node>
+		</explorer-tree:explorer-tree>
+	</context>
+
+	<context merge-by="type" type="DSFieldMapping" component="create-wizard" module="gigyads">
+		<wz:flow xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config" id="DSFieldMappingWizard"
+				 title="create.dsfieldmapping.title">
+			<wz:prepare id="newItemPrepare">
+				<wz:initialize property="newItem" type="DSFieldMapping"/>
+			</wz:prepare>
+			<wz:step id="step1" label="create.dsfieldmapping.step1.label" sublabel="create.dsfieldmapping.step1.sublabel" position="0">
+				<wz:content>
+					<wz:property-list root="newItem">
+						<wz:property qualifier="code"/>
+						<wz:property qualifier="oid"/>
+						<wz:property qualifier="gigyaConfig"/>
+						<wz:property qualifier="gigyaType"/>
+						<wz:property qualifier="fields" editor="com.hybris.cockpitng.editor.extendedmultireferenceeditor" type="Field">
+							<wz:editor-parameter>
+								<wz:name>listConfigContext</wz:name>
+								<wz:value>fieldListConfig</wz:value>
+							</wz:editor-parameter>
+							<wz:editor-parameter>
+								<wz:name>inlineEditing</wz:name>
+								<wz:value>true</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel/>
+					<wz:done visible="!#empty(newItem.oid) AND newItem.gigyaConfig!=null AND newItem.gigyaType!=null">
+						<wz:save property="newItem"/>
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context merge-by="type" type="GigyaConfig" component="create-wizard" module="gigyacommon">
+		<wz:flow xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config" id="GigyaConfigWizard"
+				 title="create.gigyaconfig.title">
+			<wz:step id="step3" label="create.gigyaconfig.step3.label" sublabel="create.gigyaconfig.step3.sublabel"
+					 merge-mode="replace">
+				<wz:content>
+					<wz:property-list root="newItem">
+						<wz:property qualifier="gigyaGlobalAdvanced"/>
+						<wz:property qualifier="gigyaPurchaseCounter"/>
+						<wz:property qualifier="language"/>
+						<wz:property qualifier="providers"/>
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation>
+					<wz:back/>
+					<wz:cancel/>
+					<wz:next visible="newItem.language!=null AND !#empty(newItem.providers)"/>
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step4" label="create.gigyaconfig.step4.label" sublabel="create.gigyaconfig.step4.sublabel" merge-mode="append">
+				<wz:content>
+					<wz:property-list root="newItem">
+						<wz:property qualifier="searchConfig"/>
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation>
+					<wz:cancel/>
+					<wz:back/>
+					<wz:done visible="newItem.searchConfig!=null">
+						<wz:save property="newItem"/>
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context merge-by="type" type="GigyaConfig" component="editor-area">
+		<editorArea:editorArea xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea">
+			<editorArea:tab name="gigyaconfig.ds.tab" position="2">
+				<editorArea:section name="gigyaconfig.ds.section">
+					<editorArea:attribute qualifier="searchConfig"/>
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+
+	<context merge-by="type" type="Field" component="fieldListConfig">
+		<list-view:list-view xmlns:list-view="http://www.hybris.com/cockpitng/component/listView">
+			<list-view:column qualifier="hybrisType"/>
+			<list-view:column qualifier="hybrisAttributeName"/>
+			<list-view:column qualifier="dsAttributeName"/>
+		</list-view:list-view>
+	</context>
+
+	<context merge-by="type" type="DSFieldMapping" component="editor-area">
+		<editorArea:editorArea xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea">
+			<editorArea:tab name="dsfieldmapping.main.tab" position="1" merge-mode="append">
+				<editorArea:section name="dsfieldmapping.ds.section">
+					<editorArea:attribute  qualifier="code"/>
+					<editorArea:attribute  qualifier="oid"/>
+					<editorArea:attribute  qualifier="gigyaConfig"/>
+					<editorArea:attribute  qualifier="gigyaType"/>
+					<editorArea:attribute  qualifier="fields"/>
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+
+</config>
