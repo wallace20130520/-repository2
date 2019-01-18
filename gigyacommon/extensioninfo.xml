@@ -16,6 +16,7 @@
 	<extension abstractclassprefix="Generated" classprefix="Gigyacommon" description="gigyacommon extension" managername="GigyacommonManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="gigyacommon">
 
 		<!-- you should add all required extensions to this list, except platform extensions which are automatically required -->         
+		<requires-extension name="platform"/>
 		<requires-extension name="ldap"/>
 		<requires-extension name="addonsupport"/>
 		<requires-extension name="backoffice"/>
