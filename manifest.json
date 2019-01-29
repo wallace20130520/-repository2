@@ -69,10 +69,7 @@
       "configurablebundleaddon",
       "consignmenttrackingoccaddon", 
       "solrserver",
-      "gigyacommon",
-      "gigyaconsent",
-      "gigyads",
-      "gigyalogin",
+     
       "modeltacceleratorservices"
    ],
 
