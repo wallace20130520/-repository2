@@ -26,6 +26,12 @@
          "template":"yacceleratorstorefront"
       }
    ],
+   "properties":[
+      {
+         "key":"test.property.1",
+         "value":"test.property.1.value"
+      }
+      ],
    "aspects":[
       {
          "name":"backoffice",
