@@ -97,7 +97,7 @@
                "contextPath":"/acceleratorservices"
             },
             {
-               "name":"/smartedit",
+               "name":"smartedit",
                "contextPath":"/smartedit"
             },
             {
