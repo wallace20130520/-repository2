@@ -19,6 +19,15 @@
       "cmssmarteditwebservices",
       "cmssmartedit"
    ],
+   "useConfig": {
+	 "properties":[
+			{
+                "location": "/config/d1-local.properties",
+                "persona": "development"
+				
+          }
+    ]
+   },
    "storefrontAddons":[
       {
          "addon":"smarteditaddon",
