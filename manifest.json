@@ -3,7 +3,7 @@
     "extensions": [],
     "useConfig": {
         "extensions": {
-            "location": "/hybris/config/localextensions.xml"
+            "location": "/config/localextensions.xml"
         },
         "properties": [
             {
