@@ -1,0 +1,135 @@
+.newsletter-body{
+    border-top: 1px #acacac solid;
+    width:934px;
+    margin-right: auto;
+    margin-left: auto;
+    text-rendering: optimizeLegibility;
+    .checkout-content {
+        width: 100%;
+        padding: 12px;
+        position: relative;
+        display: inline-block;
+    }
+    .samples-container {
+        height: auto;
+        border: 0;
+        overflow: visible;
+        margin-top: 5px;
+        padding: 15px;
+        width: 100%;
+        overflow: hidden;
+        min-height: 300px;
+        background: #fff;
+        float: left;
+        justify-content: space-between;
+        .newsletter-signup-form {
+            margin: 0 0 0px 5px;
+            box-shadow: none;
+            h2 {
+                margin-bottom: 10px;
+                font-family: Georgia,'Times New Roman',Times,serif;
+                font-style: italic;
+            }
+            h4 {
+                margin-bottom: 20px;
+                font-size: 1em;
+                &.margin-space {
+                    margin: 20px 0 10px;
+                }
+            }
+            fieldset {
+                padding: 0;
+                margin: 0;
+                border: 0;
+                min-width: 0;
+                margin-bottom: 2px;
+            }
+        }
+        position: relative;
+        img.desk-block {
+            display: block;
+            vertical-align: middle;
+        }
+    }
+    .form-group .radio {
+        display: inline-block;
+        width: auto;
+        margin-top: 10px!important;
+        margin-right:35px;
+    }
+    .innerSampleContainer{
+        width:49%;
+    }
+    .innerSampleContainer1{
+        width:49%;
+    }
+
+    .newsletter-signup-form .form-checkbox .checkbox label{
+        color:#000;
+        a{
+            color: inherit !important;
+            text-decoration: underline;
+        }
+            }
+    .btn-default{
+        background-color: #464646;
+    color: #fff;
+
+    }
+    .lighter{
+        color:#666666
+    }
+    .mobile-margin{
+        display: inline-block;
+    }
+    .checkbox label{
+        line-height: 12px;
+    }
+}
+ 
+.split-input{
+        float: left;
+        margin-right: 10px;
+        width: 115px;
+}
+
+@media screen and(max-width:425px) {
+    .innerSampleContainer{
+        width:100% !important;
+       } 
+       .innerSampleContainer1{
+       width:100% !important;
+       margin-top: 25px;
+       }
+}
+@media screen and(max-width:768px) {
+    .innerSampleContainer{
+ width:70%;
+} 
+.innerSampleContainer1{
+width:30%;
+} 
+.newsletter-body{
+    width: 100%; 
+    .samples-container .newsletter-signup-form{
+        margin:0;
+        padding: 0;
+
+    }
+.newsletter-signup-form h2{
+    
+    display: block;
+overflow: hidden;
+padding: 15px;
+margin: 0;
+font-size: 15px;
+font-weight: bold;
+color: #fff;
+background: #90d2c5;
+}
+.samples-container{
+    padding: 0;
+}
+}
+
+}

@@ -1,0 +1,89 @@
+
+  <!-- <app-header></app-header> -->
+<header class="checkout-header">
+		<div class="header-container clearfix  hide-tabs">
+			<div class="header-left">
+		<div class="secure-msg">Secure Checkout</div>
+		<div class="help-number">
+			Need help? <span class="telephone">+44 (0) 808 178 1188</span></div>
+	</div>
+	<div class="header-logo">
+			<a class="logo" (click)="goToHome()"> 
+			</a>
+		</div>
+	<div class="header-right">
+		<a href="#" ><img src="https://www.moltonbrown.co.uk/images/digicert_header.png?version=15"></a>
+	</div>
+
+</div>
+<div class="tab-block ">
+	<div style="border-bottom:1px solid;">
+ <div class="col-md-3 text-left header-left">
+		<span class="secure-msg">Secure Checkout</span>
+ </div>
+ <div class="col-md-6 text-center header-logo">
+		<a class="logo" (click)="goToHome()"> 
+			</a>
+	</div>
+	<div class="col-md-3 text-right header-right">
+			<a href="#" ><img src="https://www.moltonbrown.co.uk/images/digicert_header.png?version=15"></a>
+		</div>
+</div>
+<div class="help-number clearfix">Need help? <a href="tel:+448081781188" class="telephone">+44 (0) 808 178 1188</a></div>
+</div>
+	</header>
+
+
+
+
+
+<div class="parent-checkout-container">
+	
+	<div class="checkout-container justify-content-center sample-container">
+    <div class="step-indicator clearfix checkout-cart">
+        <ol>
+				<li class="step active"  [ngClass]="{'current':login}"> 
+           {{(mobileDevice)?(login)?'WELCOME':'1':'1. WELCOME'}} </li>
+                <li class="step active"  [ngClass]="{'current':delivery}"> {{(mobileDevice)?(delivery)?'DELIVERY & PAYMENT':'2':'2. DELIVERY & PAYMENT'}}
+           </li>
+                <li class="step active" [ngClass]="{'current':confirmation}">{{(mobileDevice)?(confirmation)?'CONFIRMATION':'3':'3. CONFIRMATION'}}</li>
+        </ol>
+         </div>
+    <router-outlet></router-outlet>
+</div>
+
+</div>
+
+
+
+<footer class="checkout-footer">
+		<div class="footer-links clearfix">
+				<ul>
+						<li *ngFor="let data of footerLinks;let k=index" ><a   (click)="onOpenCartModal(data)" data-toggle="modal" data-target="#modalCheckoutPopup" >{{data.name}}</a></li>
+						<!-- <li><a   data-toggle="modal" data-target="#modalCheckoutPopup" >Returns Policy</a></li>
+						<li><a   data-toggle="modal" data-target="#modalCheckoutPopup" class="underline">Privacy &amp; Cookie Policy</a></li>
+						<li><a   data-toggle="modal" data-target="#modalCheckoutPopup" class="underline">Terms &amp; Conditions</a></li> -->
+				</ul>
+		</div>
+</footer>
+
+
+
+
+
+
+<div class="modal" id="modalCheckoutPopup" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="chck-modal-dialog modal-dialog modal-full container modal-dialog-scrollable modal-dialog-centered" role="document">
+			<div class="modal-content">
+
+				<div class="chck-modal-header modal-header">					
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title text-center">{{modalTitle}}</h4>
+				</div>
+							<div class="modal-body chck-modal-body" #policyEl>
+									
+								</div>
+
+			</div>
+	</div>
+</div>                    

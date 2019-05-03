@@ -1,0 +1,166 @@
+<div class="clearfix">
+    <section class="checkout-content checkout-delivery-bg  clearfix">
+     <div class="main-content">
+       <div class="delivery-panel">
+        <div class="panel-heading" [ngClass]="{'disabled':paymentBlock,'enabled':!paymentBlock}">
+            <h4>Delivery</h4>
+        </div>
+        <div class="panel-body" >
+
+            <section class="delivery-buttons" *ngIf="!deliveryService;else deliveryServiceBlock">
+                <div class="section-heading">
+                    <h2>How do you want to get your order?</h2>
+                </div>
+                <div class="delivery-type-selection ">
+                    <div class="delivery-type-international delivery-type" [ngClass]="{'selected':selected=='collect','disabled':selected=='ship'}"  (click)="onDeleveryType('collect')">
+                        <i class="icon-dt-uk"><img src="https://www.moltonbrown.co.uk/MBExternalBinary/DeliveryServiceimages/StandardDelivery.png"></i>
+                        <h5>UK &amp; International delivery</h5>
+                        <p class="dt-info">Delivery to a UK or <br>International address</p>
+                        <p class="dt-price">From £5.99</p>
+                    </div>  
+                    <div class="delivery-type-click-collect delivery-type" [ngClass]="{'disabled':selected=='collect','selected':selected=='ship'}"   (click)="onDeleveryType('ship')">
+                        <i class="icon-dt-click-collect"><img src="https://www.moltonbrown.co.uk/MBExternalBinary/DeliveryServiceimages/Click&collect.png"></i>
+                        <h5>Click &amp; Collect</h5>
+                        <p class="dt-info">From Molton Brown Stores <br> or local collection points</p>
+                        <p class="dt-price">£5.99 or FREE</p>
+                    </div>
+                </div>
+                <div class="delivery-collapse-block" *ngIf="selected=='collect'"   >
+                   <app-delivery-form [deliveryInfo]="{deliveryType:'collect',updateForm:deliveryInfo,editStatus:editForm}"  (onValueChanged)="onShowDeliveryBlock($event)"></app-delivery-form>
+                </div>
+                <div class="delivery-collapse-block" *ngIf="selected=='ship'"   >
+                   <app-storepoint (selectedStore)="onSelectedStore($event)"></app-storepoint>
+                </div>
+            </section>
+             <ng-template #deliveryServiceBlock>
+                  <app-delivery-service *ngIf="expressService;else collectServiceBlock"  [expressWay]="expressWay" [deliveryInfo]="deliveryInfo" (onSecureChanged)="onSecureChanged($event)" (onupdateCart)="onupdateCart($event)"></app-delivery-service>
+               
+                  <ng-template #collectServiceBlock>
+                   <div>
+                     <app-collect-service  [deliveryInfo]="collecionInfo" (onCollectionChange)="onCollectionChange($event)"></app-collect-service>
+                        
+                    </div>  
+                </ng-template>    
+                </ng-template>
+             <div class="toggle-delivery-method"></div>
+
+        </div>
+
+
+       </div>
+
+
+
+
+
+
+
+       <div class="payment-panel " [ngClass]="{'disabled':!paymentBlock,'enabled':paymentBlock}">
+        <div class="panel-heading">
+            <h4>Payment</h4>             
+        </div>
+        <div class="panel-body" *ngIf="paymentBlock">
+            <section >
+                <div class="section-heading">
+                    <h2> How would you like to pay?</h2>
+                </div>
+                <div class="subtotal-flex" style="border:0;">
+                    <a class="mb-payment-type mb-type-delevery card-block-height" [ngClass]="{'mb-dt-selected':selected=='credit','mb-dt-unselected':selected =='paypal' ||selected =='gift'}" (click)="onDeleveryType('credit')">
+                        <h5 class="mb-dt-header mb-dt-margin" style="font-size:14px;">Credit or Debit card</h5>
+                        <i class="mb-icon-dt-uk payment-type-card icon-card"></i>
+                    </a>
+                    <a class="mb-payment-type mb-type-delevery card-block-height" [ngClass]="{'mb-dt-selected':selected=='paypal','mb-dt-unselected':selected =='credit' ||selected =='gift'}" (click)="onDeleveryType('paypal')">
+                        <h5 class="mb-dt-header mb-dt-margin" style="font-size:14px;">PayPal</h5>
+                        <i class="mb-icon-dt-uk payment-type-card icon-card-paypal"></i>
+                    </a>
+                    <a class="mb-payment-type mb-type-collect card-block-height"  [ngClass]="{'mb-dt-selected':selected=='gift','mb-dt-unselected':selected =='credit' ||selected =='paypal'}" (click)="onDeleveryType('gift')">
+                        <h5 class="mb-dt-header mb-dt-margin" style="font-size:14px;">Gif Card</h5>
+                        <i class="mb-icon-dt-click-collect payment-type-card icon-card-giftcard"></i>
+                    </a>
+                </div>
+                <div>
+                    <app-card-form [deliveryInfo]="deliveryInfo" [updateSavedCard]="savedCard" [showSubmitBtn]="true" *ngIf="selected=='credit'"></app-card-form>
+                    <app-paypal    [deliveryInfo]="deliveryInfo" *ngIf="selected=='paypal'" [cartData]="cartData"></app-paypal>
+                     <app-giftcard [deliveryInfo]="deliveryInfo" [cartData]="cartData" *ngIf="selected=='gift'"></app-giftcard>
+                </div>
+            </section>
+        </div>
+       </div>
+     </div>
+
+
+
+
+
+
+
+
+     <div class="order-summary-wrap" *ngIf="cartData">
+          <div >
+              <div class="order-summary-container">
+                <div class="order-summary">
+                    <div class="order-summary-head clearfix">
+                        <a  (click)="onEditBasket()" class="link-edit-basket"> Edit basket</a>
+                        <h2>Your order</h2>
+                    </div>
+                    <div class="order-summary-product-lists" >
+                        <div class="order-summary-product-row clearfix" *ngFor="let data of cartData.entries" [hidden]="data.product.isSample">
+                            <div class="order-summary-product-name" >
+                                {{(data.product.productDisplayName)?data.product.productDisplayName:data.product.name}}<div class="order-product-size_checkoutSummary OneLinkTxShow">
+                                    {{data.product.size}}</div>
+                                <div class="refPrice OneLinkShow">
+                                    <span class="product-base-price"></span>
+                                </div>
+                            </div>
+                            <div class="order-summary-product-count">
+                                x&nbsp;<span>{{data.quantity}}</span>
+                            </div>
+                            <div class="order-summary-product-price price-format">
+                                    {{data.product.price.formattedValue}}</div>
+                        </div> 
+                        
+                        <div class="order-summary-product-row  clearfix" style="border-top:1px solid #c2c2c2" *ngFor="let data of cartData.entries" [hidden]="!data.product.isSample">
+                            <h5>Samples(s)</h5>   
+                            <div class="order-summary-product-name" >
+                                    {{(data.product.productDisplayName)?data.product.productDisplayName:data.product.name}}<div class="order-product-size_checkoutSummary OneLinkTxShow">
+                                        {{data.product.size}}</div>
+                                    <div class="refPrice OneLinkShow">
+                                        <span class="product-base-price"></span>
+                                    </div>
+                                </div>
+                                <div class="order-summary-product-count">
+                                    x&nbsp;<span>{{data.quantity}}</span>
+                                </div>
+                                <div class="order-summary-product-price price-format">
+                                        FREE</div>
+                            </div> 
+                    </div>
+                      
+                    <div id="subtotal_delivery_total" *ngIf="cartData">
+                        <div class="order-summary-subtotal clearfix">
+                            <h5 class="order-summary-subtotal-label">Subtotal</h5>
+                            <div class="order-summary-subtotal-price price-format">{{cartData.subTotal.formattedValue}}</div>
+                        </div>
+                        <div class="order-summary-delivery clearfix">
+                            <h5 class="order-summary-delivery-label">Delivery</h5>
+                            <div class="order-summary-delivery-con">{{(cartData.deliveryCost)?cartData.deliveryCost.formattedValue:'TBC'}}</div>
+                        </div>
+                        <div class="order-summary-total clearfix">
+                            <h3 class="order-summary-total-label">Total to pay</h3>
+                            <div class="order-summary-total-price price-format">{{cartData.totalPriceWithTax.formattedValue}}</div>
+                            <div id="includegst"></div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+                <div class="payment-gateway-icons" style="opacity: 1;">
+                    <a class="norton-secure pull-left" target="new"></a>
+                    <span class="visa-secure pull-left" href="#"></span>
+                    <span class="master-card pull-left" href="#"></span>
+                    <span class="american-express pull-left" href="#"></span>
+                    <span class="paypal-secure pull-left" href="#"></span>
+                </div>
+            <div class="required-information clearfix">* Required information</div>
+          </div>
+     </div>
+    </section>

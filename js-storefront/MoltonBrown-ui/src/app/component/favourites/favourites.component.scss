@@ -1,0 +1,89 @@
+.my-account{
+    margin:15px;
+     h2 {
+    font-size: 28px;
+    margin-bottom: 0;
+    padding: 0 0 14px 0;
+    color: #000;
+    @media screen and(max-width:768px) {
+        width:100%;  
+        //   min-height: 190px;
+    }
+}
+.edit-profile {
+    border: 1px solid #d6d6d6;
+    padding: 20px 10px;
+    float: left;
+    margin: 15px 0;
+    width: 488px;
+    h3 {
+        font-weight: bold;
+        font-size: 1.2em;
+        color: #000!important;
+        padding-left: 0!important;
+    }
+    .label{
+        padding: 5px 30px 5px 0;
+        width: 50%;
+        text-align:right;
+    }
+}
+}
+.favourite h3.customer {
+    color: #260e03;
+    padding: 0 0 4px 1px;
+}
+.favourite h3 {
+    font-size: 18px;
+    border-bottom: 1px solid #b0b9bf;
+    padding: 5px 0;
+    margin: 20px 0!important;
+    font-weight: normal;
+}
+.addToCartBtn{
+    cursor: pointer;
+    outline: none;
+    &:focus {
+        outline:0;
+    }
+}
+.addToCartBtn span {
+    width: 0px;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    font-size: 0px;
+    border-left: 6px solid #fff;
+    margin-left: 10px;
+    position: relative;
+    top: -5px;
+}
+.addToCartBtn {
+    width: 170px;
+    height: auto;
+    border-radius: 0px;
+    background-color: #5a5a5a;
+    color: #fff;
+    text-transform: uppercase;
+    border: 0;
+    font-size: 13px;
+    padding: 5px;
+    letter-spacing: 2px;
+}
+.favourite .col-sm-4{
+margin-top:20px;
+}
+.imgText{
+height: 45px;
+
+}
+.pricePoint{
+    padding-bottom: 7px;
+}
+.removeProduct{
+    text-decoration: underline !important;
+    margin-top: 5px;
+    color: #b0b0b0;
+    display: block;
+    cursor: pointer;
+}

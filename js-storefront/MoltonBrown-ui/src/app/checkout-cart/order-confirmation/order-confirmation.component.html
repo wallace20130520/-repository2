@@ -1,0 +1,102 @@
+<div class="clearfix">
+  <section class="order-confirmation-main" *ngIf="order">
+   <div class="basket-section order-confirmation-section">
+        <div class="panel-heading">
+            <h4>Thank you for your order</h4>
+        </div>
+        <div class="orders-container order-confirmation-msg">
+            <section>
+            <h4>Your order number is {{order.code}}</h4>
+            <div class="order-confirmation-msg-detail">An order confirmation will be emailed to {{(guestUser)?guest.email:order.user.uid}} shortly.</div>
+            <h4>Questions about your order?</h4>
+            <div class="order-confirmation-msg-detail">Call us on +44 (0) 808 178 1188 or email <a href="mailto:aucustomerservice@moltonbrown.com">ukcustomerservice@moltonbrown.com</a></div>
+            <div class="form-group order-confrm-btn">
+                <button type="submit" class="btn btn-default" (click)="onNavigateHome()" >Continue shopping</button>
+            </div>
+        </section>
+            <section *ngIf="guestUser" class="guest-user-section">
+                <div class="form-group guest-user-block ">
+                   <h4>Save your details for Next time ? (optional)</h4>
+                   <legend>Checkout quicker by creating an account for [ CUSTOMER EMAIL ADDRESS ]</legend>
+                </div>
+                <form>
+                   <fieldset>
+                        <div class="form-group">
+                                <input autocorrect="off"  placeholder="E-mail" type="text" class="form-control  mandatory" autocapitalize="on" value="" >
+                                <!-- <a class="contextual-help" data-toggle="tooltip" data-placement="right" data-original-title="We will only contact you about your order."></a> -->
+                        </div>
+                        <div class="form-group">
+                                <input autocorrect="off"  placeholder="Password" type="text" class="form-control  mandatory" autocapitalize="on" value="" >
+                        </div>
+                        <div class="checkbox" >
+                                <input  type="checkbox" class="checkbox"  >
+                                <label  > Save payment details for next time .</label>
+                       </div>
+                        <div class="form-group clearfix pull-left">
+                                <button type="submit" class="btn btn-default pull-right" >Create Account</button>
+                            </div>
+                    </fieldset>    
+                </form>
+            </section>
+    
+        </div>
+   </div>
+    <div class="basket-section order-confirmation-section">
+            <div class="panel-heading disabled">
+                <h4>Your order</h4>
+            </div>
+        <div class="orders-container order-confirmation" *ngIf="order.entries">    
+            <div class="order-header">
+                <div>
+                    <legend>product</legend>
+                </div>
+                <div>
+                    <legend>QTY</legend>
+                </div>
+                <div>
+                    <legend>Price</legend>
+                </div>
+                <div>
+                    <legend>Total</legend>
+                </div>
+            </div>
+            <div class="order-product-mbl-container" *ngFor="let data of order.entries">
+                <div class="order-product-img">
+                  <a>
+                      <img src="http://i1.adis.ws/s/moltonbrown/{{data.product.code}}_uk_set?$mediumImg$&amp;fmt=webp"
+                          alt="Molton Brown UK " >
+                  </a>
+                </div>
+                <div class="order-product">
+                    <div class="order-product-info">
+                        <img src="http://i1.adis.ws/s/moltonbrown/{{data.product.code}}_uk_set?$smallImg$&amp;fmt=webp" class="order-prd-image-show">
+                        <span class="order-product-name"> {{(data.product.productDisplayName)?data.product.productDisplayName:data.product.name}}</span>
+                    </div>
+                    <div class="quantity-update">
+                        <div class="input-group">
+                            <span class="text-center">{{data.quantity}}</span>
+                        </div>
+                    </div>
+                    <div class="product-price">
+                        <!-- <del>$18.00</del> -->
+                        <span >{{(data.product.isSample)?'FREE':data.product.price.formattedValue}}</span>
+                      </div>
+                    <div class="product-total">{{(data.product.isSample)?'FREE':data.product.price.formattedValue}}</div>
+                </div>
+            </div>
+            <div class="order-confirmation-sub-total">
+                <div class="oc-sub-header"><span>Subtotal</span><span class="pull-right">{{order.subTotal.formattedValue}}</span></div>
+                <div class="oc-sub-delivery-info"><span>Delivery</span><span class="pull-right text-uppercase">{{order.deliveryCost.formattedValue}}</span>
+                    <div class="oc-delivery">UK standard (2-4 business days)</div>
+                </div>
+                <!-- <div class="oc-gst-info"><span>GST</span><span class="pull-right text-uppercase">&#163;&nbsp;4.15</span>
+                </div> -->
+                <div class="oc-total"><span>Total</span>
+                    <span class="pull-right">{{order.totalPriceWithTax.formattedValue}}</span>
+                    <!-- <div class="include-gst">(including GST)</div> -->
+                </div>
+            </div>
+            </div>
+        </div>
+  </section>
+</div>

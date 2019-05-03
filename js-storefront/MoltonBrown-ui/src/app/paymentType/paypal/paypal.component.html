@@ -1,0 +1,31 @@
+<div class="paypal">
+ 
+   <section class="paypal-option">
+      <p>Click the 'Pay with PayPal' button below to place your order and continue to PayPal.</p>
+    <form>
+        <div class="checkbox guest-checkbox">
+            <h2 class="jointitle">Join our guest list</h2>
+                   <h5 class="jointxtone">Be the first to hear about our latest product launches, limited edition collections, private sales and exclusive event invites. All straight to your inbox, door or phone.</h5>
+                   <h5 class="jointxttwo">We always treat your personal details with the utmost care and never sell them to other companies. You can unsubscribe at any time.</h5>
+                   <input type="checkbox" value="true">
+                   <label for="emailSignupPaypal"> I would like to receive communication from Molton Brown.</label> 
+        </div>
+      
+        <div class="checkbox terms-checkbox">
+            <input type="checkbox">
+<h2 class="tctitle">Terms &amp; Conditions</h2>
+        <label for="termsConditionsPayPal">I accept the <a href="#modalTermsAndConditions">Privacy &amp; Cookie Policy</a>.*</label>
+          </div>
+<div>
+              <button  class="btn btn-primary padlock paypal-btn pull-right">
+                  <span class="icon-padlock">
+                    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                </span> PAY WITH <span class="icon-paypal">PayPal</span>
+                
+              </button>
+ 
+            </div>
+          
+          </form>
+   </section>
+  </div>

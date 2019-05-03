@@ -1,0 +1,153 @@
+<div class="my-account" *ngIf="updateProfile; else editProfileBlock">
+  <h2>My Profile</h2>
+  <p>Review your information. To make updates, click on Edit my Profile below.</p>
+  <div class="rowComponents">
+    <div class="col-sm-12 edit-profile" *ngIf="user">
+
+      <h3> My Information</h3>
+      <div>
+        <div class="rowComponents">
+          <div class="col-sm-6 update-profileBlock">
+            <div class="form-inline">
+              <p class="label">Title </p>
+              <p>{{(user.title)?user.title:'Not yet Complete'}}</p>
+            </div>
+            <div class="form-inline">
+              <p class="label">First Name </p>
+              <p>{{(user.firstName)?user.firstName:'Not yet Complete'}}</p>
+            </div>
+            <div class="form-inline">
+              <p class="label">Last Name </p>
+              <p>{{(user.lastName)?user.lastName:'Not yet Complete'}}</p>
+            </div>
+            <div class="form-inline">
+              <p class="label">Email Address </p>
+              <p>{{(user.uid)?user.uid:'Not yet Complete'}}</p>
+            </div>
+            <div class="form-inline">
+              <p class="label">Age Group </p>
+              <p>Not yet Complete</p>
+            </div>
+            <div class="form-inline">
+              <p class="label">Gender </p>
+              <p>Not yet Complete</p>
+            </div>
+
+
+
+          </div>
+          <div class="col-sm-6 update-profileBlock" *ngIf="user.defaultAddress">
+            <div class="form-inline">
+              <p class="label">Address </p>
+              <p>{{user.defaultAddress.line1}}</p>
+            </div>
+            <div class="form-inline">
+              <p class="label">Town/City </p>
+              <p>{{user.defaultAddress.town}}</p>
+            </div>
+            <div class="form-inline">
+              <p class="label">Country/State/Region </p>
+              <p>{{(user.defaultAddress.country)?user.defaultAddress.country.name:'Not yet Complete'}}</p>
+            </div>
+            <div class="form-inline">
+              <p class="label">Country </p>
+              <p>{{(user.defaultAddress.country)?user.defaultAddress.country.name:'Not yet Complete'}}</p>
+            </div>
+            <div class="form-inline">
+              <p class="label">Age Group </p>
+              <p>Not yet Complete</p>
+            </div>
+            <div class="form-inline">
+              <p class="label">Postcode/Zipcode </p>
+              <p>{{(user.defaultAddress.postalCode)?user.defaultAddress.postalCode:'Not yet Complete'}}</p>
+            </div>
+            <!-- <div class="form-inline">
+            <p class="label">Phone Number </p>
+            <p>{{(user.defaultAddress.postalCode)?user.defaultAddress.postalCode:'Not yet Complete'}}</p>
+        </div>  -->
+          </div>
+        </div>
+        <button class="pull-right buttonStyle" (click)="OnUpdateProfile(data)">Edit Profile</button>
+      </div>
+
+    </div>
+
+    <div class="col-sm-12 rowComponents no-padding accountPasswordChange">
+      <div class="update-pwd  profile-block">
+        <h3> Change my Password</h3>
+        <p>Must be between 6 and 20 characters long</p>
+        <form [formGroup]="updateForm" (ngSubmit)="onSubmitForm($event)">
+          <p class="requiredFieldText label_text"><span class="redstar">*</span> Required Field</p>
+          <p class="existing_update-pwd_label label_text">Current Password<span class="redstar">*</span></p>
+          <span class="login-fields-small">
+            <input autocomplete="off" maxlength="10" formControlName="password" type="password" value=""
+              class="text mandatory">
+          </span>
+          <p class="existing_update-pwd_label label_text">New Password<span class="redstar">*</span></p>
+          <span class="login-fields-small">
+            <input autocomplete="off" maxlength="255" formControlName="confirmPassword" type="password" value=""
+              class="text mandatory">
+          </span>
+          <span class="login-fields-small">
+            <p class="existing_update-pwd_label label_text">Confirm New Password<span class="redstar">*</span></p>
+            <input autocomplete="off" maxlength="255" formControlName="confirmPassword" type="password" value=""
+              class="text mandatory">
+          </span>
+          <div class="pull-right update-pwd-btn">
+            <button type="submit" class="buttonStyle">Update Password</button>
+          </div>
+        </form>
+      </div>
+      <div class="edit-options profile-block">
+
+        <h3> Express Checkout Options</h3>
+        <p> This feature allows you to proceed to checkout in one click - saving you time. Simply setup your default
+          options and then next time you shop with us login and when you are ready click on the Express Checkout Button
+          in the basket page.</p>
+
+
+
+        <div>
+
+          <div class="col-sm-9 pull-left"><span> Default Shipping Method</span>
+            <br>
+            <b>
+              UK Standard Delivery</b>
+          </div>
+          <div class="col-sm-3 pull-left"><button class="buttonStyle" (click)="OnUpdateProfile(data)">Edit</button>
+          </div>
+
+        </div>
+
+        <div>
+
+          <div class="col-sm-9 pull-left"><span> Default Card</span>
+          </div>
+          <div class="col-sm-3 pull-left"><button class="buttonStyle" (click)="OnUpdateCardDetails()">Edit</button>
+          </div>
+
+
+        </div>
+
+        <div>
+
+          <div class="col-sm-9 pull-left"><span>Default Shipping Address</span>
+            <br>
+
+          </div>
+          <div class="col-sm-3 pull-left"><button class="buttonStyle" (click)="OnUpdateAddress(data)">Edit</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #editProfileBlock>
+  <div class="my-account">
+    <h2 class="title profile">Edit my Profile</h2>
+    <p>After you've made the desired changes, click Save.</p>
+    <app-personal-form [profileData]="profileData" (cancelUpdate)="cancelUpdate($event)"></app-personal-form>
+  </div>
+</ng-template>

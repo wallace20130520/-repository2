@@ -1,0 +1,93 @@
+.payer-saved-address {
+    position: relative;
+    color: #000;
+
+    .form-group{
+        margin-top:20px;
+    }
+}
+
+.jointxttwo {
+    margin-bottom: 30px;
+}
+.jointitle, .tctitle {
+    font-size: 1.2em;
+    margin: 0 0 12px!important;
+}
+
+
+
+.ml-5{
+    margin-left:5px;
+}
+.section-heading{
+    h2{
+        font-size: 18px;
+        margin: 0 0 12px 0;
+    }
+}
+.saved-address {
+    position: relative;
+    color: #000;
+    font-weight: 900;
+    width:99%;
+    p{
+        width:49%;
+    }
+}
+.change-address-btn{
+    position: absolute;
+    text-align: right;
+    right: 0;
+    bottom: -10px;
+    font-size: 14px;
+    text-decoration: underline !important;
+    cursor: pointer;
+}
+.save_details{
+    border-bottom:1px solid #c2c2c2;
+    margin:8px 0;
+}
+.securityCode{
+    position: relative;
+    
+input{
+    width: 160px;
+}
+}
+
+.contextual-help {
+    position: absolute;
+    top: 1px;
+    left: 25%;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid #c2c2c2;
+    background: #FFF url(https://www.moltonbrown.co.uk/images/help-black-icon.svg) no-repeat scroll center center;
+    text-indent: -9999px;
+    background-size: 7px;
+     @media screen and (max-width:768px){
+        top: 6px;
+    left: 60%;
+    width: 36px;
+    height: 36px;
+    } 
+       @media screen and (max-width:425px){
+    left: 90% !important;
+    }
+}
+.backdrop{
+    height:100% !important;
+    top:0;
+   
+
+}
+.monthYearAlign{
+    .custom-dropdown.big{
+        select{
+            
+        margin-right:10px;
+        }
+    }
+}

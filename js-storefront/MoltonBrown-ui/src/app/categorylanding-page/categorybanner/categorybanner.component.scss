@@ -1,0 +1,85 @@
+
+
+.categorybanner_row{
+    display: flex;
+    flex-wrap: wrap;
+    padding-right: 80px;
+    padding-left: 80px;
+    text-align: center;
+    .categorybanner_products{
+        flex: 0 0 20%;
+        max-width: 20%;
+        a{
+            color: #000;
+            font-size: 12px;
+            line-height: 22px;
+            text-transform: capitalize;
+            text-decoration: none;            
+            cursor: pointer;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}
+.category_banner-block {
+    width: 100%;
+    // padding-top: 50px;
+    @media (max-width:768px) {
+      display: none;
+    }
+    .catbanner {
+        text-align: center;
+        background: #fafafd;
+        width: 964px;
+        padding-bottom:30px; 
+        @media(max-width:768px){
+          display: none;
+        }
+        h1{
+            font-size: 25px;
+            color: #232323;
+            padding-top: 30px;
+        }
+        .banner-container{
+            .banner_description{
+                p{
+                    padding-right: 65px;
+                    padding-top: 20px;
+                    padding-left: 65px;
+                    text-align: center;
+                    line-height: 18px;
+                    font-size: 12px;
+                    color: #232323;
+                    font-family:  arial, sans-serif;
+                    margin-bottom: 0px;
+                    a{
+                        color:#000 !important;
+                    }
+                    
+                }
+               
+            }
+            h1{
+                line-height: 1.1;
+            }
+        }
+    }
+    .banner_childcategories {
+        padding-top: 25px;
+        position: relative;
+        padding-bottom: 20px;
+        table {
+            text-align: center;
+            margin: 0 auto;
+            td {
+                min-width: 165px;
+                a {
+                    color: #666;
+                    font-size: 12px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+}

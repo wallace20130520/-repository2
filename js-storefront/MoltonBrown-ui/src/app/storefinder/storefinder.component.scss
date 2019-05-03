@@ -1,0 +1,86 @@
+@import '../variable.scss';
+.find-store {
+    background:$mb-overlay-bg;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 26px;
+    p {
+        margin: 20px 0;
+        line-height: 20px;
+        color: $mb-strap-line-color;
+    }
+    h1 {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 26px;
+        font-style: normal;
+        color: $mb-header-color;
+    }
+    input{
+            width: 75%;
+            background: #ecebe5;
+            border: 1px solid $mb-strap-line-color;
+            color: $mb-strap-line-color;
+            height: 32px;
+            font-style: italic;
+            padding: 7px 10px;
+            float: left;        
+    }
+    button.findStore{
+        padding: 7px 10px; 
+        height: 32px;
+        width: 25%;
+        background-color:$mb-store-btn-bg;
+        color:$mb-white;
+        position: relative;
+        &::after{
+            content:'';
+            position: absolute;
+            width:0;
+            height: 0;
+            border-left: solid 8px #ecebe5;;
+            border-bottom: solid 8px transparent;
+            border-top: solid 8px transparent;
+            right:8px;
+        }
+    }
+ 
+    .find-store-search{        
+        padding:20px;
+        padding-top:28px;
+    }
+}
+.store_img_block{
+    img{
+        width:100%;
+    }
+}
+.find-store-search-banner{
+    padding: 20px 0 20px;
+    img{
+        float:right;
+        padding: 0 0 10px 5px;
+        width:100%;
+    }
+}
+.customer {
+    font-size: 25px;
+    padding: 10px 15px 10px 0;
+    border-bottom: 1px solid #d6d6d6;
+}
+.freshrelavance{
+    img{
+        width:100%;
+    }
+     h3 {
+        font-size: 18px;
+        padding: 28px 0 17px 0;
+        margin: 0;
+        line-height: 14px;
+    }
+    a {
+        font-size: 11px;
+        line-height: 14px;
+        margin: 0;
+    }
+}

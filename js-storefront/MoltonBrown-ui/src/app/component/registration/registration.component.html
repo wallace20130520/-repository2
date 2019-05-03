@@ -1,0 +1,49 @@
+<section>
+    <div class="container">
+        <app-breadcrumb [breadcrumb]="breadcrumb"></app-breadcrumb>
+      <div class="rowComponents loginAlign">
+          <h2 class="col-sm-12 log_in">Login/Register</h2>
+          <div class="returning_customer">
+             <div class="returning_customer-log_in">
+                   <h2>Returning Customer</h2>
+                  
+                   <form  [formGroup]="authForm" (ngSubmit)="onSubmitForm($event)">
+                    
+                      <p class="requiredFieldText"><span class="redstar">*</span> Required Field</p>
+                      <h2 *ngIf="showCrentialError" class="errr_msg redstar">Please Provide Valid Credentials </h2>
+                      <p class=" label_text">Email Address<span class="redstar">*</span></p>
+                      <input autocomplete="off" maxlength="255" formControlName="email"  type="email" value="" class="text mandatory">
+                      <p class=" label_text">Password<span class="redstar">*</span></p>
+                      <div class="pos-relative">
+                        <input autocomplete="off" maxlength="255" formControlName="password"  type="password" value="" class="text mandatory">
+                  
+                      </div> 
+                         <p class="text-right">
+                          <a class="pull-left forgotten" >Forgotten your password?</a>
+                      </p>
+                      <div class="text-center">
+                      <button type="submit" class="buttonStyle">Login</button>
+                     </div>
+                    </form>
+             </div>
+          </div>
+          <div class="hrMb"><hr></div>
+          <div>
+            <div class=" new_customer-block new-login">
+              <h2>New Customer</h2>
+              <h6>The benefits of registering</h6>            
+               By registering your details and creating an account you will be able to:
+               <ul>
+                 <li>Check order history and status</li>
+                 <li>Store and manage multiple delivery addresses</li>
+                 <li>Update your personal profile and preferences</li>
+                 <li>Enjoy a speedier checkout</li>
+                </ul>
+                <div class="text-center">
+                    <button (click)="onShowRegisterForm() " class="buttonStyle"> Register</button>
+                   </div>
+              </div>
+            </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,114 @@
+<section style="position: relative;">
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmitForm($event,true)" class="registration_form ">
+                    <div class="col-xs-12 row">
+                        <div class="col-sm-12 col-md-4  ">
+                            <label class="register_label " for="reg_firstname">First Name<span class="redstar">*</span></label>
+                        </div>
+                        <div class="col-sm-12 col-md-8 text-left ">
+                          <span class="login_fields">
+                            <input maxlength="255" formControlName="firstName" type="text" value="" class="mandatory">
+                            </span>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 row">
+                          <div class="col-sm-12 col-md-4  ">
+                              <label class="register_label " for="reg_lastname">Last Name<span class="redstar">*</span></label>
+                          </div>
+                          <div class="col-sm-12 col-md-8 text-left ">
+                            <span class="login_fields">
+                              <input maxlength="255" type="text" value="" formControlName="lastName" class="mandatory">
+                              </span>
+                          </div>
+                        </div>
+  
+
+                        <div class="col-xs-12 row">
+                            <div class="col-sm-12 col-md-4  ">
+                                <label class="register_label " for="reg_country">Country<span class="redstar">*</span></label>
+                            </div>
+                            <div class="col-sm-12 col-md-8 text-left ">
+                              <span class="login_fields">
+                                  <select  class="mandatory" formControlName="country" >
+                                    <option value="">Please Select</option>
+                                    <option *ngFor="let data of countries;let k=index;" [ngValue]="data" >{{data.name}}</option>
+                                  </select>
+                                </span>
+                            </div>
+                          </div>
+                        <div class="col-xs-12 row">
+                            <div class="col-sm-12 col-md-4  ">
+                                <label class="register_label " for="reg_postcode">Postcode/Zipcode<span class="redstar">*</span></label>
+                            </div>
+                            <div class="col-sm-12 col-md-8 text-left ">
+                              <span class="login_fields">
+                                <input #search maxlength="12" appGooglePlaces  (onSelect)="setAddress($event)" type="text" value="" (keydown)="onSearchKeyUp($event)"  class="mandatory form-control " formControlName="postalCode" [ngClass]="{'has-error  not-valid': !postCodeStatus}">
+                                </span>
+                                <span class="ml-8" *ngIf="!updateAddress">
+                                    <button class="buttonStyle mt-1" (click)="findAddress($event,false)">  Lookup Address</button>
+                                
+                                </span>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 row " *ngIf="postalAddresses">
+                            <div class="col-sm-12 col-md-4  ">
+                              <label class="register_label " >Select Address<span class="redstar">*</span></label>
+                          </div>
+                              <div class="col-sm-12 col-md-8 text-left" > 
+                            <select  class="mandatory form-control"  formControlName="address" (change)="onSelectPlace($event.target.value)">
+                                <option>Select Address</option>
+                                <option *ngFor="let data of postalAddresses;let k=index;" [value]="data.Id" >{{data.StreetAddress}}, &nbsp;{{data.Place}}</option>
+                              </select>
+                            </div>
+                            
+                        </div>
+
+                          <div class="col-xs-12 row">
+                              <div class="col-sm-12 col-md-4  ">
+                                  <label class="register_label " for="reg_address">Address<span class="redstar">*</span></label>
+                              </div>
+                              <div class="col-sm-12 col-md-8 text-left ">
+                                <span class="login_fields">
+                                  <input maxlength="255" type="text" value="" class="mandatory" formControlName="line1">
+                                  <input maxlength="255" type="text" value="" class="mandatory" style="margin-top:15px;" formControlName="line2">
+                                  </span>
+                              </div>
+                            </div>
+                            <div class="col-xs-12 row">
+                                <div class="col-sm-12 col-md-4  ">
+                                    <label class="register_label " for="reg_town">Town/City<span class="redstar">*</span></label>
+                                </div>
+                                <div class="col-sm-12 col-md-8 text-left ">
+                                  <span class="login_fields">
+                                    <input maxlength="255" type="text" value="" class="mandatory" formControlName="town">
+                                    </span>
+                                </div>
+                              </div>
+                              <div class="col-xs-12 row">
+                                  <div class="col-sm-12 col-md-4  ">
+                                      <label class="register_label " for="reg_town">Country/State/Region</label>
+                                  </div>
+                                  <div class="col-sm-12 col-md-8 text-left ">
+                                    <span class="login_fields">
+                                      <input maxlength="255" type="text" value="" formControlName="County" >
+                                      </span>
+                                  </div>
+                                </div>
+                                <div class="col-xs-12 row">
+                                    <div class="col-sm-12 col-md-4  ">
+                                        <label class="register_label " for="reg_town">Phone Number<span class="redstar">*</span></label>
+                                    </div>
+                                    <div class="col-sm-12 col-md-8 text-left ">
+                                      <span class="login_fields">
+                                        <input maxlength="255" type="text" value="" class="mandatory" formControlName="phone" >
+                                        </span>
+                                    </div>
+                                  </div>
+
+    <div class="col-sm-12 text-right" style="padding: 15px;">
+          <button class="buttonStyle" [disabled]="!registrationForm.valid" >{{(updateAddress)?'Update':'Submit'}}</button>
+      </div>
+</form>
+<div class="text-left update_btn" style="padding: 15px;" >
+  <button class="buttonStyle"  (click)="onUpdate()">{{(updateAddress)?'Cancel':'Clear'}}</button>
+</div>
+</section>

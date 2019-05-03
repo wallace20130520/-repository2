@@ -1,0 +1,47 @@
+<div class="my-account" *ngIf="updateProfile; else editProfileBlock">
+  <h2>Address Book</h2>
+  <p>Save time every time you place an order. Create and manage multiple addresses here, you can edit your address information at any time.</p>
+  <div class="col-sm-12 edit-profile">
+    <h3>Address Book</h3>
+
+  <div class="makeDefault relativeness" *ngIf="addressList">
+            <b>Default Shipping Address</b>
+            <a class="contextual-help" tooltip-class="toolTipFont"  tooltip="Your default delivery/shipping address will be automatically added during checkout to make placing your next order quicker."  show-delay="500" placement="right" ></a>      </div>
+            <div class="rowComponents">   
+              <div class="col-sm-4 addressSize padding-top-15" *ngFor="let data of addressList">
+                <div class="address-book">                 
+                    <div class="locality">{{data.firstName}}&nbsp;{{data.lastName}}</div>
+              <div class="adr">
+                <div class="street-address">
+                  {{data.line1}}
+                </div>              
+                <div class="street-address">{{data.line2}}</div>
+                <div class="locality">
+                  {{data.town}}
+                </div>
+                <div class="postal-code">{{data.postalCode}}</div>
+                <div>
+                  {{data.country.isocode}}
+                </div>             
+               </div>
+               <div class="tel">{{data.phone}}</div>
+             </div>
+                <p><a title="" (click)="onEditAddress(data)">Edit</a></p>             
+                <p [hidden]="data.defaultAddress" ><a title="" (click)="onRemoveAddress(data)">Remove</a></p>
+                <p [hidden]="data.defaultAddress" ><a title="" (click)="onSetDefaultAddress(data)">Default</a></p>
+        </div>
+        </div>
+        </div> 
+        <h6 class="title profile">New Address</h6>
+        <app-customer-profile-form (cancelUpdate)="cancelUpdate($event)" [updateAddress]="false" [customerId]="customerId" [registrationForm]="registrationForm"></app-customer-profile-form>
+</div>
+            
+     
+              <ng-template #editProfileBlock>
+                  <div class="my-account" >
+                          <h2 class="title profile">Edit my Profile</h2>
+                          <p>After you've made the desired changes, click Save.</p>
+                          <h6 class="title profile">New Address</h6>
+                          <app-customer-profile-form [updateAddress]="true" [customerId]="customerId" (cancelUpdate)="cancelUpdate($event)" [registrationForm]="registrationForm"></app-customer-profile-form>
+                  </div>
+              </ng-template>  

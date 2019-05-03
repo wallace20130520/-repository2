@@ -1,0 +1,6 @@
+<div  class="main" [ngClass]="{'mb-container-left-none  row-reverse':!toggleMainMenu,'mb-container-left row-reverse-none':toggleMainMenu}" >
+    <app-header></app-header>
+      <app-header-submenu ></app-header-submenu>
+    <router-outlet  ></router-outlet>
+    <app-footer></app-footer>
+  </div>

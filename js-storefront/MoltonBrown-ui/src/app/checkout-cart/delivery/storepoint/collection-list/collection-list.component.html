@@ -1,0 +1,18 @@
+<div class="cc-stores-list-view" *ngIf="storeList">
+  <div class="cc-store-list-item mbStores" *ngFor="let data of storeList;">
+      <div class="cc-store-address" id="cc-store-address_64">
+          <h5>{{data.name}}</h5>
+          <p>{{data.address.line1}}</p>
+          <p class="ccprice">
+              <b>FREE</b>
+          </p>
+          <p>{{data.formattedDistance}}</p>
+          <p><a class="btn-opening-hours">Map &amp; opening hours</a></p>
+      </div>
+      <div class="cc-store-distance">
+          <div><img [src]="data.storeIcon.url" alt="logo"></div>
+          <p>{{data.formattedDistance}}</p>
+          <span class="btn btn-default btnChooseStore" (click)="onSelectStore($event,data)" alt="Select" title="Select">SELECT</span>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="clearfix">
+    <section class="checkout-login-form-container">
+        <form [formGroup]="guestForm" (ngSubmit)="onSubmitForm($event)" >
+            <section class="sign-in">
+                <span class="required-info">* Required information</span>
+                
+                <div class="section-heading">
+                    <h1>Sign in or continue as a guest</h1>
+                </div>
+                <h2 *ngIf="showCredenialError" class="errr_msg redstar">Please Provide Valid Credentials </h2>
+                <fieldset>
+                    <legend>What's your email address?</legend>
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <label class="sr-only" for="inputEmail">Email address</label>
+                            <input maxlength="255" formControlName="email" autocomplete="off" id="inputEmail" placeholder="Enter your email address*"
+                                type="email" value="" class="form-control fixed-width mandatory guest-profile-input" [ngClass]="{'has-error not-valid': !guestForm.get('email').valid && guestForm.get('email').touched,'valid':guestForm.get('email').valid,'invalid':!guestForm.get('email').valid}"
+                                required>
+                        </div>
+                        <span class="help-block inline">(We'll send your order confirmation to this address)</span>
+                    </div>
+                    <div *ngIf="!guestForm.controls['email'].valid &&  guestForm.get('email').touched" class="error-msg">
+                            <div [hidden]="!guestForm.controls['email'].errors.required">Email is required.</div>
+                            <div [hidden]="!guestForm.controls['email'].errors.patternInvalid">Email is invalid.</div>
+                        </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Do you have an account?</legend>
+                    <div class="radio">
+                        <input  formControlName="saveGuest"  id="passwordRadios1" type="radio" class="password-radio" value="guest" (change)="onChangePreference($event)" >
+                        <label for="passwordRadios1"> No (you can save your details later)</label>
+                    </div>
+                    <div class="form-inline">
+                        <div class="radio">
+                            <input  formControlName="saveGuest" id="passwordRadios2" type="radio" class="password-radio" value="register" (change)="onChangePreference($event)" >
+                            <label for="passwordRadios2" class="radio-inline radio-existingGuest">Yes, my password is:</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="inputPassword">Password</label>
+                            <input name="password" formControlName="password" [ngClass]="{'has-error': !guestForm.get('password').valid && guestForm.get('password').touched}" id="inputPassword" placeholder="Enter your password*" type="password" value=""
+                                class="form-control fixed-width">
+                            <span class="help-block password">
+                                <a title="Forgotten password" class="info_link">I've forgotten my
+                                    password</a>
+                            </span>
+                        </div>
+                        <button type="submit" class="btn btn-primary padlock active-removal  "   [disabled]="!guestForm.valid" >
+                            <span class="icon-padlock"></span>
+                            &nbsp;CONTINUE
+                        </button>
+                    </div>
+                </fieldset>
+            </section>
+        </form>
+    </section>
+</div>    

@@ -1,0 +1,24 @@
+<fieldset>
+    <section>
+     <div class="form-group">
+      <div>
+      <h2 class="join-title">Join our guest list</h2>
+      <div class="jointxtone" style="font-size:14px;font-weight: 500;color:#000;"><span>Be the first to hear about our latest product launches, limited edition collections, private sales and exclusive event invites. All straight to your inbox, door or phone.</span></div>
+      <div class="jointxttwo" style="font-size:14px;font-weight: 500;color:#000;"><span>We always treat your personal details with the utmost care and never sell them to other companies. You can unsubscribe at any time.</span></div>
+     </div>
+      <div class="checkbox" style="flex:0.3;padding-left:10px;">
+              <input  type="checkbox" class="checkbox" [checked]="termsMoltonbrown"  >
+              <label  > I would like to receive communication from Molton Brown.</label>
+     </div>
+     <h2 class="terms-title">Terms &amp; Conditions</h2>
+     <div class="checkbox" style="flex:0.3;padding-left:10px;">
+            <input  type="checkbox" class="checkbox" [checked]="termsMoltonbrown"  >
+            <label  > I accept the &nbsp;terms & conditions&nbsp;and&nbsp;<a>Privacy & Cookie Policy</a></label>
+   </div>
+
+     </div>
+     <div class="text-right">
+        <button type="submit" class="btn shopping-btn" [disabled]="!termsForm.valid" >Continue</button>
+      </div>
+     </section>
+    </fieldset>

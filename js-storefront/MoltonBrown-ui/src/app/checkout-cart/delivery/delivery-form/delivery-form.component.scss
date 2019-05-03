@@ -1,0 +1,182 @@
+
+.delivery-method{
+    position: relative;
+    .delivery-wrap{
+        .section-heading{
+            margin-top:0;
+            h2{
+                font-size: 1.28em;
+                margin: 0 0 12px 0;
+            }
+        }
+        .delivery-section-panel-body{
+            .existing-reg-field-block{
+                .existing-customer-list{
+                       width:90%;
+
+                       label{
+                           justify-content: start;
+                           padding-left:30px;
+                           line-height: 1.65;
+                       }
+                       input[type="radio"]:checked ~ label:after{
+                             top:inherit;
+                       }
+                }
+            }
+        }
+    }
+}
+.form-group{
+    position: relative;
+}
+.reg-add-address{
+    a{
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+.btn-default {
+    background-color: #464646;
+    color: #fff;
+}
+.regUser-hide{
+    display:none;
+}
+.regUser-block{
+display:block;
+}
+.personal-details {
+    margin-top: 20px;
+    legend {
+        font-size: 1.28em;
+        color: #000;
+        border: 0;
+        margin: 0 0 12px 0;
+    }
+    .form-control {
+        display: block;
+        width: 335px;
+        height: 48px;
+        border: 1px solid #c2c2c2;
+        border-radius: 0;
+        @media(max-width:768px){
+            width:100% ;
+        }
+    }
+    select.form-control{
+        @media(max-width:768px){
+            width:100% !important ;
+        }
+    }
+    .btn-find-address{
+        @media(max-width:768px){
+            width:100% ;
+        }  
+    }
+}
+
+input.form-control.short-field{
+    width: 110px !important;
+  
+}
+.form-inline .form-group, .form-inline .radio-inline {
+    margin-right: 10px;
+}
+.help-block {
+    display: block;
+    margin: 5px 0 10px 0;
+    color: #464646;
+    font-size: 14px;
+    a{
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+.disabled-active{
+    background-color: #c2c2c2;
+    opacity: 1;
+}
+select.form-control{
+    min-width: 240px;
+    width:240px !important;
+}
+.action-link{
+    align-self: flex-start;
+    line-height: 2.65;
+    span{
+        text-decoration: underline;
+        text-transform: capitalize;
+        font-size:14px;
+        cursor: pointer;
+
+    }
+}
+.existing-reg-field-block{
+    .radio input[type="radio"], .form-inline .radio input[type="radio"] {
+        opacity: 0;
+        position: absolute;
+        z-index: 99;
+        width: 100%;
+        height:25px;
+    }
+}
+.form-group{
+    @media (max-width:768px) {
+        width:100%;
+    }
+}
+.manual_field{
+    .form-group{
+        @media (max-width:768px) {
+            width:47%;
+            input.form-control.short-field{
+                @media(max-width:768px){
+                    width:100% !important;
+                }  
+            }
+        }
+
+    }
+}
+
+
+@media (max-width: 768px){
+   
+    .contextual-help {
+        right: -7px;
+    } .contextual-help {
+        position: absolute;
+        top: 7px;
+        // right: 35%;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        border: 1px solid #c2c2c2;
+        background: #FFF url(https://www.moltonbrown.co.uk/images/help-black-icon.svg) no-repeat scroll center center;
+        text-indent: -9999px;
+        background-size: 7px;
+    }
+    }
+    .shippingButtons{
+        display: flex;
+        justify-content:flex-end;
+     
+        button{
+            width:180px;
+            height:48px;   margin-top: 10px;     
+        }
+        @media screen and(max-width:768px){
+            flex-direction: column-reverse;
+                 button{
+            width:100%;
+         }
+        }
+        
+    }
+    .b2c-title{
+        font-size:24pt;
+    }
+    .f-space-between{
+        justify-content: space-between !important;
+    }

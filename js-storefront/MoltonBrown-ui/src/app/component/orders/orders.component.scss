@@ -1,0 +1,103 @@
+.favourite h3 {
+    font-size: 18px;
+    // border-bottom: 1px solid #b0b9bf;
+    padding: 5px 0;
+    margin: 10px 0!important;
+    font-weight: normal;
+}
+.favourite h3.customer {
+    color: #260e03;
+    padding: 0 0 4px 1px;
+}
+.buttonStyles{
+    padding: 5px 10px;
+    margin-top: 10px;
+}
+.my-account{
+    margin:15px;
+     h2 {
+    font-size: 28px;
+    margin-bottom: 0;
+    padding: 0 0 14px 0;
+    color: #000;
+    @media screen and(max-width:768px) {
+        width:100%;  
+        //   min-height: 190px;
+    }
+}
+.edit-profile {
+    border: 1px solid #d6d6d6;
+    padding: 20px 10px;
+    float: left;
+    margin: 15px 0;
+    width: 488px;
+    h3 {
+        font-weight: bold;
+        font-size: 1.2em;
+        color: #000!important;
+        padding-left: 0!important;
+    }
+    .label{
+        padding: 5px 30px 5px 0;
+        width: 50%;
+        text-align:right;
+    }
+}
+}
+.orderHistoryContainer{
+    font-size:13px;  padding: 15px 0;
+    border: 1px solid #ccc;
+
+    .orderHistoryHeader{
+        display: flex;
+        font-weight: 700;
+div{
+    padding: 0 15px 7px;
+}
+    }
+    .orderHistoryBody{
+
+        display: flex; 
+           div{
+    padding: 0 15px 7px;
+}
+    }
+    .orderDate{
+        width:20%;
+    }
+    .orderNumber{
+        width:20%;
+    }
+    .orderTotal{
+        width:20%;
+    }
+    .orderStatus{
+width:20%
+    }
+    .orderHistoryButton{
+width:20%
+    }
+}
+.emptyMyOrderHistory{
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;    justify-content: space-between;
+}
+.page_viewAll{
+    display: inline-block;
+    width: auto;
+    height: 19px;
+    float: left;
+    padding-top: 3px;
+    a{
+        line-height: 14px;
+        margin: 0;
+        text-decoration: underline !important;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        cursor: pointer;
+        color: #464646;
+        vertical-align: bottom;
+    }
+}

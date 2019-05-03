@@ -1,0 +1,58 @@
+<div class="my-account" *ngIf="ordersHistoryList; else ordersHistoryDetails">
+  <h2>Order History</h2>
+  <p>View the most recent details available about your order. Please note that only orders placed after September 21st 2010 will be shown. If you have an enquiry about an order placed before this date please contact our customer service team.</p>
+  <div class=" favourite ">
+    <div class="emptyMyOrderHistory">
+    <h3 class="customer">My Orders</h3>
+       <!-- <p class="noprevorders">You have no previous orders.</p> -->
+       <div class="paginations divalign">
+        <div class="rowCompts"> 
+            <div class="col75">
+            <nav aria-label="Page navigation example">
+           <ul class="pagination" *ngIf="pager">
+             <li class="page_viewAll">
+                    <a (click)="onviewAllProducts(pager)">View all</a>
+                   
+             </li>
+             <li class="page-item" [ngClass]="{'page-nav-btn-hide':pager.currentPage === 1}">
+                <a class="page-link next" aria-label="Previous"  (click)="setPage(pager.currentPage - 1)">
+                     <img src="https://www.moltonbrown.co.uk/images/storefront/Left_Previous_Arrow.gif?version=16">
+                </a>
+              </li>
+             <li class="page-item"  *ngFor="let pageItems of pager.pages;let k=index">
+               <a class="page-link" (click)="setPage(pageItems)">{{pageItems}}</a>
+            </li>
+            <li class="page-item" [ngClass]="{'page-nav-btn-hide':pager.currentPage === pager.totalPages}">
+               <a class="page-link next" aria-label="Next" (click)="setPage(pager.currentPage + 1)">
+                    <img src="https://www.moltonbrown.co.uk/images/storefront/Right_Next_Arrow.gif?version=16">
+               </a>
+             </li>
+           </ul>
+         </nav> 
+        </div>
+      </div>
+   </div>
+  </div>
+<div class="orderHistoryContainer" *ngIf="order">
+  <div class="orderHistoryHeader">
+      <div class="orderDate">Date</div>
+      <div class="orderNumber">Order Number</div>
+      <div class="orderTotal">Order Total</div>
+      <div class="orderStatus">Status</div>
+  </div>
+  <div class="orderHistoryBody" *ngFor = "let orderHistory of pagedItems">
+      <div class="orderDate">{{orderHistory.placed | date: 'dd/MM/yyyy'}}</div>
+      <div class="orderNumber">{{orderHistory.code}}</div>
+      <div class="orderTotal"> {{orderHistory.total.formattedValue}} </div>
+      <div class="orderStatus">{{orderHistory.statusDisplay}}</div>
+      <div class="orderHistoryButton"> <input type="button" class="buttonStyle" (click)="showOrderHistoryDetails(orderHistory)" value="View"> </div>
+  </div>
+</div>
+
+<!-- 
+         <button class="buttonStyles mt-10" (click)="onGoToHome()">Continue Shopping</button> -->
+       </div>
+</div>
+<ng-template #ordersHistoryDetails>
+    <app-orders-details  ></app-orders-details>
+  </ng-template>

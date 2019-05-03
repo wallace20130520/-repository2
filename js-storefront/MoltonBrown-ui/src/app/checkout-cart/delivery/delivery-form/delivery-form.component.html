@@ -1,0 +1,147 @@
+<div class="delivery-method">
+    <div class="delivery-wrap" *ngIf="!loading;else loader">
+      <div class="section-heading">
+         <h2>Where do you want us to deliver?</h2>
+      </div>
+      <section class="delivery-section-panel-body" [ngClass]="{'regUser-block':reguser,'regUser-hide':!reguser}">
+        <fieldset>
+                <form >
+          <div class="existing-reg-field-block">
+               
+            <div class="form-inline " *ngFor="let address of addressList;let k=index;">
+              <div class="radio existing-customer-list" >
+                  <input  name="address" type="radio" class="password-radio" [checked]="address.defaultAddress"  (change)="onAddressChange(address,k)">
+                  <label for="passwordRadios2" class="radio-inline ">{{address.firstName+'  '+address.lastName}}
+                        {{address.line1+','+address.line2}}
+                          {{address.town}},{{address.postalCode}}
+                          {{address.country.name}}.
+                      </label>
+              </div>
+              <div class="action-link">
+                  <span  (click)="editAddress(address)">
+                      edit
+                  </span>
+              </div>
+          </div>
+         
+          <div class="form-group reg-add-address">
+              <a (click)="addAddress()">Add new address</a>
+          </div>
+          <div class="reg-confirm-address">
+              <div class="form-group clearfix">
+                  <button   (click)="onSelectAddress()" class="btn btn-default pull-right">CONFIRM ADDRESS</button>
+              </div>
+          </div>
+          </div>
+        </form>
+        </fieldset>
+      </section>
+      <section class="delivery-new-form-body personal-details" *ngIf="showDeliveryForm">
+        <form [formGroup]="shipmentForm" (ngSubmit)="onSubmitForm($event)">
+          <fieldset>
+              <legend *ngIf="regUser">{{(updateAddress)? 'UPDATE ADDRESS':'ADD NEW ADDRESS'}}</legend>
+              <div class="form-group">
+                  <select  class="mandatory form-control" formControlName="titleCode" >
+                      <option value="" selected>Title*</option>
+                      <option value="miss">Miss</option>
+                      <option value="mrs">Mrs</option>
+                      <option value="ms">Ms</option>
+                      <option value="mr">Mr</option>
+                      <option value="dr">Dr</option>
+                    </select>
+              </div>
+              <div class="form-group">
+                <input autocorrect="off"  formControlName="firstName" placeholder="First name*" type="text" class="form-control  mandatory" autocapitalize="on" >
+              </div>
+              <div class="form-group">
+                  <input autocorrect="off"  formControlName="lastName" placeholder="Last name*" type="text" class="form-control  mandatory" autocapitalize="on" >
+              </div>
+                <div class="form-group">
+                    <input autocorrect="off" formControlName="phone"  placeholder="Telephone number*" type="text" class="form-control  mandatory" autocapitalize="on" value="" >
+                    <!-- <a class="contextual-help" tooltip-class="toolTipFont"  tooltip="Your default delivery/shipping address will be automatically added during checkout to make placing your next order quicker."  show-delay="500" placement="right" ></a>      </div> -->
+            
+                    <a class="contextual-help" tooltip-class="toolTipFont"  tooltip="We will only contact you about your order."  show-delay="500" placement="right" ></a>
+                </div>
+                <div class="form-group">
+                    <div class="form-inline">
+                      <div class="form-group"> 
+                    <select  class="mandatory form-control"  formControlName="country" (change)="onChangeCountry($event)" >
+                        <option *ngFor="let data of countries;let k=index;" [ngValue]="data" >{{data.name}}</option>
+                      </select>
+                    </div>
+                    <span *ngIf="ukSpecificForm">
+                      <span class="help-block inline postcodesearchreset" *ngIf="!manualAdress" style="display: inline;" >
+                        <a (click)="onSearchByPostal()">Search using postcode</a>
+                      </span>
+                    </span>
+                    </div>
+                </div>
+                <div *ngIf="ukSpecificForm"></div>
+                <div class="form-inline manual_field" *ngIf="manualAdress;else fullDetail">
+                    <div class="form-group">
+                        <input type="text"  formControlName="line1" placeholder="House no."  class="form-control short-field" >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="postalCode" autocapitalize="characters" (keyup)="onPostCodeKeyUp($event)" 
+                         placeholder="Postcode*" class="form-control short-field"  [ngClass]="{'has-error  not-valid': !postCodeStatus}" >
+                   
+                      </div>
+                    <button  class="btn btn-default pull-right btn-find-address" (click)="findAddress($event)">FIND ADDRESS</button>
+                    <span class="help-block">Or <a (click)="addressManual()">enter address manually</a></span>
+                </div>
+                <div class="form-group">
+                    <div class="form-inline">
+                      <div class="form-group" *ngIf="postalAddresses"> 
+                    <select  class="mandatory form-control"  formControlName="address" (change)="onSelectPlace($event.target.value)">
+                        <option value="" disabled selected>Select Address</option>
+                        <option *ngFor="let data of postalAddresses;let k=index;" [value]="data.Id" >{{data.StreetAddress}}, &nbsp;{{data.Place}}</option>
+                      </select>
+                    </div>
+                      <span class="help-block inline postcodesearchreset" *ngIf="!manualAdress" style="display: inline;" >
+                        <!-- <a (click)="onSearchByPostal()">Search using postcode</a> -->
+                      </span>
+                    </div>
+                </div>
+                <ng-template #fullDetail>
+                    <div class="form-group">
+                        <input autocorrect="off"  formControlName="line1" placeholder="Address line 1*" type="text" class="form-control  mandatory" autocapitalize="on" >
+                    </div>
+                    <div class="form-group">
+                        <input autocorrect="off"  formControlName="line2" placeholder="Address line 2(optional)" type="text" class="form-control  mandatory" autocapitalize="on" >
+                    </div>
+                    <div class="form-group">
+                        <input autocorrect="off"  formControlName="city" placeholder="City*" type="text" class="form-control  mandatory" autocapitalize="on" >
+                    </div>
+                    <div class="form-group">
+                        <input autocorrect="off"  formControlName="County"  placeholder="County (optional)" type="text" class="form-control  mandatory" autocapitalize="on" >
+                    </div>
+                    <div class="form-group">
+                        <input autocorrect="off"  formControlName="postalCode" placeholder="PostCode*" type="text" class="form-control  mandatory" autocapitalize="on" >
+                    </div>
+                </ng-template>
+                <div class="form-group shippingButtons" [ngClass]="{'f-space-between': currentUser}" >
+                    <button  class="btn btn-default" (click)="onResetForm()" *ngIf="currentUser">CANCEL</button>
+                    <div  class="pull-right" *ngIf="!manualAdress"   >
+                         <button  class="btn btn-default " *ngIf="updateAddress;else guestUserBtn"  [disabled]="!shipmentForm.valid"  >
+                            UPDATE ADDRESS
+                          </button>
+                          <ng-template #guestUserBtn>
+                              <button  class="btn btn-default "  [disabled]="!shipmentForm.valid"  >
+                                  {{(currentUser)? 'SAVE ADDRESS':'CONFIRM DETAILS'}}
+                                </button>
+                          </ng-template>
+                    </div>
+                </div>
+          </fieldset>
+        </form>
+      </section>
+    </div>
+    <ng-template #loader>
+      <div class="loading-backdrop"  >
+        <div class="b2c-title">
+          Molton Brown
+      </div>
+
+    </div>
+    </ng-template>
+</div>

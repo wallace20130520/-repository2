@@ -1,0 +1,82 @@
+<footer>
+    <div class="sociallinks" >
+        <a class="sharingIcons facebook">Share on facebook</a>
+        <a class="sharingIcons instagram">Share on instagram</a>
+        <a class="sharingIcons twitter">Share on twitter</a>
+        <a class="sharingIcons pinterest">Share on Pinterest</a>
+        <a class="sharingIcons sharingIcon youtube">Share on youtube</a>
+    </div>
+    <h3>
+        <a href="#"> JOIN THE GUEST LIST<span class="ft-arrow-right"></span>
+        </a></h3>
+    <div class="footerTop nav-footer-tabs-hide">
+      <div class="container">
+        <div class="row no-margin no-padding" [ngClass]="{'mb-footer-toggle-show':toggleFooter,'mb-footer-toggle-hide':!toggleFooter}">
+            <div class="largeCTAImages largeCTABlock">
+                <ul style="padding: 0px;margin: 0px;list-style: none">
+                    <li>
+                        <div class="promotionalContent">
+                            <a>
+                                <img src="https://www.moltonbrown.co.uk/images/4BottleBox.png" alt="Complimentary Gifts &amp; Products">
+                            </a>
+                        </div>
+                        <p>
+                            <a>Complimentary Gifts &amp; Products</a>
+                        </p>
+                    </li>
+                    <li>
+                        <div class="promotionalContent">
+                            <a>
+                                <img src="https://www.moltonbrown.co.uk/images/DeliveryVan.png" alt="FREE UK DELIVERY OVER £49">
+                            </a>
+                        </div>
+                        <p>
+                            <a>FREE UK DELIVERY OVER £49</a>
+                        </p>
+                    </li>
+                    <li>
+                        <div class="promotionalContent">
+                            <a>
+                                <img src="https://www.moltonbrown.co.uk/images/Click&amp;Collect.png" alt="Complimentary Click &amp; Collect">
+                            </a>
+                        </div>
+                        <p>
+                            <a>Complimentary Click &amp; Collect</a>
+                        </p>
+                    </li>
+
+                    <li>
+                        <div class="promotionalContent">
+                            <a>
+                                <img src="https://www.moltonbrown.co.uk/images/DropPinIcon.png" alt="Shop in your local store">
+                            </a>
+                        </div>
+                        <p>
+                            <a>Shop in your local store</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        <ul class="nav footer-bottom justify-content-center">
+            <li class="nav-item" *ngFor="let data of mbPoliciesData;let k =index;" (click)="onfooterToggle(data,k)">
+                <a class="nav-link" [ngClass]="{'active-cls':data.active}" >{{data.name}}</a>
+            </li>
+        </ul>
+        <div [ngClass]="{'mb-footer-toggle-show':!toggleFooter,'mb-footer-toggle-hide':toggleFooter}">
+            <div class="container">
+                <div class="ft-close">
+                    <span class="sub-ft-close" (click)="onCancelToggleFooter()" style="float:right;"></span>
+             
+            </div>
+            <ul class="nav  justify-content-center footer-bottom-nav">
+                <li class="nav-item" *ngFor="let data of mbfooterData;let k =index;">
+                    <a class="nav-link" (click)="onFooterCntntClick(data)">{{data.name}}</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    </div>
+</footer>

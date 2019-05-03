@@ -1,0 +1,175 @@
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmitForm($event)" class="registration_form col-md-12">
+  <div class="col-xs-12 row">
+    <div class="col-sm-12 col-md-4 ">
+      <label class="register_label " for="reg_title">Title<span class="redstar">*</span></label>
+    </div>
+    <div class="col-sm-12 col-md-8 text-left ">
+      <span class="login_fields">
+        <select class="mandatory" formControlName="titleCode">
+          <option value="">Please Select</option>
+          <option value="miss">Miss</option>
+          <option value="mrs">Mrs</option>
+          <option value="ms">Ms</option>
+          <option value="mr">Mr</option>
+          <option value="dr">Dr</option>
+        </select>
+      </span>
+    </div>
+  </div>
+  <div class="col-xs-12 row">
+    <div class="col-sm-12 col-md-4 ">
+      <label class="register_label " for="reg_firstname">First Name<span class="redstar">*</span></label>
+    </div>
+    <div class="col-sm-12 col-md-8 text-left ">
+      <span class="login_fields">
+        <input maxlength="255" formControlName="firstName" type="text" value="" class="mandatory">
+      </span>
+    </div>
+  </div>
+  <div class="col-xs-12 row">
+    <div class="col-sm-12 col-md-4 ">
+      <label class="register_label " for="reg_lastname">Last Name<span class="redstar">*</span></label>
+    </div>
+    <div class="col-sm-12 col-md-8 text-left ">
+      <span class="login_fields">
+        <input maxlength="255" type="text" formControlName="lastName" class="mandatory">
+      </span>
+    </div>
+  </div>
+  <div class="col-xs-12 row">
+    <div class="col-sm-12 col-md-4 ">
+      <label class="register_label " for="reg_email">Email<span class="redstar">*</span></label>
+    </div>
+    <div class="col-sm-12 col-md-8 text-left ">
+      <span class="login_fields">
+        <input maxlength="255" type="email" disabled formControlName="uid" autocomplete="off" class="mandatory">
+      </span>
+      <div *ngIf="!registrationForm.controls['uid'].valid &&  registrationForm.get('uid').touched" class="error-msg">
+        <div class="err-text" [hidden]="!registrationForm.controls['uid'].errors.required">Email is required.</div>
+        <div class="err-text" [hidden]="!registrationForm.controls['uid'].errors.patternInvalid">Email is invalid.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-xs-12 row">
+    <div class="col-sm-12 col-md-4 ">
+      <label class="register_label " for="reg_country">Country<span class="redstar">*</span></label>
+    </div>
+    <div class="col-sm-12 col-md-8 text-left ">
+      <span class="login_fields">
+        <select class="mandatory" formControlName="country">
+          <option value="">Please Select</option>
+          <option *ngFor="let data of countries;let k=index;" [ngValue]="data">{{data.name}}</option>
+        </select>
+      </span>
+    </div>
+  </div>
+  <div class="col-xs-12 row">
+    <div class="col-sm-12 col-md-4 ">
+      <label class="register_label " for="reg_postcode">Postcode/Zipcode<span class="redstar">*</span></label>
+    </div>
+    <div class="col-sm-12 col-md-8 text-left ">
+      <span class="login_fields">
+        <input #search maxlength="12" appGooglePlaces  (onSelect)="setAddress($event)" type="text" value="" (keydown)="onSearchKeyUp($event)" class="mandatory form-control " formControlName="postalCode"
+          [ngClass]="{'has-error  not-valid': !postCodeStatus}">
+      </span>
+      <span class="ml-8">
+        <button class="buttonStyle mt-1" (click)="onLookupAddress($event)"> Lookup Address</button>
+
+      </span>
+    </div>
+
+  </div>
+  <div class="col-xs-12 row " *ngIf="postalAddresses">
+    <div class="col-sm-12 col-md-4  ">
+      <label class="register_label ">Select Address<span class="redstar">*</span></label>
+    </div>
+
+    <div class="col-sm-12 col-md-8 text-left ">
+      <span class="login_fields">
+        <select class="mandatory form-control" formControlName="address" (change)="onSelectPlace($event.target.value)">
+          <option>Select Address</option>
+          <option *ngFor="let data of postalAddresses;let k=index;" [value]="data.Id">{{data.StreetAddress}},
+            &nbsp;{{data.Place}}</option>
+        </select>
+      </span>
+    </div>
+
+  </div>
+  <div class="col-xs-12 row">
+    <div class="col-sm-12 col-md-4 ">
+      <label class="register_label " for="reg_address">Address<span class="redstar">*</span></label>
+    </div>
+    <div class="col-sm-12 col-md-8 text-left ">
+      <span class="login_fields">
+        <input maxlength="255" type="text" value="" class="mandatory" formControlName="line1">
+        <input maxlength="255" type="text" value="" class="mandatory" formControlName="line2" style="margin-top:15px;">
+      </span>
+    </div>
+  </div>
+  <div class="col-xs-12 row">
+    <div class="col-sm-12 col-md-4 ">
+      <label class="register_label " for="reg_town">Town/City<span class="redstar">*</span></label>
+    </div>
+    <div class="col-sm-12 col-md-8 text-left ">
+      <span class="login_fields">
+        <input maxlength="255" type="text" value="" formControlName="town" class="mandatory">
+      </span>
+    </div>
+  </div>
+  <div class="col-xs-12 row">
+    <div class="col-sm-12 col-md-4 ">
+      <label class="register_label " for="reg_town">Country/State/Region</label>
+    </div>
+    <div class="col-sm-12 col-md-8 text-left ">
+      <span class="login_fields">
+        <input maxlength="255" type="text" value="" formControlName="County">
+      </span>
+    </div>
+  </div>
+  <div class="col-xs-12 row">
+    <div class="col-sm-12 col-md-4 ">
+      <label class="register_label " for="reg_town">Phone Number<span class="redstar">*</span></label>
+    </div>
+    <div class="col-sm-12 col-md-8 text-left ">
+      <span class="login_fields">
+        <input maxlength="255" type="text" formControlName="phone" value="" class="mandatory">
+      </span>
+    </div>
+  </div>
+  <div class="col-xs-12 row">
+    <div class="col-sm-12 col-md-4 ">
+      <label class="register_label " for="reg_title">Age Group</label>
+    </div>
+    <div class="col-sm-12 col-md-8 text-left ">
+      <span class="login_fields">
+        <select class="mandatory">
+          <option value="">Please Select</option>
+          <option value="16-18">16-18</option>
+          <option value="19-25">19-25</option>
+          <option value="26-45">26-45</option>
+          <option value="46-60">46-60</option>
+          <option value="Over 60">Over 60</option>
+        </select>
+      </span>
+    </div>
+  </div>
+  <div class="col-xs-12 row">
+    <p class="col-sm-12 col-md-4 text-right">
+      <label class="register_label "> Gender</label>
+    </p>
+    <p class="col-sm-12 col-md-8 text-left genderAlign">
+      <input id="gender_female" type="radio" value="female" class="pull-left">
+      <span class="pull-left gender">Female</span>
+      <input id="gender_male" type="radio" value="male" class="pull-left">
+      <span class="pull-left gender">Male</span>
+    </p>
+  </div>
+  <div class="col-sm-12 text-right" style="padding: 15px;">
+    <button class="buttonStyle" [disabled]="!registrationForm.valid">Submit</button>
+  </div>
+</form>
+<div class="text-left update_btn" style="padding: 15px;">
+  <button class="buttonStyle" (click)="onUpdate()">Cancel</button>
+</div>

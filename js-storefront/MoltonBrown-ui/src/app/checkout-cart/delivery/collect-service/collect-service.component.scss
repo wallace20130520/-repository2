@@ -1,0 +1,76 @@
+@import "../../../variable.scss";
+.dt-delivery-details .delivery-method{
+    width:70% !important;
+    text-transform: lowercase;
+}
+.dt-delivery-details{
+    .user-delivery-details {
+        background-color: #c2c2c2;
+        padding: 0 10px 10px;
+        color: $mb-black;
+    }
+    .user-delivery-method{
+        border-bottom: 1px solid $mb-black;
+        padding: 10px 0;
+    }
+    .edit-details{
+        float:right;
+        .edit-delivery-details{
+            color:$mb-black !important;
+            text-decoration: underline !important;
+            font-size:14px;
+            cursor: pointer;
+            &:hover{
+                text-decoration:underline;
+            }
+        }
+    }
+    .delivery-method{
+        display:inline-block;
+        width:130px;
+    }
+}
+.icon-click-collect-dt {
+    height: 28px;
+    width: 10%;
+    background: url('../../../../assets/imgs/delivery-options-icon.png') no-repeat -2px -94px;
+    float: left;
+}
+.icon-bg-block{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.delivery-method-content{
+    width:100%;
+}
+.icon-valid-white {
+    background: url('../../../../assets/imgs/tick-icon-white.png') no-repeat center top;
+    height: 24px;
+    width: 24px;
+    margin-left: 10px;
+}
+.icon-location-gfs {
+    background: url('../../../../assets/imgs/delivery-options-icon.png') no-repeat;
+    float: left;
+    height: 28px;
+    width: 10%;
+    background-size: 125%;
+}
+.cs-communication-block{
+    background-color: #f6f6f6;
+    padding: 15px;
+    margin: 0 -9px -10px;
+    h4{
+        font-size: 18px;
+    }
+}
+.help-info {
+    color: #949292;
+}
+.contextual-help{
+  top:6px;
+}    
+
+
+

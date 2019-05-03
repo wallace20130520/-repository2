@@ -1,0 +1,20 @@
+<div class="my-account">
+       <h2>Favourites</h2>
+       <p>
+        Save time every time you place an order.
+        Create and manage multiple addresses here, you can edit your address
+        information at any time.
+       </p>
+       <div class="favourite">
+              <h3 class="customer">My Favourites</h3>
+              <div class="text-center col-sm-4 pull-left" *ngFor="let product of favouriteList">
+                     <a>
+                     <img src="https://i1.adis.ws/s/moltonbrown/{{product.code}}_uk_set?$mediumImg$&amp;fmt=webp" crossorigin="anonymous"    alt="Molton Brown UK ">
+                     </a>
+                     <p class="imgText"><a [innerHtml]="product.productDisplayName"></a></p>
+                     <p class="pricePoint">{{product.price.formattedValue}}</p>
+                     <button class="addToCartBtn" (click)="addToBasket(product)"> Add to Basket <span></span></button>
+                     <a class="removeProduct" (click)="removeFromWhislist(product)">Remove This Product</a>
+               </div>
+       </div> 
+</div>             

@@ -1,0 +1,26 @@
+<section class="checkout-middle-content staticContainer contentOverlay">
+
+  <div class="container">
+      <div class="rowComponents">
+          <aside class="leftColumn hidden-xs account">
+              <h3 class="facet_header">SEARCH BY</h3>
+              <div class="staticHeader medium-faq-list list-group-item browser-info-cntnt" >
+                       <h1  (click)="onCollapseMenu()" class="title">browser information</h1>
+              </div>
+              <ul class="medium-aside-menu" [ngClass]="{'show-menu-block':orgMenu,'hide-menu-block':!orgMenu}">
+                  <li *ngFor="let data of searchByData;let k=index" (click)="onMenuContentClick(data,k)">
+                      <a>{{data.name}}</a>
+                      <ul class="search-menu-sub-cntnt" *ngIf="data.children" [ngClass]="{'show-submenu-block':data.show,'hide-submenu-block':!data.show}" >
+                          <li *ngFor="let subData of data.children;" (click)="onSubMenuContentClick($event,subData)">
+                                <a>{{subData.name}}</a>
+                          </li>
+                        </ul>
+                  </li>
+              </ul>
+            </aside>
+            <div class="rightColumn" id="renderAmpStaticContent" #orgnaisationEl>
+            </div>
+        </div>
+        </div>
+
+    </section>

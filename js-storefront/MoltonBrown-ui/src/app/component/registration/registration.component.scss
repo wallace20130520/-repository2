@@ -1,0 +1,151 @@
+.log_in {
+    font-size: 28px;
+    padding: 3% 0 0 0px;
+    @media screen and(max-width:768px){
+        display: block;
+        overflow: hidden;
+        padding: 15px;
+        margin: 0;
+        font-size: 15px;
+        font-weight: bold;
+        color: #fff;
+        background: #90d2c5;   
+    }
+}
+
+.hrMb{
+    display: none;
+}
+.loginAlign{
+    justify-content: space-between;
+}
+    @media screen and(max-width:768px){
+        .forgotten{
+            margin-bottom: 15px;
+        }
+.loginAlign{
+    flex-direction: column;
+    // padding-left: 10px;
+    }
+    .hrMb{
+        display: block;
+    }
+    .returning_customer-log_in, .new-login{
+        border: none !important;
+margin: 0px !important;
+    }
+    .container{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .requiredFieldText{
+        display: none;
+    }
+    .new_customer-block, .returning_customer-log_in{
+width: 100% !important ;
+min-height: auto !important ;
+padding-left: 0px ;
+    }
+}
+.new_customer-block{
+    .buttonStyle{
+        margin-top:20px;
+    }
+}
+.returning_customer-log_in{
+    margin: 5% 0 7% 0;
+    box-shadow: none;
+    padding: 20px;
+    border: 1px solid #d6d6d6;
+    float: left;
+    min-height: 312px;
+    padding: 15px;
+    width: 462px;
+    h6 {
+        font-size: 13px;
+        font-weight: 900;
+        color: #260e03;
+        margin: 20px 0 18px 0;
+    }
+    .gender {
+         padding: 5px 10px 0 3px; 
+    }
+    
+    
+    ul {
+        padding: 5px 0;
+    }
+    p {
+          padding: 10px 0 5px 0;
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: 700;
+            font-style: normal;
+    font-weight: bold!important;
+    color: #484848!important;
+    }
+    form{
+        .label_text{
+            font-size:16px;
+        }
+        a {
+            text-decoration: underline !important;
+            color: #484848;
+        }
+        input{
+            width: 250px!important;
+            height: 25px!important;
+            padding: 0 5px!important;
+            border: 1px solid #666;
+        }
+    }
+}
+.requiredFieldText {
+    padding: 30px 0 12px 0 !important;
+    font-size:12px !important;
+    font-weight:100;
+}
+.return-login span {
+    color: #ae140d;
+}
+h2 {
+    font-size: 24px;
+}
+.new_customer-block {
+    margin: 5% 0 7% 0;
+    box-shadow: none;
+    width: 462px;
+    min-height: 312px;
+    font-size: 12px;
+    h6{
+     
+    margin: 20px 0 18px 0;
+    }
+}
+.registerAlign{
+    margin:19px 30px 0 0;
+}
+.new-login {
+    border: 1px solid #d6d6d6;
+    float: left;
+    padding: 24px;
+    ul{
+        padding:15px;
+    }
+}
+
+.contextual-help {
+    position: absolute;
+    top: 0px;
+    right: 39%;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1px solid #c2c2c2;
+    background: #FFF url(https://www.moltonbrown.co.uk/images/help-black-icon.svg) no-repeat scroll center center;
+    text-indent: -9999px;
+    background-size: 7px;
+}
+.errr_msg{
+    font-size: 12px;
+}

@@ -1,0 +1,203 @@
+
+
+    <div class="clearfix">
+        <section class="basket-section" *ngIf="cart;else noentryBlock">
+          
+  
+<div class="basket-heading" *ngIf="cart.totalItems !=0; else noentryBlock">
+  
+    <div class="rowComponents">
+       <h1 class="col-md-5"> Your shopping basket</h1>
+        <div class="col-sm-6 col-md-3 centerContinueAlign">
+            <a class="continue-shopping" (click)="onContinueShoppingEvent() " > <span> </span> &nbsp;CONTINUE   SHOPPING</a>
+        </div>
+    <div class="express-check-out">
+    
+            <input  id="chkOut" type="submit" class="pull-right clearfix"   (click)="onSecureCheckout()" value="SECURE CHECKOUT">
+        </div>
+    
+       
+ 
+    </div>
+    
+    <!-- <div class="upsell-message">
+        <p style="line-height: 1;">Spend £10.50 more to get FREE Standard delivery in the UK.</p>
+    </div> -->
+    <div class="order-subtotal"> <span> Subtotal </span>
+		<span id="order_subtotal" *ngIf="cart"> &#163; {{getProductAmount()}}</span>
+        </div>
+<div class="orders-container clearfix" >
+        <div class="order-header">
+                <div>PRODUCT</div>
+                <div>QTY</div>
+                <div>PRICE</div>
+                <div>TOTAL</div>
+            </div>
+          
+
+<div class="orderProductMobile" *ngFor="let product of cart.entries;let k=index;" [hidden]="product.product.price.value ==0" >
+    <div class="order-product-img">
+        <a (click)="onShowProductDtls(product.product)">
+            <img src="http://i1.adis.ws/s/moltonbrown/{{product.product.code}}_uk_set?$mediumImg$&amp;fmt=webp"  alt="Molton Brown UK " >
+        </a>
+      
+    </div>
+<div class="order-product">
+
+    <div class="order-product-info">
+        <div  class="order-product-info-img"> 
+            <img [src]="getImageUrl(product)" (click)="onShowProductDtls(product.product)"  >
+        </div>
+
+        <div id="dijitDialogUnderlay-lightBox"></div>
+        <span class="order-product-name"> <a (click)="onShowProductDtls(product.product)">{{product.product.productDisplayName}}</a></span>
+        <span class="order-instock" > In Stock</span>
+    </div>
+
+  
+    <div class="quantity-update">
+        <div class="input-group">
+            <span class="minus"><input type="button" class="minus_update" value="-" (click)="onDecreaseCount(product,k)"></span>
+            <span class="quantity">{{product.quantity}}</span>
+            <span class="plus" ><input  type="button"  class="plus_update" value="+" (click)="onAddItem(product,k)"></span>
+        </div> 
+           <div class="input-group2"><span>QTY &nbsp;</span>
+        <select class="select-quantity" (change)="onChangeQuant(product,k)" [value]="product.quantity">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+
+  
+            
+          </select>  
+    </div>
+        <div class="table-splice-item"><a class="remove-item" (click)="onSpliceItem(product,k)">Remove</a></div>
+    </div>
+    <div class="product-price">
+        <span class="clearfix">
+        </span>
+        <span class="clearfix">
+            <span class="new-price"></span>
+            <div class="refPrice OneLinkShow">
+                <span class="product-base-price price-format"> {{product.product.price.formattedValue}}
+                </span>
+            </div>
+
+        </span>
+    </div>
+    <div class="product-total price-format" name="totalPrice">{{product.totalPrice.formattedValue}}</div>
+    &nbsp;
+</div>
+<div style="clear: both;"></div>
+</div> 
+
+</div>
+<div class="basketContainerApplyTotal clearfix">
+    <div class=" mobilePromoCode">
+            <div> <input placeholder="Enter promo code" type="text"> </div>
+        <div > <input  type="submit" class="btn btn-default apply-promo" value="APPLY"></div>
+      
+    </div>
+  <div class=" order-subtotalDesk" *ngIf="cart">
+		<span>Subtotal</span>
+		<span id="order_subtotal" *ngIf="cart" class="price-format">  {{cart.totalPriceWithTax.formattedValue}}</span>
+	</div>
+</div>
+  </div>
+
+
+  
+</section>
+
+<ng-template  #noentryBlock>
+  <section class="basket-section">
+     <div class="empty_basket">          
+        <div class="basket-heading">
+         <h1>Your shopping basket...&nbsp;is empty.</h1>
+         <p class="start-shopping-link">
+           <a (click)="onContinueShoppingEvent() ">START SHOPPING <span></span></a>
+          </p>
+        </div>
+    </div>
+  </section>
+</ng-template>
+
+<div class="rowComponents treat-align justify-content-between">
+    
+<section class="edit-hole-section">
+        <section id="Checkout-Banners" style="font-family:Trebuchet, Trebuchet MS, Arial, Helvetica, sans-serif;">			
+              <img src="https://www.moltonbrown.co.uk/MBPromoImages/CheckoutGraphics/310119-Basket-Promo-Banner_UK_Desktop_Higher.jpg" alt="Complimentary Luxury Travel Set. SHOP NOW">       
+       </section>
+      </section>
+
+    <section class="treat-section ">
+        
+        <div class="pdp-realtedprduct-container" style="margin:0;">
+            <!-- <app-related-product [slides]="slides" [slideConfig]="slideConfig" [cartTitle]='cartTitle'>
+                
+            </app-related-product> -->
+            <div class="tmspslot"  data-k="qa5buoy" data-slid="uk-hybris-prod-feed-basket-page-last-minute-treats" data-p="1" ></div>
+
+           
+            </div>
+</section>
+</div>
+<div class="rowComponents treat-align  justify-content-between ">
+ 
+    <section class="treat-section hideBlock">
+        
+        <div class="pdp-realtedprduct-container" style="margin:0;">
+            <!-- <app-related-product [slides]="slides" [slideConfig]="slideConfig2" [cartTitle]='cartTitle'>
+                
+            </app-related-product> -->
+
+            <div class="tmspslot" data-k="qa5buoy" data-slid="uk-hybris-prod-feed-basket-page-customers-also-bought" data-p="1" ></div>
+
+            </div>
+</section>   
+<section class="delivery-option-block">
+
+<app-delivery-options></app-delivery-options>
+      </section>
+   <!-- <div class="basket-footer-container">
+                <div class="text-uppercase security-label" style="opacity: 1;">SECURITY GUARANTEED</div>
+                <div class="payment-gateway-icons rowComponents" style="opacity: 1;">
+                    <a class="norton-secure" target="new"></a>
+                    <span class="visa-secure" href="#"></span>
+                    <span class="master-card" href="#"></span>
+                    <span class="american-express" href="#"></span>
+                    <span class="vpay-secure" href="#"></span>
+                    <span class="paypal-secure" href="#"></span>
+                    <span class="mb-secure" href="#"></span>
+                </div>
+                </div> -->
+</div>
+
+
+<div class="basket-footer-container" >
+    <div class="text-uppercase security-label" style="opacity: 1;">SECURITY GUARANTEED</div>
+   <div class="rowComponents">
+      
+    <div class="payment-gateway-icons" style="opacity: 1;">
+       <span class="norton-secure " ></span>
+       <span class="visa-secure " ></span>
+       <span class="master-card" ></span>
+       <span class="american-express "></span>
+       <span class="vpay-secure" ></span>
+       <span class="paypal-secure" ></span>
+       <span class="mb-secure" ></span>
+     </div>
+   <div class="express-check-out " *ngIf="cart" >
+      <div class="pull-right" *ngIf="cart.totalItems !=0">
+          <input type="button" value="SECURE CHECKOUT" id="chkOut"  (click)="onSecureCheckout()"  style="opacity: 1;">
+        
+        </div>
+          <!-- <input value="SECURE CHECKOUT"   id="chkOut" (click)="onSecureCheckout()"  style="opacity: 1;"></div> -->
+   </div>   
+   </div>
+ 
+
+
+   </div>
+</div>

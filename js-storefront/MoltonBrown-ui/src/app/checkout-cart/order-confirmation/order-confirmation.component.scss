@@ -1,0 +1,341 @@
+.order-confirmation-main {
+    background: #fff;
+    padding: 24px;
+    .basket-section {
+        background: #fff;
+        padding: 24px;
+        overflow: hidden;
+        &.order-confirmation-section {
+            padding: 0;
+            .panel-heading {
+                 background-color: #464646;
+                border-radius: 0;
+                -webkit-transition: all 0.5s linear;
+                transition: all 0.5s linear;
+                height: 45px;
+                padding: 10px 15px;
+                border-bottom: 1px solid transparent;
+                border-top-right-radius: 3px;
+                border-top-left-radius: 3px;
+                border:1px solid #000;
+                h4 {
+                    font-size: 1.5em;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+.order-confirmation-section {
+    .orders-container {
+        background: #fff;
+        border: 1px solid #c2c2c2 !important;
+        padding: 15px;
+        float: left;
+        width:100%;
+        &.order-confirmation-msg {
+            border: 0px;
+            background: #ffffff url('https://www.moltonbrown.co.uk/images/confirmation-msg-bg.png') right bottom no-repeat;
+            min-height: 238px;
+            margin-top: 0px;
+            width: 100%;
+            div.order-confirmation-msg-detail {
+                padding: 15px 0;
+                a {
+                    color: #000;
+                    text-decoration: underline;
+                }
+            }
+        }
+        .order-confirmation {
+            margin-top: 0px;
+        }
+        .order-product {
+            border-bottom: 1px solid #c2c2c2;
+            padding: 20px 0;
+            width: 100%;
+            float: left;
+        }
+        legend {
+            margin: 0px 0px 15px 0px;
+            font-size: 14px;
+            color: #000;
+            border: none;
+        }
+        .order-header {
+            border-bottom: 1px solid #c2c2c2;
+            padding-bottom: 10px;
+            float: left;
+            width: 100%;
+            display: block;
+            div {
+                text-transform: uppercase;
+                display: inline-block;
+                &:nth-child(1) {
+                    width: 380px;
+                    padding-left: 10px;
+                    float: left;
+                }
+                &:nth-child(2) {
+                    width: 120px;
+                    text-align: center;
+                    margin-right: 60px;
+                    float: left;
+                }
+                &:nth-child(3) {
+                    width: 250px;
+                    float: left;
+                }
+                &:nth-child(4) {
+                    width: 64px;
+                    float: left;
+                }
+            }
+        }
+        .order-product {
+            border-bottom: 1px solid #c2c2c2;
+            padding: 20px 0;
+            width: 100%;
+            float: left;
+            .order-product-info {
+                padding-left: 10px;
+                width: 380px;
+                display: inline-block;
+                float: left;
+                @media screen and (max-width:768px) {
+                    width:100%;
+                }
+            }
+            .quantity-update {
+                width: 120px;
+                text-align: center;
+                margin-right: 60px;
+                display: inline-block;
+                float: left;
+                .input-group {
+                    height: 70px;
+                    width: 100%;
+                top:40px;
+                    position: relative;
+                    display: table;
+                    border-collapse: separate;
+                    @media screen and (max-width:768px){
+                        top:0px;
+                        left: 10px;
+                    }
+                }
+            }
+            .product-price {
+                width: 250px;
+                display: inline-block;
+                float: left;    top: 40px;
+                position: relative;
+                    @media screen and (max-width:768px){
+                        top:0px;
+                left: 10px;
+                    }
+                .new-price {
+                    color: #de0461;
+                }
+            }
+            .product-total {
+                width: 64px;
+                display: inline-block;
+                float: left;
+                text-transform: uppercase;    top: 40px;
+                position: relative;
+                    @media screen and (max-width:768px){
+                        top:0px;
+                left: 10px;
+                    }
+            }
+        }
+    }
+    .order-confirmation-sub-total {
+        width: 415px;
+        margin-top: 15px;
+        padding: 15px;
+        background: #f6f6f6;
+        border: 1px solid #c2c2c2;
+        float: right;
+        .oc-sub-header {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #c2c2c2;
+        }
+        .oc-sub-delivery-info {
+            padding: 15px 0px;
+            .oc-delivery {
+                padding-top: 10px;
+            }
+        }
+        .oc-gst-info {
+            padding: 10px 0;
+            border-top: 1px solid #c2c2c2;
+        }
+        .oc-total {
+            font-weight: 500;
+            font-size: 1.28571em;
+            border-top: 1px solid #c2c2c2;
+            padding-top: 10px;
+        }
+        .include-gst {
+            font-size: 14px;
+        }
+    }
+}
+
+.btn-default {
+    background-color: #464646;
+    color: #fff;
+    &:hover{
+        color:#fff;
+    }
+}
+
+.btn {
+    border: none;
+    width: 180px;
+    height: 48px;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 1.07143em;
+    -webkit-transition: background 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out;
+    position: relative;
+    // width: 100%;
+}
+@media screen and (max-width:768px){
+    .order-confirmation-msg{
+        section{
+            width:47%;
+        }
+    }
+}
+@media screen and (max-width:320px){
+    .order-confirmation-msg{
+        section{
+            width:100%;
+        }
+    }
+}
+@media screen and (max-width: 979px) {
+
+    .order-product-mbl-container {
+        border-bottom: 1px solid #c2c2c2;
+        @media screen and (max-width:768px){
+            display: flex;
+        }
+    }
+    .order-confirmation-section {
+        .orders-container {
+            .order-header {
+                display: none;
+            }
+            .order-prd-image-show {
+                display: none;
+            }
+            .order-product {
+                font-size: 18px;
+                width: 75%;
+                border-bottom: 0;
+                .quantity-update {
+                    width: inherit;
+                    text-align: left;
+                    margin-right: 45px;
+                    display: block;
+                    float: left;
+                }
+                .product-price {
+                    width: inherit;
+                }
+                .product-total {
+                    width: 98%;
+                }
+            }
+        }
+        .order-confirmation-sub-total {
+            width: 100%;
+            font-size: 18px;
+        }
+    }
+
+}
+.guest-user-section{
+    display: block;
+    width:55%;
+}
+.guest-user-block{
+    padding-top:15px;
+    border-top:1px solid #000;
+    h4{
+       font-size:18px;
+       color:#000;
+    }
+    legend{
+       font-size:14px;
+       color:#464646;
+    }
+}
+
+.form-group{
+    position: relative;
+}
+
+.form-control {
+    display: block;
+    width: 335px;
+    height: 48px;
+    border: 1px solid #c2c2c2;
+    border-radius: 0;
+    @media(max-width:768px){
+        width:100% ;
+    }
+}
+.help-block {
+    display: block;
+    margin: 5px 0 10px 0;
+    color: #464646;
+    font-size: 14px;
+    a{
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+.order-product-img{
+    display:none;
+    @media (max-width:768px) {
+        display:block;
+    }
+}
+.order-confrm-btn{
+    flex: 0 0 25%;
+    max-width: 25%;
+    @media(max-width:768px){
+        flex: 0 0 33%;
+        max-width: 33%;
+    }
+    @media(max-width:480px){
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+@media (max-width: 768px){
+   
+.contextual-help {
+    right: -7px;
+} .contextual-help {
+    position: absolute;
+    top: 7px;
+    right: 35%;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid #c2c2c2;
+    background: #FFF url(https://www.moltonbrown.co.uk/images/help-black-icon.svg) no-repeat scroll center center;
+    text-indent: -9999px;
+    background-size: 7px;
+}
+}
+
+

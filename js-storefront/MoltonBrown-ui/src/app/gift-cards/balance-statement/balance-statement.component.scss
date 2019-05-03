@@ -1,0 +1,37 @@
+
+.balanceDetail{
+    padding: 20px 10px;
+    float: left;
+    margin: 15px 0;
+    width: 100%;
+    h2{
+        font-size: 18px;
+        margin-bottom: 0;
+        padding: 0 0 14px 0;
+        color: #000;
+    }
+    .sheet{
+        font-size:13px; 
+        padding: 15px;
+        border: 1px solid #ccc;
+    
+        .sheetHeader{
+            display: flex;
+            font-weight: 700;
+    div{
+        padding: 0 15px 7px;
+    }
+        }
+        .sheetBody{
+    
+            display: flex; 
+               div{
+        padding: 0 15px 7px;
+    }
+        }
+    .sheet-cell{
+        width:33.33%;
+    }
+
+    }
+}
