@@ -1,0 +1,1154 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./app/variable.scss";
+.container{
+    width:964px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-rendering: optimizeLegibility;
+    @media(max-width: 768px){
+     width:100%;
+    }
+}
+.pac-container:after {
+    /* Disclaimer: not needed to show 'powered by Google' if also a Google Map is shown */
+
+    background-image: none !important;
+    height: 0px;
+}
+.mb-content{
+    overflow: hidden;
+    min-height: 100%;
+    flex: 1 0 auto;
+    -webkit-box-flex: 1 0 auto;
+}
+.loading-backdrop{
+    display:block;
+    height:85vh;
+    background-color: #d9d9d9;
+    position: relative;
+    .b2c-title{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 34pt;
+        color:#0077bc;
+        -webkit-animation: color-change 3s infinite;
+        -moz-animation: color-change 3s infinite;
+        -o-animation: color-change 3s infinite;
+        -ms-animation: color-change 3s infinite;
+        animation: color-change 3s infinite;
+    }
+}
+
+ngx-slick-carousel{
+    .slick-arrow{
+        z-index: 666;
+    }
+    }
+@-webkit-keyframes color-change {
+    0% { color: #000000; }
+    50% { color: #727272; }
+    100% { color: #e6e6e6; }
+}
+@-moz-keyframes color-change {
+    0% { color: #000000; }
+    50% { color: #727272; }
+    100% { color: #e6e6e6; }
+}
+@-ms-keyframes color-change {
+    0% { color: #000000; }
+    50% { color: #727272; }
+    100% { color: #e6e6e6; }
+}
+@-o-keyframes color-change {
+    0% { color: #000000; }
+    50% { color: #727272; }
+    100% { color: #e6e6e6; }
+}
+@keyframes color-change {
+    0% { color: #000000; }
+    50% { color: #727272; }
+    100% { color: #e6e6e6; }
+}
+
+.pricePoint:first-letter{
+        margin-right:5px;
+    
+}
+a,input{
+    outline: none;
+}
+.checkbox input[type=checkbox], .checkbox input[type=radio]{
+    height:45px;
+    top:0;
+}
+.radio input[type="radio"], .form-inline .radio input[type="radio"] {
+    opacity: 0; 
+    position: absolute;
+    display: block;
+    z-index: 999;
+    width:100%;
+    height: 24px;
+}
+.bannerDescription{
+a{
+    color:#000;
+    text-decoration: underline;
+}}
+input,
+button,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+span{
+    font-size:12px;
+}
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+p{
+    overflow: hidden;
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+#chkOut {
+    //margin: 0 0 5px 30px;
+    background: #ff9146 url('https://www.moltonbrown.co.uk/images/padlock-white.png') no-repeat 10px 12px;
+    font-size: 1.14286em;
+    text-transform: uppercase;
+    border: 0;
+    background-size: 20px;
+    color: #fff;
+    padding: 12px 18px 12px 40px;
+    transition: background .3s ease-in-out;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0;
+    -webkit-appearance: button;
+    cursor: pointer;width:100%;text-align: center;
+}
+.rowComponents{
+    display: flex;
+    flex-wrap: wrap;
+}
+// scrollbar
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+.page-link{
+border:0px !important;
+// color: #999 !important;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+.rowComponents{
+    display: flex;
+    flex-wrap: wrap;
+ }
+ .redstar{
+    color: #ae140d;
+    padding-right: 5px;
+    font-weight: bold;font-size: 15px;
+ }
+ .page-link{
+ border:0px !important;
+ color: #999 !important;
+ }
+ input[type="text"].form-control,
+input[type="tel"].form-control {
+    width: 65%;
+    display: block;
+    height: 48px;
+    border: 1px solid #c2c2c2;
+    border-radius: 0;
+    margin: 5px 0;
+    &.not-valid {
+        background-image: url('https://www.moltonbrown.co.uk/images/exclamation-symbol.png');
+        background-position: 80% 11px;
+        border: 1px solid #b63432;
+        background-repeat: no-repeat;
+    }
+    &.valid {
+        background-image: url('https://www.moltonbrown.co.uk/images/tick-symbol.png');
+        background-position: 90% 13px;
+        background-repeat: no-repeat;
+    }
+}
+.h4, h4 {
+    font-size: 1.5rem;
+}
+.btn {
+    border-radius: 0!important;
+    width: 165px;
+    height: 48px;
+    text-transform: uppercase;
+    font-size: 1em;
+    -webkit-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
+    position: relative;
+    line-height: 1!important;
+}
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.pull-right {
+    float: right;
+}
+.pull-right {
+    float: right!important;
+}
+.pull-left {
+    float: left!important;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.checkbox {
+    height: 32px;
+    padding-top: 8px;
+}
+
+.radio,
+.checkbox {
+    position: relative;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.checkbox {
+    input[type=checkbox],
+    input[type=radio] {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        z-index: 555;
+        padding: 24px;
+        width: 51%;
+        opacity: 0;
+    }
+    label {
+        padding-left: 38px;
+        position: relative;font-size:14px; color:#464646;
+        &:before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            left: 0;
+            top: -8px;
+            border: 1px solid #a1a1a1;
+            border-radius: 0;
+            background-color: #ccc;
+            -webkit-transition: border .15s ease-in-out;
+            transition: border .15s ease-in-out;
+        }
+        &:after {
+            display: inline-block;
+            position: absolute;
+            content: "";
+            width: 24px;
+            height: 24px;
+            left: 4px;
+            top: -4px;
+            border-radius: 0;
+            background: url('https://www.moltonbrown.co.uk/images/sample-tick.png') 0 -2px no-repeat;
+            -webkit-transform: scale(0, 0);
+            -ms-transform: scale(0, 0);
+            transform: scale(0, 0);
+            -webkit-transition: -webkit-transform .1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+            transition: transform .1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+        }
+    }
+    input[type="checkbox"] {
+        &:checked {
+            ~ {
+                label::after {
+                    -webkit-transform: scale(1, 1);
+                    -ms-transform: scale(1, 1);
+                    transform: scale(1, 1);
+                }
+            }
+        }
+    }
+}
+app-categorylanding-page{
+    ~{
+        app-footer{
+            footer{
+                margin-top: 50px;
+            }
+        }
+    }
+  .container{
+      padding:0 !important;
+  }
+
+  .plp-view_container .plp-container-grid .plp-products-container .plpPage .mb-child .wrap .wrap-content div {
+     .plp-prdct-name{
+      width:100% !important;
+
+  } 
+  ngx-stars .stars-line .fa{
+          font-size: 18px !important;
+
+  }
+  div{
+      b{
+          
+      font-size: 14px !important;
+      line-height: 16px !important;
+      }
+  }
+  }
+}
+.treat-section > .pdp-realtedprduct-container > app-related-product >.item{
+
+    h4{
+    text-align:center;
+    font-size: 22px ;
+    padding: 15px 0px;font-weight: 400;line-height: 24px;color: #000;
+} 
+.slick-initialized .slick-next{
+    right: -1px !important;   
+
+}
+.slick-initialized .slick-prev {
+    left: 0px !important;
+}
+ngx-slick-carousel .slick-list .slick-track .slick-slide{
+     margin-left: 21px !important;
+    margin-right: 25px !important;
+}
+}
+// .treat-section > .pdp-realtedprduct-container > app-related-product >.item .thumbnails
+ ngx-slick-carousel .slick-slide{
+    //width:189px !important; 
+    margin-left: 12px;
+    margin-right: 20px;
+    img{
+        width:100px !important;margin:auto;
+        @media screen and (max-width:768px) {
+            width:160px !important;
+            height:160px !important;
+              }
+    }
+}   
+
+.slick-prev{
+    left: 3px !important;
+    &::before{
+        
+            font-family: "slick";
+            font-size: 0px !important;
+            line-height: 1;
+            color: white;
+            opacity: 0.75;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            width: 0;
+            height: 0;
+            border-top: 12px solid transparent !important;
+            border-bottom: 12px solid transparent !important;
+            border-right: 12px solid #c8c8c8 !important;
+        }
+    }
+    .slick-next{
+        right: 3px !important;
+        &::before{
+            
+                font-family: "slick";
+                font-size: 0px !important;
+                line-height: 1;
+                color: white;
+                opacity: 0.75;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                width: 0;
+                height: 0;
+                border-top: 12px solid transparent !important;
+                border-bottom: 12px solid transparent !important;
+                border-left: 12px solid #c8c8c8 !important;
+            }
+        }
+
+        app-basketpage .clearfix .treat-align {
+            .treat-section{
+                margin-top:15px !important;
+   width: 474px !important;        
+        @media screen and (max-width:768px){
+            width:100% !important;
+            margin:0 24px;
+        }
+                .pdp-realtedprduct-container app-related-product div h4{
+                    font-size: 1.57143em;
+                    text-transform: uppercase;padding: 15px 0px;
+                    text-align: center;
+                }
+                app-related-product{
+                    padding: 10px;
+                }
+            }
+        }
+         
+
+        .payment-gateway-icons {
+           display: flex;
+           justify-content: flex-start;
+           @media screen and (max-width:320px){
+            padding: 0px !important
+        }
+            span.norton-secure {
+                background: url('https://www.moltonbrown.co.uk/images/digicert_header.png') 0 0 no-repeat;
+                width: 45px;
+                height: 40px;
+                background-size: contain;
+                background-position: 0 6px;
+                margin: 4px 2px 0 0 !important;
+                @media screen and (max-width:320px){
+                    margin-right: 0px !important
+                }
+            }
+            span {
+                background: url('https://www.moltonbrown.co.uk/images/sprite-credit-cards.png') no-repeat;
+                height: 40px;width:40px;
+                margin-right: 2px;
+                @media screen and (max-width:320px){
+                    margin-right: 0px !important
+                }
+                &.visa-secure {
+                    background-position: 0 10px;width: 45px;
+                }
+                &.master-card {
+                    background-position: -100px 10px;width: 46px;
+                }
+                &.american-express {
+                    background-position: -150px 10px;width: 47px;
+                }
+                &.vpay-secure {
+                    background-position: -200px 10px;width: 32px;
+                   
+                }
+                &.paypal-secure {
+                    background-position: -233px 10px;width: 49px;
+                }
+                &.mb-secure {
+                    background-position: -283px 10px;width: 50px;
+                }
+            }
+        }
+        app-product-samples .clearfix {
+            .basket-footer-container .order-subtotal{
+margin-bottom: 10px;font-size: 14px;height: 47px;
+            }
+          .basket-section{
+           min-height:758px;
+        }  
+        }
+        .star-3:before{content:"\2605\2605\2605\2606\2606"; font-size: 20px;}
+
+       .orders-container app-related-product .item h4{font-size: 1.2857142857em;
+        color: #000;
+        border: 0;
+        margin: 0 0 12px 0;}
+
+        @media screen and(max-width:768px){
+            .slick-prev, .slick-next{
+                top:19% !important;
+                @media screen and(max-width:425px) {
+                    top:15% !important;
+                }
+            }
+            app-basketpage .clearfix .hideBlock{
+                display: none;
+            }
+            .treat-align .delivery-option-block {width:100%;padding:0px 24px;
+                app-delivery-options .deliveryOption{
+                width:100% !important;height: auto;
+            }
+        }
+            ngx-slick-carousel .slick-slide{
+                width:674px !important;
+                @media screen and(max-width:425px){
+                width:355px !important;
+               
+            }
+                  
+                             .product-info{
+                   .product-title{
+                    min-height: 52px !important;
+                    margin-bottom: 15px !important;font-size: 1em !important;     color: #464646;
+                    width: 100% !important;
+                } 
+                .product-price{
+                    font-size: 1em !important;     color: #464646;
+                }
+                .addToBasket
+                {
+                    font-size: 1.0714285714em !important;
+                    transition: background .3s ease-in-out;
+                width: 160px !important;
+                height: 36px !important;
+                } }
+
+            }  
+                        .payment-gateway-icons{
+                            justify-content: center;
+                        }
+                        .security-label{
+                            text-align: center;
+                        }
+        }
+        @media screen and(max-width:425px){
+            ngx-slick-carousel .slick-slide{
+               
+            }
+        }
+        app-checkoutpage ol{
+            justify-content: space-between !important;
+        }
+        @media screen and (min-width: 320px) and (max-width: 374px){
+            ngx-slick-carousel .slick-slide{
+                width:238px !important;   
+            }
+            
+        }
+            @media screen and (max-width: 424px) and (min-width: 375px){          
+            ngx-slick-carousel .slick-slide {
+                width: 305px !important;
+            }                 
+            }       
+             
+         .staticHeader .mb_contentblock_landing
+         span{
+            font-size: 13px;
+            a:link{
+             color: #666 ;
+        }
+        b{
+            font-weight:bold ;
+        }
+        }
+          p {
+            color: #260e03;
+            // padding-top:20px !important;
+            line-height: 19px;
+            font-size: 13px ; 
+            a:link{
+                color: #666 ;
+           }         
+            span{
+                font-size: 13px;
+                a:link{
+                 color: #666 ;
+            }
+            b{
+                font-weight:bold ;
+            }
+            }
+        }
+    
+        .radio input[type="radio"],
+        .form-inline .radio input[type="radio"] {
+            opacity: 0;
+            position: absolute;
+        }
+        .radio {
+            label {
+                min-height: 20px;
+                margin-bottom: 0;
+                font-weight: normal;
+                cursor: pointer;
+                padding-left: 28px;
+                position: relative;
+                font-size: 14px;
+                line-height: 1.42857;
+                &:before {
+                    content: "";
+                    display: inline-block;
+                    position: absolute;
+                    width: 22px;
+                    height: 22px;
+                    left: 0;
+                    border: 1px solid #727272;
+                    border-radius: 50%;
+                    background-color: #727272;
+                    -webkit-transition: border .15s ease-in-out;
+                    transition: border .15s ease-in-out;
+                    background-color:#e1e1e1;
+                }
+            }
+            input[type="radio"] {
+                &:checked {
+                    ~ {
+                        label {
+                            &:before {
+                                border: 1px solid #727272;
+                                box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
+                            }
+                             &:after {
+                    position: absolute;
+                    content: "";
+                    width: 14px;
+                    height: 14px;
+                    left: 4px;
+                    top: 4px;
+                    border-radius: 50%;
+                    background-color: $mb-radio-bg;
+                    transform: scale(1,1);
+                    -webkit-transition: -webkit-transform .1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+                    transition: transform .1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+                }
+                &.radio-existingGuest{
+                    &:after {
+                        top:3px;
+                    }
+                }
+                        }
+                    }
+                }
+            }
+        }
+            
+          
+        .shopping-btn{
+            background: #ff9146 url('./assets/imgs/padlock-white.png') no-repeat 17px 9px;
+            font-size: 16px;
+            text-transform: uppercase;
+            border: 0;
+            background-size: 20px;
+            padding: 13px 37px 13px 45px;
+            -webkit-transition: background .3s ease-in-out;
+            -o-transition: background .3s ease-in-out;
+            transition: background .3s ease-in-out;
+            border-radius: 0;
+            color: #fff;
+            margin: 0 5px 5px 30px;
+        }
+// app-category-detail-page .pdp-container app-productview .product_detail .pdp-productDtls-container{
+// width:340px;
+// margin-left:24px;
+// }
+ngx-stars{
+    position: relative;
+    z-index: 111;
+}
+/* --- start--fresh relevance--*/
+
+#uk-hybris-prod-feed-basket-page-last-minute-treats-fr_carousel.slick-initialized{
+    .slick-track{
+        width:1513px !important;
+    }
+ .slick-slide{
+     width: 190px !important; margin:0 13px;
+@media screen and (max-width:768px){
+    
+    // width: 368px !important;
+    margin: 27px 13px;
+}
+
+     .product_image{
+        width: 100px;
+        margin: auto;
+     }
+
+ }
+
+}
+.pdp-realtedprduct-container {
+    .FR-feed-heading{
+        margin-top:20px;
+
+    }
+}
+
+#uk-hybris-prod-feed-product-page-you-may-also-like-fr_carousel.slick-initialized, #uk-hybris-prod-feed-product-page-works-well-with-fr_carousel.slick-initialized {
+
+    .slick-slide{
+        width:128px !important;
+        height:200px !important;
+        margin:0px 12px 0px 12px ;
+        .product_name{
+            font-size: 11px !important;
+        }
+        &:nth-child(4) {
+             display:none;
+        }
+        &:nth-child(5) {
+             display:none;
+        }
+   }    
+   }
+
+   .FR-feed-heading{
+    padding-top: 10px !important;
+        a {
+    position: relative;
+    padding: 10px !important;
+    border-bottom: solid 1px #fff;
+    font-size: 22px; 
+    font-weight: 500; color:#000;
+}
+   }
+   .smartContent.twoColumn{
+       justify-content: space-between;
+   }
+@media screen and(max-width:768px){
+
+    #uk-hybris-prod-feed-product-page-you-may-also-like-fr_carousel.slick-initialized, #uk-hybris-prod-feed-product-page-works-well-with-fr_carousel.slick-initialized {
+
+        .slick-slide{
+            margin:0px 125px !important ;
+            .product_name{
+                font-size: 12px !important;
+            }
+            &:nth-child(3) {
+                 display:none !important;
+            }
+         
+       }    
+       }
+    .smartContent.twoColumn{
+        justify-content: space-around !important;
+
+    }
+
+.item{
+    width:100% !important;
+    border-top:solid 1px #cecece !important;
+    border-bottom: solid 1px #cecece !important;
+    border-left:none !important;
+    border-right:none !important;max-height: 255px !important;
+}
+#uk-hybris-prod-feed-product-page-you-may-also-like-fr_carousel .slick-prev,#uk-hybris-prod-feed-product-page-you-may-also-like-fr_carousel .slick-next{
+    display:none !important; 
+}
+}
+/* --- end--fresh relevance--*/
+
+
+    
+    .pos-relative{
+        position: relative;
+    }
+    .contextual-help {
+        position: absolute;
+        top: 2px;
+        right:35%;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        border: 1px solid #c2c2c2;
+        background: #FFF url('https://www.moltonbrown.co.uk/images/help-black-icon.svg') no-repeat scroll center center;
+        text-indent: -9999px;
+        background-size: 7px;
+        @media(max-width:768px){
+            right:-15px;
+        }
+    }
+    :host {display: block;}
+
+    
+.backdrop {
+    background-color: #d9d9d9;
+    position: fixed;
+    top: 32.5px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 555;
+    width: 100%;
+    height: 3030px;
+    margin: 0 auto;
+    display: none;
+}
+.overlay-bg-show{
+    display:block;
+}
+.overlay-bg-hide{
+    display:none;
+}
+.custom-dropdown{
+    select{
+     height:48px;
+     min-width: 240px;    padding: 10px;
+     font-size: 14px;margin-bottom: 10px;
+     @media screen and(max-width:546px) {
+         width:100%;
+     }
+ }
+ }
+ #uk-hybris-prod-feed-basket-page-last-minute-treats-fr_carousel .slick-next{
+     margin-right:-3px;
+ }
+    @media screen and(max-width:768px){
+        .slick-prev, .slick-next{
+            top:19% !important;
+            @media screen and(max-width:425px) {
+                top:15% !important;
+            }
+        }
+        // .treat-align .treat-section{
+        //     display: none;
+        // }
+
+        .treat-align .delivery-option-block {width:100%;
+            app-delivery-options .deliveryOption{
+            width:100% !important;height: auto;
+        }
+    }
+        ngx-slick-carousel .slick-slide{
+            width:674px !important;
+            @media screen and(max-width:425px){
+            width:355px !important;
+           
+        }
+              
+                         .product-info{
+               .product-title{
+                min-height: 52px !important;
+                margin-bottom: 15px !important;font-size: 1em !important;     color: #464646;
+                width: 100% !important;
+            } 
+            .product-price{
+                font-size: 1em !important;     color: #464646;
+            }
+            .addToBasket
+            {
+                font-size: 1.0714285714em !important;
+                transition: background .3s ease-in-out;
+            width: 160px !important;
+            height: 36px !important;
+            } }
+
+        }  app-basketpage .clearfix .rowComponents{
+            margin-left: 3% !important;
+            margin-right: 3% !important;
+                    padding-bottom: 15px;width: 94%;;
+                    }
+                    .payment-gateway-icons{
+                        justify-content: center;
+                    }
+                    .security-label{
+                        text-align: center;
+                    }
+    }
+    @media screen and(max-width:425px){
+        ngx-slick-carousel .slick-slide{
+           
+        }
+    }
+    app-checkoutpage ol{
+        justify-content: space-between !important;
+    }
+    @media screen and (min-width: 320px) and (max-width: 374px){
+        ngx-slick-carousel .slick-slide{
+            width:260px !important;   
+        }
+        
+    }
+        @media screen and (max-width: 424px) and (min-width: 375px){
+      
+        ngx-slick-carousel .slick-slide {
+            width: 305px !important;
+        }                 
+        } 
+        .toolTipFont{
+            font-size: 11px;
+         }
+         
+
+  .user-delivery-bg{
+      padding-bottom: 10px;
+      border-bottom:1px solid #000;
+  }
+  .gift-sample-carousel{
+    .slick-track{
+    display:flex !important;
+    }
+   
+ngx-slick-carousel {
+    .slick-slide {
+    @media  (max-width: 768px){
+      width: 615px !important;
+   }
+   @media  (max-width: 480px){
+       width: 265px !important;
+   }
+   @media  (max-width: 320px){
+       width: 160px !important;
+   }
+  }
+  @media(max-width:480px){
+  .slick-prev, .slick-next {
+    top: 35% !important;
+}
+}
+ }
+}
+.slick-active{
+    outline:none !important;
+}  
+  .delivery-btn-block {
+    display: flex;
+    justify-content:space-between;
+               @media screen and(max-width:425px){
+ flex-direction: column;   
+}  
+    .order-delivery-date, .shopping-btn{
+        width:230px;     
+               @media screen and(max-width:425px){
+   width:100%;
+   text-align: center;
+   margin: 10px auto;   
+}
+    }
+}
+@media screen and(max-width:425px){
+.mandatory {
+width:100% !important;
+}
+}
+.buttonStyle{      
+    background-image: -webkit-gradient(linear, left top, right top, from(#403B4A), color-stop(51%, #0a0a09), to(#403B4A));
+    background-image: -o-linear-gradient(left, #403B4A 0%, #0a0a09 51%, #403B4A 100%);
+    background-image: linear-gradient(to right, #403B4A 0%, #0a0a09 51%, #403B4A 100%);
+    padding: 5px 10px;
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: 0;
+    border-radius: 2px;  
+}
+button.buttonStyle:disabled,
+button.buttonStyle[disabled]{
+  border: 1px solid #999999;
+  color: #666666;
+  background-image: linear-gradient(to right, #403B4A 0%, #c7c7c7 51%, #403B4A 100%);
+}
+.login_fields{
+    width: 250px;
+    position: relative;
+    padding: 0!important;
+    display: inline-block;
+    input,select{
+        width:inherit;
+        width: 250px!important;
+        height: 25px!important;
+        padding: 0 5px!important;
+        border: 1px solid #666;
+    }
+}
+ol > li{
+    .active {  
+      height: 27px;        
+      position: relative;
+      padding: 0px;
+      text-align: center;
+      font-size: 1.28em;
+      line-height: 28px;
+  } 
+  }
+  ol > li {        
+      // display: table-cell;
+      height: 27px;        
+      position: relative;
+      padding: 0px;
+      margin: 0px;
+      text-align: center;   ;
+  }
+  ol>li:last-child{
+      &.step::after{
+          display: none !important;
+      }
+  }  
+  ol>li:first-child{
+&.step:before {
+          display: none !important;
+}
+  }
+  ol > li {
+    &.step {
+      width: 320px;
+      position: relative;
+      float: left;
+      font-size: 1.2857142857em;
+      line-height: 28px;
+      text-transform: uppercase;
+      text-align: center;
+      background-color: #fff;
+      margin-left: 1px;
+  }  
+  }
+  .step::after {
+    right: -13px!important;
+}
+  .step.current {
+      background-color: #464646 !important;
+      color: #fff;
+  }
+  .step.current::after {
+      border-left: 14px solid #464646;
+  }
+  .step::before {
+    left: 0;
+    border-left: 14px solid #acacac;
+    z-index: 1;
+}
+  .step::after, .step::before {
+      position: absolute;
+      top: 0;
+      display: block;
+      content: '';
+      width: 0;
+      height: 0;   
+      border-top: 14px solid transparent;
+      border-bottom: 14px solid transparent;
+  }  
+  .step::before {
+    left: -1px!important;
+}  .step::after {
+    right: -14px;
+    border-left: 14px solid #fff;
+    z-index: 2;
+}
+    @media screen and (max-width:768px)  and (min-width:320px) {        
+      ol > li {
+          &.step{
+      width: 15%;
+      &.current{
+          width: 70% !important;
+      }
+          }
+      }
+    }
+    
+  
