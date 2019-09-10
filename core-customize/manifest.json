@@ -17,6 +17,14 @@
       "permissionswebservices",
       "smarteditwebservices",
       "cmssmarteditwebservices",
+      "kymaintegrationbackoffice",
+      "kymaintegrationsampledata",
+      "AzureHackathoncore",
+      "AzureHackathonfacades",
+      "AzureHackathontest",
+      "AzureHackathonbackoffice",
+      "AzureHackathonfulfilmentprocess",
+      
       "cmssmartedit"
    ],
    "useConfig": {

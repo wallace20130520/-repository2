@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://www.zeroturnaround.com">
+  <classpath>
+    <dir name="/Users/i314119/tonyworkspace/hybris-releases/hybris1811/hybris/bin/custom/AzureHackathon/AzureHackathonbackoffice/backoffice/classes" />
+  </classpath>
+</application>
