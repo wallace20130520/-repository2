@@ -17,7 +17,7 @@
                         type="set"/-->
     </collectiontypes>
 
-    <enumtypes>
+    <!--enumtypes>
         <enumtype generate="true" code="SwatchColorEnum" autocreate="true" dynamic="true">
             <value code="BLACK"/>
             <value code="BLUE"/>
@@ -31,7 +31,7 @@
             <value code="SILVER"/>
             <value code="WHITE"/>
             <value code="YELLOW"/>
-        </enumtype>
+        </enumtype-->
     </enumtypes>
 
     <itemtypes>
@@ -86,7 +86,7 @@
 
         <!-- TypeGroups are for structure of this file only -->
 
-        <typegroup name="Apparel">
+        <!--typegroup name="Apparel">
             <itemtype code="ApparelProduct" extends="Product"
                       autocreate="true" generate="true"
                       jaloclass="de.hybris.azurehackathon.core.jalo.ApparelProduct">
@@ -154,7 +154,7 @@
                     </attribute>
                 </attributes>
             </itemtype>
-        </typegroup>
+        </typegroup-->
 
     </itemtypes>
 </items>
