@@ -37,7 +37,7 @@
     "jquery-ui": "^1.12.1",
     "jquery-ui-themes": "^1.12.0",
     "jwt-decode": "^2.2.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "ng2-tooltip-directive": "^2.1.9",
     "ngx-device-detector": "^1.3.5",
     "ngx-paypal": "^5.0.0-beta.5",
