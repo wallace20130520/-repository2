@@ -13,13 +13,7 @@
       "smartedit",
       "platformbackoffice",
       "commerceservicesbackoffice",
-      "solrfacetsearchbackoffice",
-      "cmsbackoffice",
-      "cmswebservices",
-      "permissionswebservices",
-      "smarteditwebservices",
-      "cmssmarteditwebservices",
-      "cmssmartedit"
+      "solrfacetsearchbackoffice"
    ],
    "useConfig": {
 	 "properties":[
