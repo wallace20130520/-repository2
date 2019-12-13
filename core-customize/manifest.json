@@ -1,5 +1,7 @@
 {
-   "commerceSuiteVersion":"1811.10",
+   "commerceSuiteVersion": "1811",
+   "disableImageReuse":true,
+   "useCloudExtensionPack": true,
    "extensions":[
       "modeltacceleratorservices",
       "electronicsstore",
@@ -28,6 +30,27 @@
           }
     ]
    },
+   "properties": [
+        {
+            "key": "test.property.1",
+            "value": "test.property.1.value",
+            "persona": "production"
+        },
+        {
+        	"key": "log4j2.appender.console.layout.pattern",
+        	"value": "{\"timeMillis\":\"%d{UNIX_MILLIS}\",\"appTime\":\"%d{ISO8601}{UTC}Z\",\"thread\":\"%t\",\"level\":\"%p\",\"loggerName\":\"%c\",\"remoteAddr\":\"%X{RemoteAddr}\",\"tenant\":\"%X{Tenant}\",\"cronJob\":\"%X{CronJob}[%c{1}]\", %m ,\"throwable\":\"%xThrowable{100,separator(|)}}%n\","
+        },
+        {
+            "key": "test.property.2",
+            "value": "test.property.2.value",
+            "persona": "development"
+        },
+        {
+            "key": "test.property.2",
+            "value": "test.property.2.value.in.prod.only",
+            "persona": "production"
+        }
+    ],	
    "storefrontAddons":[
       {
          "addon":"smarteditaddon",
@@ -90,7 +113,11 @@
             {
                "key":"storefrontContextRoot",
                "value":""
-            }
+            },
+		  {
+                "key": "log4j2.appender.console.layout.pattern",
+                "value": "{\"timeMillis\":\"%d{UNIX_MILLIS}\",\"appTime\":\"%d{ISO8601}{UTC}Z\",\"thread\":\"%t\",\"level\":\"%p\",\"loggerName\":\"%c\",\"remoteAddr\":\"%X{RemoteAddr}\",\"tenant\":\"%X{Tenant}\",\"cronJob\":\"%X{CronJob}[%c{1}]\", %m ,\"throwable\":\"%xThrowable{100,separator(|)}}%n\","
+              }
          ],
          "webapps":[
             {
