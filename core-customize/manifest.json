@@ -6,7 +6,7 @@
 		"yacceleratorstorefront",
 		"backoffice"
 	],
-​
+	​
 	"aspects": [{
 			"name": "backoffice",
 			"webapps": [{
@@ -62,11 +62,10 @@
 		},
 		{
 			"name": "backgroundProcessing",
-			"properties": [
-			{
-                    "key": "cluster.node.groups",
-                    "value": "integration,yHotfolderCandidate"
-                }],
+			"properties": [{
+				"key": "cluster.node.groups",
+				"value": "integration,yHotfolderCandidate"
+			}],
 			"webapps": [{
 					"name": "hac",
 					"contextPath": ""
