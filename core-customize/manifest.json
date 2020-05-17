@@ -7,7 +7,6 @@
 		"azurecloudhotfolder",
 		"backoffice"
 	],
-	​
 	"aspects": [{
 			"name": "backoffice",
 			"webapps": [{
