@@ -2,15 +2,8 @@
 	"commerceSuiteVersion": "1905",
 	"useCloudExtensionPack": true,
 	"extensions": [
-		         "mcc",
-         "adaptivesearchsolr",
-         "adaptivesearchbackoffice",
-         "adaptivesearchsamplesaddon",
-         "adaptivesearchwebservices",
-         "b2bcommercebackoffice",
          "commerceservicesbackoffice",
          "solrfacetsearchbackoffice",
-
          "yacceleratorcockpits",
          "yacceleratorbackoffice",
          "yacceleratorinitialdata",
@@ -18,32 +11,26 @@
          "yacceleratorfulfilmentprocess",
          "ycommercewebservices",
          "ycommercewebservicestest",
-
          "apparelstore",
          "electronicsstore",
          "powertoolsstore",
          "solrserver",
-
          "acceleratorwebservicesaddon",
          "b2bacceleratoraddon",
          "commerceorgaddon",
          "commerceorgsamplesaddon",
 		 "orderselfserviceaddon",
-
          "assistedservicestorefront",
          "assistedservicewebservices",
          "customerticketingaddon",
          "customersupportbackoffice",
-
          "rulebuilderbackoffice",
          "couponbackoffice",
          "droolsruleengineservices",
          "couponfacades",
          "promotionenginesamplesaddon",
-
          "textfieldconfiguratortemplatebackoffice",
          "textfieldconfiguratortemplateaddon",
-
          "cmswebservices",
          "smarteditwebservices",
          "permissionswebservices",
