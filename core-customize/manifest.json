@@ -37,7 +37,6 @@
          "smarteditaddon",
          "cmssmartedit",
          "cmsbackoffice",
-         "ccv2cloudhotfolder",
          "previewwebservices",
          "cmssmarteditwebservices",
          "cmsoccaddon",
@@ -45,7 +44,8 @@
     "electronicsstore",
     "yacceleratorstorefront",
     "azurecloudhotfolder",
-    "backoffice"
+    "backoffice",
+          "ccv2cloudhotfolder"
   ],
   "aspects": [{
       "name": "backoffice",
