@@ -19,6 +19,7 @@
       "permissionswebservices",
       "smarteditwebservices",
       "cmssmarteditwebservices",
+      “ccv2cloudhotfolder”，
       "cmssmartedit"
    ],
    "useConfig": {
