@@ -59,6 +59,10 @@
 					"contextPath": "/medias"
 				},
 				{
+					"name": "wcms",
+					"contextPath": "/wcms"
+				},
+				{
 					"name": "backoffice",
 					"contextPath": "/backoffice"
 				}
