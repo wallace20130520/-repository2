@@ -55,6 +55,10 @@
                "contextPath":"/hac"
             },
             {
+               "name":"wcms",
+               "contextPath":"/wcms"
+            },
+            {
                "name":"mediaweb",
                "contextPath":"/medias"
             },
