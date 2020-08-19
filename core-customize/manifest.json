@@ -46,10 +46,7 @@
         "location": "hybris/config/cloudConfig/environment/production/common.properties",
         "persona": "production"
       }
-    ],
-    "extensions": {
-      "location": "hybris/config/localextensions.xml"
-    }
+    ]
   },
   "storefrontAddons": [{
       "addon": "xyformsstorefrontcommons",
