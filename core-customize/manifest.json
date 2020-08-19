@@ -30,22 +30,7 @@
     "cloudmediaconversion",
     "mediaconversionbackoffice"
   ],
-  "useConfig": {
-    "properties": [
-      {
-        "location": "hybris/config/cloudConfig/environment/development/common.properties",
-        "persona": "development"
-      },
-      {
-        "location": "hybris/config/cloudConfig/environment/staging/common.properties",
-        "persona": "staging"
-      },
-      {
-        "location": "hybris/config/cloudConfig/environment/production/common.properties",
-        "persona": "production"
-      }
-    ]
-  },
+
   "storefrontAddons": [{
       "addon": "xyformsstorefrontcommons",
       "storefront": "laminexstorefront",
