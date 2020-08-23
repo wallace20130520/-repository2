@@ -32,8 +32,6 @@
     "assistedserviceyprofileaddon",
     "assistedserviceyprofilefacades",
     "yaasyprofileconnect",
-	    "yb2bacceleratorstorefront",
-
     "b2bacceleratoraddon",
     "b2bacceleratorfacades",
     "b2bacceleratorservices",
@@ -550,10 +548,6 @@
 		"key": "googleApiKey",
 		"value": ""
 	},
-    	{
-      		"key": "yb2bacceleratorstorefront.illegalrequirementstest.excluded",
-      		"value": "true"
-    	},
 	{
 		"key": "multicountrysampledataaddon.import.active",
 		"value": "false"
@@ -693,14 +687,6 @@
                     "key":"website.apparel-de.https",
                     "value":"https://apparel-de.c4fq-eccommerc1-p3-public.model-t.cc.commerce.ondemand.com/yacceleratorstorefront"
                 },
-                {
-                    "key":"website.powertools.http",
-                    "value":"http://powertools.c4fq-eccommerc1-p3-public.model-t.cc.commerce.ondemand.com/yb2bacceleratorstorefront"
-                },
-                {
-                    "key":"website.powertools.https",
-                    "value":"https://powertools.c4fq-eccommerc1-p3-public.model-t.cc.commerce.ondemand.com/yb2bacceleratorstorefront"
-                },
 	        {
                     "key":"xyformsservices.webroot.override",
                     "value":"true"
@@ -757,10 +743,6 @@
                     "contextPath": "/yacceleratorstorefront"
                 },
                 {
-                    "name": "yb2bacceleratorstorefront",
-                    "contextPath": "/yb2bacceleratorstorefront"
-                },
-                {
                     "name": "acceleratorservices",
                     "contextPath": "/acceleratorservices"
                 },
@@ -809,14 +791,6 @@
 	                    "key":"website.apparel-de.https",
 	                    "value":"https://apparel-de.c4fq-eccommerc1-p3-public.model-t.cc.commerce.ondemand.com/yacceleratorstorefront"
 	                },
-                  {
-                      "key":"website.powertools.http",
-                      "value":"http://powertools.c4fq-eccommerc1-p3-public.model-t.cc.commerce.ondemand.com/yb2bacceleratorstorefront"
-                  },
-                  {
-                      "key":"website.powertools.https",
-                      "value":"https://powertools.c4fq-eccommerc1-p3-public.model-t.cc.commerce.ondemand.com/yb2bacceleratorstorefront"
-                  },
 		  {
 		      "key": "occ.rewrite.overlapping.paths.enabled",
 		      "value": "true"
@@ -839,10 +813,6 @@
 					    "name": "yacceleratorstorefront",
 					    "contextPath": "/yacceleratorstorefront"
 					},
-		                    	{
-                    				"name": "yb2bacceleratorstorefront",
-                    				"contextPath": "/yb2bacceleratorstorefront"
-                			},
 					{
 					    "name": "acceleratorservices",
 					    "contextPath": "/acceleratorservices"
