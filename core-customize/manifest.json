@@ -32,29 +32,16 @@
     "assistedserviceyprofileaddon",
     "assistedserviceyprofilefacades",
     "yaasyprofileconnect",
-    "b2bacceleratoraddon",
-    "b2bacceleratorfacades",
-    "b2bacceleratorservices",
-    "b2bocc",
-    "b2bocctests",
-    "b2bwebservicescommons",
     "commerceorgaddon",
     "commerceorgsamplesaddon",
     "powertoolsstore",
 
     "accountsummaryaddon",
-    "b2bpunchout",
-    "b2bpunchoutaddon",
+
     "savedorderforms",
     "savedorderformsocc",
     "secureportaladdon",
-
-    "b2bapprovalprocess",
-    "b2bapprovalprocessfacades",
-    "b2bcommerce",
-    "b2bcommercebackoffice",
-    "b2bcommercefacades",
-
+	
     "apparelstore",
     "electronicsstore",
 
@@ -111,8 +98,6 @@
     "configurablebundlefacades",
     "configurablebundleservices",
 
-    "sapproductconfigb2baddon",
-    "sapproductconfigb2bservices",
     "sapproductconfigfacades",
     "sapproductconfigocc",
     "sapproductconfigrules",
@@ -196,8 +181,6 @@
 
     "npmancillary",
 
-    "b2bordermanagementfacades",
-    "b2bordermanagementwebservices",
     "ordermanagementaddon",
     "ordermanagementfacades",
     "ordermanagementwebservices",
@@ -313,13 +296,6 @@
     "xyformsstorefrontcommons",
     "xyformsweb",
 
-    "saporderexchange",
-    "saporderexchangeb2b",
-    "saporderexchangebackoffice",
-
-    "saporderexchangeoms",
-    "saporderexchangeomsb2b",
-
     "sapinvoiceaddon",
     "sapinvoicebol",
     "sapinvoicefacades",
@@ -334,35 +310,16 @@
     "sapcpqquoteintegration",
     "sapcpqquoteintegrationaddon",
 
-    "sapcustomerb2b",
-    "sapcustomerb2bbackoffice",
-    "sapcustomerb2c",
 
-    "gigyab2bbackoffice",
-    "gigyab2bfacades",
-    "gigyab2bloginaddon",
-    "gigyab2bservices",
-    "gigyabackoffice",
-    "gigyacpicustomerexchangemdm",
-    "gigyacpicustomerexchangemdmb2b",
-    "gigyafacades",
-    "gigyaloginaddon",
-    "gigyaservices",
+
 
     "sapcpicustomerexchangemdm",
     "sapcustomerlookupaddon",
     "sapcustomerlookupservice",
 
-    "cissapdigitalpayment",
-    "sapdigitalpaymentaddon",
-    "sapdigitalpaymentb2baddon",
-    "sapdigitalpaymentbackoffice",
-    "ysapdpordermanagement",
 
-    "sapentitlementsaddon",
-    "sapentitlementsfacades",
-    "sapentitlementsintegration",
-    "sapentitlementsintegrationb2b",
+
+  
 
     "sapcore",
     "sapcoreaddon",
@@ -372,32 +329,13 @@
     "scimservices",
     "scimwebservices",
 
-    "personalizationymkt",
-    "sapymktclickstream",
-    "sapymktcommon",
-    "sapymktconsent",
-    "sapymktdatareplication",
-    "sapymktrecommendation",
-    "sapymktrecommendationaddon",
-    "sapymktrecommendationbuffer",
-    "sapymktrecommendationwebservices",
-    "sapymktsegmentation",
-    "sapymktsegmentationb2b",
-    "sapymktsegmentationwebservices",
+
 
     "sapmodel",
     "sapmodelbackoffice",
 
     "sapqualtricsaddon",
 
-    "returnssupport",
-    "sapcpiomsreturnsexchange",
-    "sapcpireturnsexchange",
-    "sapreturnsbackoffice",
-    "sapreturnsexchange",
-    "sapreturnsexchangeb2b",
-    "ysaperpreturnprocess",
-    "ysapomsreturnprocess",
 
     "sapsalesordersimulation",
     "sapsalesordersimulationbackoffice",
@@ -405,9 +343,7 @@
     "c4ccpiquote",
     "c4ccustomer",
 
-    "customerticketingc4cb2bintegration",
-    "customerticketingc4cintegration",
-    "sapc4ccustomerb2c",
+
 
     "sapbillinginvoiceaddon",
     "sapbillinginvoicefacades",
@@ -420,29 +356,11 @@
     "sapserviceproduct",
     "ysapcpis4cmomsfulfillment",
 
-    "sapproductconfigb2b",
-    "sapproductconfigbackoffice",
-    "sapproductconfigbackofficecps",
-    "sapproductconfigcpiorderexchange",
-    "sapproductconfigcpiorderexchangecps",
-    "sapproductconfigcpiquoteexchange",
-    "sapproductconfigintegration",
 
     "sapproductconfigrulescps",
     "sapproductconfigruntimecps",
     "sapproductconfigruntimepci",
     "yacceleratorstorefront",
-
-    "sapcpiadapter",
-    "sapcpicustomerexchange",
-    "sapcpicustomerexchangeb2b",
-    "sapcpiorderexchange",
-    "sapcpiorderexchangeb2b",
-    "sapcpiproductexchange",
-
-    "sapcpiorderexchangeoms",
-    "sapcpiorderexchangeomsb2b",
-    "ysapcpiomsfulfillment",
 
     "modeltacceleratorservices"
     ],
@@ -495,19 +413,8 @@
         },
         {
 		"addons": [
-				"accountsummaryaddon",
-				"b2bacceleratoraddon",
-				"b2bpunchoutaddon",
-				"commerceorgaddon",
-			        "commerceorgsamplesaddon",
-				"sapproductconfigb2baddon",
-				"secureportaladdon",
-				"sapbillinginvoiceaddon",
-				"sapserviceorderaddon",
-				"sapquoteintegrationaddon",
-                		"sapcpqquoteintegrationaddon",
-                		"gigyab2bloginaddon",
-                		"sapdigitalpaymentb2baddon"
+				"accountsummaryaddon"
+			
 		],
 		    "storefront": "yacceleratorstorefront",
 		    "template": "yacceleratorstorefront"
