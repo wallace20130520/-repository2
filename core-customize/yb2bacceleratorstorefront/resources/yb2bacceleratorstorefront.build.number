@@ -1,0 +1,11 @@
+#Ant properties
+#Wed Apr 18 19:18:34 UTC 2018
+builddate=20180418 1918
+description=yb2bacceleratorstorefront
+group.id=de.hybris.platform
+module.name=platform-module
+name=yb2bacceleratorstorefront
+releasedate=20180416 1839
+vendor=hybris
+version=18.08
+version.api=18.08.0
