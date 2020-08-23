@@ -433,6 +433,7 @@
     "sapproductconfigrulescps",
     "sapproductconfigruntimecps",
     "sapproductconfigruntimepci",
+    "yacceleratorstorefront",
 
     "sapcpiadapter",
     "sapcpicustomerexchange",
@@ -491,7 +492,7 @@
 				"sapentitlementsaddon",
 			        "sapcustomerlookupaddon"
         		  ],
-        	    "storefronts": ["yacceleratorstorefront","yb2bacceleratorstorefront"],
+        	    "storefronts": ["yacceleratorstorefront","yacceleratorstorefront"],
         	    "template": "yacceleratorstorefront"
         },
         {
@@ -510,7 +511,7 @@
                 		"gigyab2bloginaddon",
                 		"sapdigitalpaymentb2baddon"
 		],
-		    "storefront": "yb2bacceleratorstorefront",
+		    "storefront": "yacceleratorstorefront",
 		    "template": "yacceleratorstorefront"
 	}
 	],
