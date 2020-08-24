@@ -158,13 +158,7 @@
         {
           "name": "yacceleratorstorefront",
           "contextPath": ""
-        },
-        {
-                    "name": "servicenetstorefront",
-                    "contextPath": ""
-                },
-	
-                {
+        },             {
                     "name": "hac",
                     "contextPath": "/hac"
                 },
