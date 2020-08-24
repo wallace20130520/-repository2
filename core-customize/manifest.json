@@ -45,9 +45,6 @@
         "location": "config/common.properties"
       },
       {
-        "location": "config/orbeon/config/common.properties"
-      },
-      {
         "location": "config/orbeon/config/custom-clear-data.xml"
       },
       {
