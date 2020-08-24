@@ -42,39 +42,39 @@
   ],
   "useConfig": {
     "properties": [{
-        "location": "/hybris/config/common.properties"
+        "location": "/config/common.properties"
       },
       {
-        "location": "/hybris/config/orbeon/config/custom-clear-data.xml"
+        "location": "/config/orbeon/config/custom-clear-data.xml"
       },
       {
-        "location": "/hybris/config/orbeon/config/error-dialog.xml"
+        "location": "/config/orbeon/config/error-dialog.xml"
       },
       {
-        "location": "/hybris/config/orbeon/config/log4j.xml"
+        "location": "/config/orbeon/config/log4j.xml"
       },
       {
-        "location": "/hybris/config/orbeon/config/properties-common.xml"
+        "location": "/config/orbeon/config/properties-common.xml"
       },
       {
-        "location": "/hybris/config/orbeon/config/properties-local.xml"
+        "location": "/config/orbeon/config/properties-local.xml"
       },
       {
-        "location": "/hybris/config/orbeon/config/properties-orbeon.xml"
+        "location": "/config/orbeon/config/properties-orbeon.xml"
       },	   
       {
-        "location": "/hybris/config/orbeon/config/properties-yforms.xml"
+        "location": "/config/orbeon/config/properties-yforms.xml"
       },
       {
-        "location": "/hybris/config/environment/development/common.properties",
+        "location": "/config/environment/development/common.properties",
         "persona": "development"
       },
       {
-        "location": "/hybris/config/environment/staging/common.properties",
+        "location": "/config/environment/staging/common.properties",
         "persona": "staging"
       },
       {
-        "location": "/hybris/config/environment/production/common.properties",
+        "location": "/config/environment/production/common.properties",
         "persona": "production"
       }
     ],
