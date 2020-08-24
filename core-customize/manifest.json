@@ -42,18 +42,18 @@
   ],
   "useConfig": {
     "properties": [{
-        "location": "config/cloudConfig/common.properties"
+        "location": "config/common.properties"
       },
       {
-        "location": "config/cloudConfig/environment/development/common.properties",
+        "location": "config/environment/development/common.properties",
         "persona": "development"
       },
       {
-        "location": "config/cloudConfig/environment/staging/common.properties",
+        "location": "config/environment/staging/common.properties",
         "persona": "staging"
       },
       {
-        "location": "config/cloudConfig/environment/production/common.properties",
+        "location": "config/environment/production/common.properties",
         "persona": "production"
       }
     ],
