@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+--><!--
+ All hybris buildcallbacks.xml macrodefinitions:
+ 
+ Build/Documentation
+ 
+	 before/after ant macro "clean"
+		 <macrodef name="backofficepatch_before_clean"/>
+		 <macrodef name="backofficepatch_after_clean"/>
+	 
+	 before/after ant macro "build"
+		 <macrodef name="backofficepatch_before_build"/>
+		 <macrodef name="backofficepatch_after_build"/>
+		 
+	 before/after ant macro "compile_core" - the core module of the extension
+		 <macrodef name="backofficepatch_before_compile_core">
+		 <macrodef name="backofficepatch_after_compile_core">
+	 
+	 before/after ant macro "compile_web" - the web module of the extension
+		 <macrodef name="backofficepatch_before_compile_web" />
+		 <macrodef name="backofficepatch_after_compile_web" />
+	 
+	 before/after ant macro "compile_hmc" - the hmc module of the extension
+		 <macrodef name="backofficepatch_before_compile_hmc" />
+		 <macrodef name="backofficepatch_after_compile_hmc" />
+ 
+ Preparing extension
+ 
+	 will be called in the beginning of the ant call and only once (also when using multiple 
+	 ant targets e.g. ant build yunittest)	
+		 <macrodef name="backofficepatch_only_once_prepare"/>
+ 
+ Creating ear module/production
+ 
+	 before/after ant macro "ear"
+		 <macrodef name="backofficepatch_before_ear"/>
+		 <macrodef name="backofficepatch_after_ear"/>
+
+	 before/after ant macro "production" - for hybris server only
+		 <macrodef name="backofficepatch_before_production" />
+		 <macrodef name="backofficepatch_after_production" />
+ 
+ JUnit Test
+ 
+	 before/after ant macro "yunitinit" 
+		 <macrodef name="backofficepatch_before_yunitinit" />
+		 <macrodef name="backofficepatch_after_yunitinit" />
+	 
+	 before/after ant macro "yunit"
+		 <macrodef name="backofficepatch_before_yunit" />
+		 <macrodef name="backofficepatch_after_yunit" /> 
+		 
+ Distribution package
+ 
+ 	 before/after ant macro "dist" - internal target; only for use when platform is available in source code
+		 <macrodef name="backofficepatch_after_dist"/>
+		 <macrodef name="backofficepatch_before_dist"/>
+	 
+	 before/after ant macro "dist_copy" - internal target; only for use when platform is available in source code
+		 <macrodef name="backofficepatch_before_dist_copy"/>
+		 <macrodef name="backofficepatch_after_dist_copy"/>
+		  
+ 	 With these filters you can override the default extension filters defined in platform/resources/ant/dist/filtersets.xml
+ 	  	 <patternset id="extension.backofficepatch.binary.filter">
+ 	  	  	 <patternset refid="extension.filter" />
+ 	  	  	 <exclude name="**/*-source.jar" />
+ 	  	 </patternset>
+ 	  	 <patternset id="extension.backofficepatch.source.filter">
+ 	  	  	 <exclude name="**/bin/**" />
+ 	  	 </patternset>
+     With this filter you can decide what should be excluded from development zip.
+ 	  	 <patternset id="extension.backofficepatch.devzip.filter">
+ 	  	 Include all files from extension.source.filter.
+ 	  	     <patternset refid="extension.source.filter" />
+         Exclude unwanted files.
+ 	  	  	 <exclude name="lib/exclude-me.jar" />
+ 	  	 </patternset>
+ 
+--><project name="backofficepatch_buildcallbacks">
+    	
+    <!-- 
+	    Called whenever 'ant ear' is used. this callback can be used to modify the content of the ear file
+	
+	     ${ear.path}: 			path to ear
+	 -->
+    	
+    <macrodef name="backofficepatch_after_build">
+        		
+		<sequential>
+            <if>
+                <available file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpitframework-19.05.18-RC1.jar"/>
+                <then>
+                    <echo>###### !!!! PATCHING backoffice-core-19.05.19-RC4.jar !!!! #####</echo>
+                      <delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zcommon-8.6.0.2.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/zcommon-8.6.0.2.1-SAP.jar"
+                          tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zcommon-8.6.0.2.1-SAP.jar"/>
+
+  <delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zel-8.6.0.2.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/zel-8.6.0.2.1-SAP.jar"
+                          tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zel-8.6.0.2.1-SAP.jar"/>
+
+  <delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zhtml-8.6.0.2.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/zhtml-8.6.0.2.1-SAP.jar"
+                          tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zhtml-8.6.0.2.1-SAP.jar"/>
+
+  <delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zk-8.6.0.2.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/zk-8.6.0.2.1-SAP.jar"
+                          tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zk-8.6.0.2.1-SAP.jar"/>
+
+  <delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zkbind-8.6.0.2.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/zkbind-8.6.0.2.1-SAP.jar"
+                          tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zkbind-8.6.0.2.1-SAP.jar"/>
+
+  <delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zkex-8.6.0.2.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/zkex-8.6.0.2.1-SAP.jar"
+                          tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zkex-8.6.0.2.1-SAP.jar"/>
+                          
+ <delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zkmax-8.6.0.2.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/zkmax-8.6.0.2.1-SAP.jar"
+tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zkmax-8.6.0.2.1-SAP.jar"/>
+
+<delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zkplus-8.6.0.2.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/zkplus-8.6.0.2.1-SAP.jar"
+tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zkplus-8.6.0.2.1-SAP.jar"/>
+
+<delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zul-8.6.0.2.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/zul-8.6.0.2.1-SAP.jar"
+tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zul-8.6.0.2.1-SAP.jar"/>
+
+
+<delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zuti-8.6.0.2.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/zuti-8.6.0.2.1-SAP.jar"
+tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zuti-8.6.0.2.1-SAP.jar"/>
+
+
+<delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zweb-8.6.0.2.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/zweb-8.6.0.2.1-SAP.jar"
+tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/zweb-8.6.0.2.1-SAP.jar"/>
+
+
+<delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/backoffice-core-19.05.18-RC1.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/backoffice-core-19.05.19-RC4.jar"
+tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/backoffice-core-19.05.19-RC4.jar"/>
+
+
+<delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/backoffice-widgets-19.05.18-RC1.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/backoffice-widgets-19.05.19-RC4.jar"
+tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/backoffice-widgets-19.05.19-RC4.jar"/>
+
+
+<delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpit-data-integration-19.05.18-RC1.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/cockpit-data-integration-19.05.19-RC4.jar"
+tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpit-data-integration-19.05.19-RC4.jar"/>
+
+
+<delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpit-demo-widgets-19.05.18-RC1.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/cockpit-demo-widgets-19.05.19-RC4.jar"
+tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpit-demo-widgets-19.05.19-RC4.jar"/>
+
+
+<delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpit-module-aggregator-19.05.18-RC1.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/cockpit-module-aggregator-19.05.19-RC4.jar"
+tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpit-module-aggregator-19.05.19-RC4.jar"/>
+
+
+<delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpit-standard-editors-19.05.18-RC1.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/cockpit-standard-editors-19.05.19-RC4.jar"
+tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpit-standard-editors-19.05.19-RC4.jar"/>
+
+
+<delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpitadmin-19.05.18-RC1.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/cockpitadmin-19.05.19-RC4.jar"
+tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpitadmin-19.05.19-RC4.jar"/>
+
+<delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpitcore-19.05.18-RC1.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/cockpitcore-19.05.19-RC4.jar"
+tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpitcore-19.05.19-RC4.jar"/>
+
+
+<delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpitframework-19.05.18-RC1.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/cockpitframework-19.05.19-RC4.jar"
+tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpitframework-19.05.19-RC4.jar"/>
+
+
+<delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpittesting-19.05.18-RC1.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/cockpittesting-19.05.19-RC4.jar"
+tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpittesting-19.05.19-RC4.jar"/>
+
+
+<delete file="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpitwidgets-19.05.18-RC1.jar"/>
+                    <move file="${ext.backofficepatch.path}/lib/cockpitwidgets-19.05.19-RC4.jar"
+tofile="${HYBRIS_BIN_DIR}/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/cockpitwidgets-19.05.19-RC4.jar"/>
+         
+                </then>
+            </if>
+        </sequential>
+        	
+    </macrodef>
+    
+</project>

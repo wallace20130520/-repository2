@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+                   id="com.hybris.backoffice.cockpitng.widgets.itemcommentsworkaround">
+    <name>Item comments WORKAROUND</name>
+    <description>Item Comments Widget WORKAROUND</description>
+    <defaultTitle>Item comments WORKAROUND</defaultTitle>
+    <author>SAP</author>
+    <version>1.0</version>
+
+    <view src="itemcomments.zul" />
+    <sockets>
+        <input id="inputItem" type="de.hybris.platform.core.model.ItemModel"/>
+    </sockets>
+
+    <settings>
+        <setting key="itemCommentsRenderer" type="java.lang.String" default-value="itemCommentsRenderer"/>
+        <setting key="popupPosition" type="java.lang.String" default-value="before_start"/>
+		<setting key="dateFormat" type="java.lang.String" default-value="yyyy.MM.dd @ hh:mm"/>
+        <setting key="domainCode" type="java.lang.String" default-value="backofficeDomain"/>
+        <setting key="componentCode" type="java.lang.String" default-value="administrationArea"/>
+        <setting key="commentTypeCode" type="java.lang.String" default-value="backofficeComment"/>
+    </settings>
+
+    <keywords>
+        <keyword>Data Manipulation</keyword>
+    </keywords>
+    <controller class="com.hybris.backoffice.workaround.ecp5193.widgets.itemcomments.ItemCommentsWorkaroundController" />
+
+</widget-definition>

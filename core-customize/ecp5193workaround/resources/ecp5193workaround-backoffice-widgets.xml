@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved
+-->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widgets.xsd">
+
+    <widget-extension widgetId="collaborationCenter-taskEdit-editorArea">
+        <remove widgetId="collaborationCenter-taskEdit-itemComments"/>
+    </widget-extension>
+
+    <widget-extension widgetId="collaborationCenter-taskEdit-editorArea">
+        <widget id="collaborationCenter-taskEdit-itemComments" widgetDefinitionId="com.hybris.backoffice.cockpitng.widgets.itemcommentsworkaround" slotId="toolbarInner" template="false">
+            <widget id="collaborationCenter-taskEdit-itemComments-cast" widgetDefinitionId="com.hybris.cockpitng.widgets.common.simplecast" slotId="cockpitWidgetChildrenInvisible" template="false">
+                <setting key="socketDataType_$T" type="String">de.hybris.platform.core.model.ItemModel</setting>
+                <virtual-sockets/>
+            </widget>
+            <virtual-sockets/>
+        </widget>
+    </widget-extension>
+
+</widgets>
