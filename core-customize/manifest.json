@@ -160,25 +160,18 @@
           "contextPath": ""
         },
         {
-          "name": "acceleratorservices",
-          "contextPath": "/acceleratorservices"
-        },
-        {
-          "name": "laminexcommercewebservices",
-          "contextPath": "/laminexcommercewebservices"
-        },
-        {
-          "name": "laminexpaymentintegration",
-          "contextPath": "/laminexpaymentintegration"
-        },
-        {
-          "name": "oauth2",
-          "contextPath": "/authorizationserver"
-        },
-        {
-          "name": "hac",
-          "contextPath": "/hac"
-        },
+                    "name": "servicenetstorefront",
+                    "contextPath": ""
+                },
+	
+                {
+                    "name": "hac",
+                    "contextPath": "/hac"
+                },
+                {
+                    "name": "acceleratorservices",
+                    "contextPath": "/acceleratorservices"
+                },
 		{
           "name":"orbeonweb",
           "contextPath":"/web-orbeon"
