@@ -45,6 +45,30 @@
         "location": "config/common.properties"
       },
       {
+        "location": "config/orbeon/config/common.properties"
+      },
+      {
+        "location": "config/orbeon/config/custom-clear-data.xml"
+      },
+      {
+        "location": "config/orbeon/config/error-dialog.xml"
+      },
+      {
+        "location": "config/orbeon/config/log4j.xml"
+      },
+      {
+        "location": "config/orbeon/config/properties-common.xml"
+      },
+      {
+        "location": "config/orbeon/config/properties-local.xml"
+      },
+      {
+        "location": "config/orbeon/config/properties-orbeon.xml"
+      },	   
+      {
+        "location": "config/orbeon/config/properties-yforms.xml"
+      },
+      {
         "location": "config/environment/development/common.properties",
         "persona": "development"
       },
