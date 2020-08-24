@@ -42,23 +42,23 @@
   ],
   "useConfig": {
     "properties": [{
-        "location": "hybris/config/cloudConfig/common.properties"
+        "location": "config/cloudConfig/common.properties"
       },
       {
-        "location": "hybris/config/cloudConfig/environment/development/common.properties",
+        "location": "config/cloudConfig/environment/development/common.properties",
         "persona": "development"
       },
       {
-        "location": "hybris/config/cloudConfig/environment/staging/common.properties",
+        "location": "config/cloudConfig/environment/staging/common.properties",
         "persona": "staging"
       },
       {
-        "location": "hybris/config/cloudConfig/environment/production/common.properties",
+        "location": "config/cloudConfig/environment/production/common.properties",
         "persona": "production"
       }
     ],
     "extensions": {
-      "location": "hybris/config/localextensions.xml"
+      "location": "config/localextensions.xml"
     }
   },
   "storefrontAddons": [{
