@@ -28,6 +28,7 @@
     "importcockpit",
     "ldap",
     "promotionenginebackoffice",
+	  "consignmenttrackingoccaddon",
     "couponbackoffice",
     "yformsaddon",
     
