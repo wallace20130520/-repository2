@@ -62,7 +62,7 @@
     	
 	
     
-    <target name="install.yformsaddon" description="Installing the yformsaddon AddOn">
+    <!--target name="install.yformsaddon" description="Installing the yformsaddon AddOn">
        <sequential>
            <myextension_install_addons />
            <myextension_copy_orbeon_config />
@@ -102,7 +102,7 @@
                tofile="${ext.xyformsstorefrontcommons.path}/project.storefront.properties"
                overwrite="true" verbose="true" filtering="false" />
         </sequential>
-    </macrodef>
+    </macrodef-->
     		
 
 </project>
