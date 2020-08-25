@@ -90,7 +90,7 @@
       "template": "yacceleratorstorefront"
    },
         {
-            "addon":"consignmenttrackingoccaddon",
+            "addon":"xyformsstorefrontcommons",
             "storefront": "yacceleratorstorefront",
             "template": "yacceleratorstorefront"
         }
