@@ -18,16 +18,9 @@
     <property as="xs:string"  name="oxf.xforms.format.input.date"                    value="[D].[M].[Y]"/>
 
     <!-- the following URL is translated at installation time -->
-    <!--property as="xs:anyURI"  name="oxf.fr.persistence.hybris.uri"                   value="https://localhost:9002/xyformsweb/fr/service/hybris"/>
-    <property as="xs:boolean" name="oxf.fr.persistence.hybris.versioning"            value="true"/>
-
-    <!-- the following URL is translated at installation time -->
-    <!--property as="xs:anyURI"  name="oxf.fr.persistence.hybris-nv.uri"                value="https://localhost:9002/xyformsweb/fr/service/hybris"/>
-    <property as="xs:boolean" name="oxf.fr.persistence.hybris-nv.versioning"         value="false"-->
-
-    <!-- the following URL is translated at installation time -->
     <property as="xs:anyURI"  name="oxf.fr.persistence.hybris.uri"                   value="${orbeonweb.orbeon.persistence.uri}"/>
     <property as="xs:boolean" name="oxf.fr.persistence.hybris.versioning"            value="true"/>
+
     <!-- the following URL is translated at installation time -->
     <property as="xs:anyURI"  name="oxf.fr.persistence.hybris-nv.uri"                value="${orbeonweb.orbeon.persistence.uri}"/>
     <property as="xs:boolean" name="oxf.fr.persistence.hybris-nv.versioning"         value="false"/>
@@ -62,9 +55,11 @@
     <property as="xs:boolean" name="oxf.fr.persistence.resource.active"              value="false"/>
 
     <!-- Default error dialog is not shown, instead a javascript function will process error messages -->
-    <property as="xs:boolean" name="oxf.xforms.show-error-dialog"                    value="false"/>
+    <!-- property as="xs:boolean" name="oxf.xforms.show-error-dialog"                    value="false" / -->
 
     <!-- The following properties are used when dealing with SSL on the Persistence API side -->
+    <property as="xs:anyURI"  name="oxf.http.ssl.keystore.uri" value="file:${xyformsstorefrontcommons.orbeon.keystoreFile}"/>
+    <property as="xs:string" name="oxf.http.ssl.keystore.password" value="${xyformsstorefrontcommons.orbeon.keystorePass}"/>
     <property as="xs:string" name="oxf.http.ssl.hostname-verifier" value="allow-all"/>
     
     <!-- This is only meant for backoffice extension -->
@@ -90,7 +85,5 @@
         then xf:dispatch("custom-clean-data")
     </property>
     <property  as="xs:anyURI"  name="oxf.fr.detail.model.custom.*.*"                 value="oxf:/config/custom-clear-data.xml"/>
-
-
 
 </properties>

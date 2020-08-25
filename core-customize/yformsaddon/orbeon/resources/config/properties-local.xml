@@ -7,7 +7,7 @@
 
     <xi:include href="oxf:/config/properties-common.xml"/>
     <xi:include href="oxf:/config/properties-orbeon.xml"/>
-    <xi:include href="oxf:/config/properties-yformsaddon.xml"/>
+    <xi:include href="oxf:/config/properties-yforms.xml"/>
     
     <property
       as="xs:boolean"
