@@ -18,11 +18,18 @@
     <property as="xs:string"  name="oxf.xforms.format.input.date"                    value="[D].[M].[Y]"/>
 
     <!-- the following URL is translated at installation time -->
-    <property as="xs:anyURI"  name="oxf.fr.persistence.hybris.uri"                   value="https://localhost:9002/xyformsweb/fr/service/hybris"/>
+    <!--property as="xs:anyURI"  name="oxf.fr.persistence.hybris.uri"                   value="https://localhost:9002/xyformsweb/fr/service/hybris"/>
     <property as="xs:boolean" name="oxf.fr.persistence.hybris.versioning"            value="true"/>
 
     <!-- the following URL is translated at installation time -->
-    <property as="xs:anyURI"  name="oxf.fr.persistence.hybris-nv.uri"                value="https://localhost:9002/xyformsweb/fr/service/hybris"/>
+    <!--property as="xs:anyURI"  name="oxf.fr.persistence.hybris-nv.uri"                value="https://localhost:9002/xyformsweb/fr/service/hybris"/>
+    <property as="xs:boolean" name="oxf.fr.persistence.hybris-nv.versioning"         value="false"-->
+
+    <!-- the following URL is translated at installation time -->
+    <property as="xs:anyURI"  name="oxf.fr.persistence.hybris.uri"                   value="${orbeonweb.orbeon.persistence.uri}"/>
+    <property as="xs:boolean" name="oxf.fr.persistence.hybris.versioning"            value="true"/>
+    <!-- the following URL is translated at installation time -->
+    <property as="xs:anyURI"  name="oxf.fr.persistence.hybris-nv.uri"                value="${orbeonweb.orbeon.persistence.uri}"/>
     <property as="xs:boolean" name="oxf.fr.persistence.hybris-nv.versioning"         value="false"/>
 
     <!-- all forms created by orbeon:builder are stored in hybris -->
@@ -83,5 +90,7 @@
         then xf:dispatch("custom-clean-data")
     </property>
     <property  as="xs:anyURI"  name="oxf.fr.detail.model.custom.*.*"                 value="oxf:/config/custom-clear-data.xml"/>
+
+
 
 </properties>
