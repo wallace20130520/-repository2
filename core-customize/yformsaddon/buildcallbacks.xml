@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+--><!--
+ All hybris buildcallbacks.xml macrodefinitions:
+ 
+ Build/Documentation
+ 
+	 before/after ant macro "clean"
+		 <macrodef name="yformsaddon_before_clean"/>
+		 <macrodef name="yformsaddon_after_clean"/>
+	 
+	 before/after ant macro "build"
+		 <macrodef name="yformsaddon_before_build"/>
+		 <macrodef name="yformsaddon_after_build"/>
+		 
+	 before/after ant macro "compile_core" - the core module of the extension
+		 <macrodef name="yformsaddon_before_compile_core">
+		 <macrodef name="yformsaddon_after_compile_core">
+	 
+	 before/after ant macro "compile_web" - the web module of the extension
+		 <macrodef name="yformsaddon_before_compile_web" />
+		 <macrodef name="yformsaddon_after_compile_web" />
+	 
+ Preparing extension
+ 
+	 will be called in the beginning of the ant call and only once (also when using multiple 
+	 ant targets e.g. ant build yunittest)	
+		 <macrodef name="yformsaddon_only_once_prepare"/>
+ 
+ Creating ear module/production
+ 
+	 before/after ant macro "ear"
+		 <macrodef name="yformsaddon_before_ear"/>
+		 <macrodef name="yformsaddon_after_ear"/>
+
+	 before/after ant macro "production" - for hybris server only
+		 <macrodef name="yformsaddon_before_production" />
+		 <macrodef name="yformsaddon_after_production" />
+ 
+ JUnit Test
+ 
+	 before/after ant macro "yunitinit" 
+		 <macrodef name="yformsaddon_before_yunitinit" />
+		 <macrodef name="yformsaddon_after_yunitinit" />
+	 
+	 before/after ant macro "yunit"
+		 <macrodef name="yformsaddon_before_yunit" />
+		 <macrodef name="yformsaddon_after_yunit" /> 
+		 
+ Distribution package
+ 
+ 	 before/after ant macro "dist" - internal target; only for use when platform is available in source code
+		 <macrodef name="yformsaddon_after_dist"/>
+		 <macrodef name="yformsaddon_before_dist"/>
+	 
+	 before/after ant macro "dist_copy" - internal target; only for use when platform is available in source code
+		 <macrodef name="yformsaddon_before_dist_copy"/>
+		 <macrodef name="yformsaddon_after_dist_copy"/>
+ 
+--><project name="yformsaddon_buildcallbacks">
+    	
+	
+    
+    <target name="install.yformsaddon" description="Installing the yformsaddon AddOn">
+       <sequential>
+           <myextension_install_addons />
+           <myextension_copy_orbeon_config />
+       </sequential>
+   </target>
+   <macrodef name="myextension_install_addons">
+       <sequential>
+           <property file="${ext.yformsaddon.path}/addons.properties"  />
+           <echo level="info" message="installing FS AddOns : ${yformsaddon.addons} for ${addonStorefront}" />
+           <antcall target="addoninstall" >
+               <param name="addonnames" value="${yformsaddon.addons}" />
+               <param name="addonStorefront.yacceleratorstorefront" value="${addonStorefront}" />
+           </antcall>
+       </sequential>
+   </macrodef>
+    <macrodef name="myextension_copy_orbeon_config">
+        <sequential>
+         <echo level="info" message="copy orbeon config to hybris config dir..."/>
+         <copy todir="${HYBRIS_CONFIG_DIR}/orbeon" overwrite="true" verbose="true" filtering="false">
+            <fileset dir="${ext.yformsaddon.path}/orbeon/resources">
+               <include name="**/**.*" />
+               <exclude name="**/properties-*.xml" />
+            </fileset>
+         </copy>
+         <copy todir="${HYBRIS_CONFIG_DIR}/orbeon" overwrite="true" verbose="true" filtering="true">
+             <filterset begintoken="${" endtoken="}" recurse="true">
+                <filtersfile file="${ext.yformsaddon.path}/project.properties" />
+                <filtersfile file="${ext.yacceleratorstorefront.path}/project.properties" />
+                <filtersfile file="project.properties"/> 
+                <filtersfile file="${HYBRIS_CONFIG_DIR}/local.properties"/>
+             </filterset>
+            <fileset dir="${ext.yformsaddon.path}/orbeon/resources">
+               <include name="**/properties-*.xml" />
+            </fileset>
+         </copy>
+         <copy file="${ext.yformsaddon.path}/project.properties"
+               tofile="${ext.xyformsstorefrontcommons.path}/project.storefront.properties"
+               overwrite="true" verbose="true" filtering="false" />
+        </sequential>
+    </macrodef>
+    		
+
+</project>

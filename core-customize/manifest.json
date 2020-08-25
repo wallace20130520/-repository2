@@ -29,6 +29,8 @@
     "ldap",
     "promotionenginebackoffice",
     "couponbackoffice",
+    "yformsaddon",
+    
     
     "xyformsbackoffice",
         "xyformssamples",
@@ -83,7 +85,7 @@
     }
   },
   "storefrontAddons": [{
-      "addon": "xyformsstorefrontcommons",
+      "addon": "yformsaddon",
       "storefront": "yacceleratorstorefront",
       "template": "yacceleratorstorefront"
    }],

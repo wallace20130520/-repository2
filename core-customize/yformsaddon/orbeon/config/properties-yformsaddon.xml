@@ -1,0 +1,71 @@
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<properties xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            xmlns:oxf="http://www.orbeon.com/oxf/processors">
+
+    <!-- buttons for insurance forms -->
+    <property as="xs:string"  name="oxf.fr.detail.buttons.yforms.*"                value="save-final"/>
+	
+	<property
+      as="xs:string" 
+      name="oxf.fr.detail.captcha.yforms.*" 
+      value="reCAPTCHA"/>
+
+ 
+
+    
+    <property
+     as="xs:string"
+     name="oxf.xforms.xbl.fr.recaptcha.public-key"
+     value="6LcubMIUAAAAAHRpFHn8NmlxU4C6tuh1onT0LPeH"/>
+    <property
+     as="xs:string"
+     name="oxf.xforms.xbl.fr.recaptcha.private-key"
+     value="6LcubMIUAAAAADlnmzC7qqB4IHUuA7QWpVM9-7io"/>
+	
+
+<!--<property as="xs:string" name="oxf.fr.detail.process.check.*.*">
+		navigate(uri = "http://example.org")
+    
+</property>
+
+<property as="xs:string"  name="oxf.fr.detail.process.submit.*.*">
+        require-uploads
+        then validate-all
+        then save
+        then new-to-edit
+        then success-message("save-success")
+        then result-dialog
+		then navigate(uri = "javascript:ACC.browseproducts.yform()")
+        recover error-message("database-error")
+    </property>-->
+	
+	<property as="xs:string"  name="oxf.fr.detail.process.save-final.*.*">
+        require-uploads
+        then validate-all
+        then save
+		then new-to-edit		
+		then navigate(uri = "javascript:ACC.browseproducts.yform()")
+        recover error-message("database-error")
+    </property>
+
+<property
+  as="xs:string"
+  name="oxf.fr.resource.*.*.en.buttons.save-final"
+  value="Submit"/>
+   
+    <!-- Event-Form is going to have autosave -->
+    <property as="xs:integer" name="oxf.fr.detail.autosave-delay.yforms.contact"   value="5000"/>
+
+    <!-- forms and data for yforms are stored in hybris -->
+    <property as="xs:string" name="oxf.fr.persistence.provider.yforms.*.form"      value="hybris"/>
+    <property as="xs:string" name="oxf.fr.persistence.provider.yforms.*.data"      value="hybris"/>
+
+    <!-- general CSS for every form in insurance-->
+    <property as="xs:string" name="oxf.fr.css.custom.uri.yforms.contact"
+              value="/forms/yforms/contact/style.css"/>
+
+    <property as="xs:string" name="oxf.xforms.format.input.date" value="[D01]-[M01]-[Y]"/>
+</properties>
+
