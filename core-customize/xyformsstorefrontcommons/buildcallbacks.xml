@@ -4,6 +4,7 @@
 -->
 <project name="xyformsstorefrontcommons_buildcallbacks">
 
+   <target>
        <sequential>
            <xyformsstorefrontcommons_install_addons />
            <xyformsstorefrontcommons_copy_orbeon_config />
@@ -19,7 +20,7 @@
            </antcall>
        </sequential>
    </macrodef>
-   
+
     <macrodef name="xyformsstorefrontcommons_copy_orbeon_config">
         <sequential>
          <echo level="info" message="copy orbeon config to hybris config dir..."/>
