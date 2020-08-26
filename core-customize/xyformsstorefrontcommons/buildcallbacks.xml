@@ -4,7 +4,7 @@
 -->
 <project name="xyformsstorefrontcommons_buildcallbacks">
 
-   <target>
+   <target name="install.xyformsstorefrontcommons" description="Installing the xyformsstorefrontcommons AddOn">
        <sequential>
            <xyformsstorefrontcommons_install_addons />
            <xyformsstorefrontcommons_copy_orbeon_config />
