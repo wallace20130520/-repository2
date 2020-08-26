@@ -3,9 +3,35 @@
  Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 -->
 <project name="xyformsstorefrontcommons_buildcallbacks">
+	<macrodef name="xyformsstorefrontcommons_after_addoninstall">
+		<sequential>
+			<echo message="xyformsstorefrontcommons_after_addoninstall"/>
+			<for list="${storefrontNames}" param="storefrontName">
+				<sequential>
+					<if>
+						<length string="${storefrontName}" trim="true" when="greater" length="0"/>
+						<then>
+							<sequential>
+								<xyformsstorefrontcommons_set_storefront yforms.storefront="@{storefrontName}"/>
+								<xyformsstorefrontcommons_install_acceleratorstorefront yforms.storefront="@{storefrontName}"/>
+								<xyformsstorefrontcommons_patch_xyformsservices_hybris_proxy_key/>
+								<xyformsstorefrontcommons_copy_orbeon_patch_config/>
+							</sequential>
+						</then>
+					</if>
+				</sequential>
+			</for>
+		</sequential>
+	</macrodef>
 
-
-
+	<macrodef name="xyformsstorefrontcommons_set_storefront">
+		<attribute name="yforms.storefront" default="yacceleratorstorefront"/>
+		<sequential>
+			<property name="yforms.storefront.path" value="${ext.@{yforms.storefront}.path}"/>
+			<echo message="[yForms] storefront: @{yforms.storefront} "/>
+			<echo message="[yForms] path: ${yforms.storefront.path}"/>
+		</sequential>
+	</macrodef>
 
 	<macrodef name="xyformsstorefrontcommons_after_addonuninstall">
 		<sequential>
@@ -28,7 +54,6 @@
 			</for>
 		</sequential>
 	</macrodef>
-
 
 	<macrodef name="xyformsstorefrontcommons_uninstall_orbeon_config">
 		<sequential>
@@ -234,7 +259,7 @@
 		</sequential>
 	</macrodef>
 
-	<!--macrodef name="xyformsstorefrontcommons_copy_orbeon_config">
+	<macrodef name="xyformsstorefrontcommons_copy_orbeon_config">
 		<sequential>
 			<echo level="info" message="copy orbeon config to hybris config dir..."/>
 			<copy todir="${HYBRIS_CONFIG_DIR}/orbeon" overwrite="false" verbose="true" filtering="false">
@@ -271,7 +296,7 @@
 			<echo level="info" message="creating orbeon config dir..."/>
 			<mkdir dir="${HYBRIS_CONFIG_DIR}/orbeon"/>
 		</sequential>
-	</macrodef-->
+	</macrodef>
 
 	<macrodef name="xyformsstorefrontcommons_create_log_dir">
 		<sequential>
@@ -301,9 +326,6 @@
 			</antcall>
 		</sequential>
 	</macrodef>
-
-	
-
 	<!-- deprecated installer tasks -->
 
 </project>
