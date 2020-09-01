@@ -2,39 +2,599 @@
 <!--
  Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 -->
-<!--
-	ATTENTION: This is just an example file. You have to edit it according to your needs.
--->
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items.xsd">
 
-<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-			xsi:noNamespaceSchemaLocation="items.xsd">
+    <collectiontypes>
+        <!--collectiontype code="GenderList" elementtype="Gender" autocreate="true" generate="true" type="list"/-->
+        <!--collectiontype code="SwatchColorSet" elementtype="SwatchColorEnum" autocreate="true" generate="true" type="set"/-->
+		<collectiontype code="RestrictionForLocationsList" elementtype="java.lang.String" autocreate="true" generate="true" type="list"/>
+        <collectiontype code="KeySellingPointsList" elementtype="java.lang.String" autocreate="true" generate="true" type="list"/>
+        <collectiontype code="RelatedServicesList" elementtype="java.lang.String" autocreate="true" generate="true" type="list"/>
+		<collectiontype code="InStoreLocationList" elementtype="java.lang.String" autocreate="true" generate="true" type="list"/>
+		<collectiontype code="CustomerPosList" elementtype="PointOfService" autocreate="true" generate="true" type="list"/>
+		<collectiontype code="BrandList" elementtype="Brand" autocreate="true" generate="true" type="list"/>
+		<collectiontype code="SiteBaseList" elementtype="SiteBase" autocreate="true" generate="true" type="set"/>
+		<collectiontype code="LineRefList" elementtype="java.lang.Integer" autocreate="true" generate="true" type="list"/>
+        
+    </collectiontypes>
 
-	<itemtypes>
-<!--
-		<itemtype generate="true"
-		   code="MyProduct"
-		   jaloclass="de.hybris.backofficpatch.jalo.MyProduct"
-		   extends="Product"
-		   autocreate="true"
-	   >
-			<attributes>
-				<attribute qualifier="myExampleInitialStringField" type="java.lang.String">
-					<description>My Example Initial String Value</description>
-					<modifiers initial="true"/>
-					<persistence type="property"/>
-				</attribute>
+    <enumtypes>
+        <!--enumtype generate="true" code="SwatchColorEnum" autocreate="true" dynamic="true">
+            <value code="BLACK"/>
+            <value code="BLUE"/>
+            <value code="BROWN"/>
+            <value code="GREEN"/>
+            <value code="GREY"/>
+            <value code="ORANGE"/>
+            <value code="PINK"/>
+            <value code="PURPLE"/>
+            <value code="RED"/>
+            <value code="SILVER"/>
+            <value code="WHITE"/>
+            <value code="YELLOW"/>
+			 <value code="CREAM"/>
+            <value code="CHARCOAL"/>
+            <value code="CLEAR"/>
+            <value code="GOLD"/>
+            <value code="ROSEGOLD"/>
+            <value code="COPPER"/>
+            <value code="BRASS"/>
+            <value code="MULTIASSORTED"/>
+            <value code="OTHER"/>            
+        </enumtype-->
+		 <enumtype generate="true" code="PricingSubType" autocreate="true" dynamic="true">
+            <value code="BESTRETAIL"/>
+            <value code="REGULARRETAIL"/>
+            <value code="TEAMMEMBER"/>
+            <value code="STOREPRICE"/>
+        </enumtype>
+        <enumtype generate="true" code="PricingType" autocreate="true" dynamic="true">
+            <value code="RETAIL"/>
+            <value code="TRADE"/>
+        </enumtype>
+        <enumtype generate="true" code="RestrictionsType" autocreate="true" dynamic="true">
+            <value code="RESTRICTED"/>
+            <value code="EXCLUSIVE"/>
+        </enumtype>
+        <enumtype code="ItemsType" autocreate="true" generate="true" dynamic="true">
+            <value code="RETAIL"/>
+            <value code="HIREITEM"/>
+            <value code="INSTALLATION"/>
+            <value code="PROMOTION"/>
+            <value code="SERVICEITEM"/>
+            <value code="SERVICECHARGE"/>
+        </enumtype>
+        <enumtype code="ProductOffer" autocreate="true" generate="true" dynamic="true">
+            <value code="STANDARD"/>
+            <value code="CUSTOM"/>
+            <value code="MADETOOFFER"/>
+        </enumtype>
+        <enumtype code="InStockStatus" autocreate="false" generate="true" dynamic="true">
+            <value code="GREEN"/>
+            <value code="RED"/>
+            <value code="AMBER"/>
+			<value code="NOTAVAILABLE"/>
+        </enumtype>
+        <enumtype code="AttributeTypes" autocreate="true" generate="true" dynamic="true">
+            <value code="TEXT"/>
+            <value code="NUMBER"/>
+            <value code="MULTI"/>
+            <value code="BOOLEAN"/>
+            <value code="SELECT"/>
+        </enumtype>
 
-				<attribute qualifier="myExampleBooleanField" type="java.lang.Boolean">
-					<description>Example Initial Boolean Field</description>
-               <persistence type="property"/>
-				</attribute>
+        <enumtype code="MktCommunicationtypeList" autocreate="true" generate="true" dynamic="true">
+            <value code="PROMO"/>
+            <value code="OFFERS"/>
+            <value code="CAMPAIGN"/>
+        </enumtype>
 
-				<attribute qualifier="media" type="Media">
-					<persistence type="property"/>
-				</attribute>
+        <enumtype code="DocumentSection" autocreate="true" generate="true" dynamic="true">
+            <value code="OTHER"/>
+            <value code="WARRANTY"/>
+            <value code="SPECIFICATION"/>
+            <value code="BROCHURE"/>
+            <value code="INSTRUCTIONS"/>
+            <value code="USERGUIDE"/>
+            <value code="MATERIALSAFETY"/>
+            <value code="SDOCFORM"/>
+            <value code="INSTALLATION"/>
+            <value code="MANUAL"/>
+            <value code="ASEEMBLY_GUIDES"/>
+            <value code="NA"/>
+        </enumtype>
+        <enumtype code="BarCodeLevelStatus" autocreate="true" generate="true" dynamic="true">
+            <value code="CONSUMER"/>
+            <value code="CASE"/>
+        </enumtype>
+        <enumtype code="RangedStatus" autocreate="true" generate="true" dynamic="true">
+            <value code="RANGED"/>
+            <value code="SPECIALORDER"/>
+        </enumtype>
 
-			</attributes>
-		</itemtype>
--->
-	</itemtypes>
+        <enumtype code="PointOfServiceTypeEnum" autocreate="false"
+                  generate="true" dynamic="true">
+            <value code="TRADECENTER"/>
+            <value code="DC"/>
+            <value code="HYBRID"/>
+            <value code="STORESUPPORT"/>
+        </enumtype>
+
+        <enumtype code="FamilyTreeNodeTypes" autocreate="true" generate="true" dynamic="true">
+            <value code="CATEGORY"/>
+            <value code="DEPARTMENT"/>
+            <value code="SUB_DEPARTMENT"/>
+            <value code="CLASS"/>
+        </enumtype>
+
+        <enumtype code="ProductDimensionTermType" autocreate="true" generate="true" dynamic="true">
+            <value code="D"/>
+            <value code="L"/>
+        </enumtype>
+
+        <enumtype code="NavLevelTypeEnum" autocreate="true" generate="true" dynamic="true">
+            <value code="L1"/>
+            <value code="L2"/>
+            <value code="L3"/>
+            <value code="L4"/>
+            <value code="L5"/>
+        </enumtype>
+
+        <enumtype code="BrandStatusEnum" autocreate="true" generate="true" dynamic="true">
+           <value code="CHECK"/>
+			<value code="WAITING_FOR_APPROVAL"/>
+			<value code="APPROVED"/>
+            <value code="REJECTED"/>
+        </enumtype>
+
+        <enumtype code="UserStatusEnum" autocreate="true" generate="true" dynamic="true">
+            <value code="ACTIVE"/>
+            <value code="INACTIVE"/>
+        </enumtype>
+
+         <enumtype code="ArticleApprovalStatus" autocreate="false" generate="true" dynamic="false">
+			<value code="waiting_for_approval"/>
+			<value code="rejected"/>
+		</enumtype>
+
+        <enumtype code="ReconStatusEnum" autocreate="true" generate="true" dynamic="true">
+            <value code="SUCCESS"/>
+            <value code="FAILED"/>
+            <value code="NOTDONE"/>
+            <value code="INPROGRESS"/>
+        </enumtype>
+        <enumtype code="CreditCardType" autocreate="false" generate="false">
+            <value code="MC"/>
+            <value code="JCB"/>
+            <value code="Discover"/>
+            <value code="AX"/>
+            <value code="JC"/>
+            <value code="DC"/>
+            <value code="UP"/>
+            <value code="VC"/>
+        </enumtype>
+        
+         <enumtype code="ShowServiceEnumType" autocreate="true" generate="true" dynamic="true">
+            <value code="NOSERVICE"/>
+            <value code="PRODUCTSERVICES"/>
+            <value code="INHERITCLASSIFICATIONSERVICES"/>
+            <value code="ALL"/>    
+        </enumtype>
+        
+        <enumtype code="PriceRowChannel" autocreate="false" generate="false">
+            <value code="dummy"/>
+        </enumtype>
+
+        <enumtype code="StockLevelStatus" dynamic="true" autocreate="false"
+                  generate="true">
+            <value code="notAvailable" />
+        </enumtype>
+    </enumtypes>
+ <maptypes>
+        <maptype code="AlternatePriceMap"
+                 argumenttype="java.lang.String"
+                 returntype="java.lang.Double"
+                 autocreate="true"
+                 generate="true"/>
+        <maptype code="MinimumGradesMap"
+                 argumenttype="java.lang.String"
+                 returntype="java.lang.String"
+                 autocreate="true"
+                 generate="true"/>
+        <maptype code="FulfilmentTypeMap"
+                 argumenttype="java.lang.String"
+                 returntype="java.lang.String"
+                 autocreate="true"
+                 generate="true"/>
+        <maptype code="RetailZonePricingMap"
+                 argumenttype="java.lang.String"
+                 returntype="java.lang.String"
+                 autocreate="true"
+                 generate="true"/>
+    </maptypes>
+
+	<relations>
+   <relation code="FamilyTreeFamilyTreeRelation" autocreate="true" generate="true" localized="false">
+        <deployment table="ftree2ftree" typecode="14095"/>
+        <sourceElement qualifier="familyTreeSuperCategories" type="FamilyTreeCategory" cardinality="many" collectiontype="list" ordered="true">
+            <description>Super Categories</description>
+            <modifiers read="true" write="true" search="true" optional="true"/>
+        </sourceElement>
+        <targetElement qualifier="familyTreeCategories" type="FamilyTreeCategory" cardinality="many" collectiontype="list" ordered="true">
+            <description>Sub Categories</description>
+            <modifiers read="true" write="true" search="true" optional="true"/>
+        </targetElement>
+    </relation>
+
+    <relation code="FamilyTreeClassificationRelation" autocreate="true" generate="true" localized="false">
+        <sourceElement qualifier="familySubClass" type="FamilyTreeSubclass" cardinality="many" collectiontype="list" ordered="true">
+            <description>FamilyTreeSubclasses</description>
+            <modifiers read="true" write="true" search="true" optional="true"/>
+        </sourceElement>
+        <targetElement qualifier="classification" type="ClassificationClass" cardinality="one">
+            <description>Classification</description>
+            <modifiers read="true" write="true" search="true" optional="true"/>
+        </targetElement>
+    </relation>
+	</relations>
+    <itemtypes>
+
+        <!-- Add your item definitions here -->
+
+
+        <!-- TypeGroups are for structure of this file only -->
+
+        <typegroup name="Apparel">
+            <!--itemtype code="ApparelProduct" extends="Product"
+                      autocreate="true" generate="true"
+                      jaloclass="de.hybris.training.core.jalo.ApparelProduct">
+                <description>Base apparel product extension that contains additional attributes.</description>
+                <attributes>
+                    <attribute qualifier="genders" type="GenderList">
+                        <description>List of genders that the ApparelProduct is designed for</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype-->
+
+            <!--itemtype code="ApparelStyleVariantProduct" extends="VariantProduct"
+                      autocreate="true" generate="true"
+                      jaloclass="de.hybris.training.core.jalo.ApparelStyleVariantProduct">
+                <description>Apparel style variant type that contains additional attribute describing variant style.
+                </description>
+                <attributes>
+                    <attribute qualifier="style" type="localized:java.lang.String"
+                               metatype="VariantAttributeDescriptor">
+                        <description>Color/Pattern of the product.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+
+                    <attribute qualifier="swatchColors" type="SwatchColorSet">
+                        <description>A normalized color mapping to a standardized front-end navigable name.
+                        </description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+
+            </itemtype-->
+
+            <!--itemtype code="ApparelSizeVariantProduct" extends="ApparelStyleVariantProduct"
+                      autocreate="true" generate="true"
+                      jaloclass="de.hybris.training.core.jalo.ApparelSizeVariantProduct">
+                <description>Apparel size variant type that contains additional attribute describing variant size.
+                </description>
+                <attributes>
+                    <attribute qualifier="size" type="localized:java.lang.String"
+                               metatype="VariantAttributeDescriptor">
+                        <description>Size of the product.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype-->
+        </typegroup>
+
+        <typegroup name="Electronics">
+            <!--itemtype code="ElectronicsColorVariantProduct" extends="VariantProduct"
+                      autocreate="true" generate="true"
+                      jaloclass="de.hybris.training.core.jalo.ElectronicsColorVariantProduct">
+                <description>Electronics color variant type that contains additional attribute describing variant color.
+                </description>
+                <attributes>
+                    <attribute qualifier="color" type="localized:java.lang.String"
+                               metatype="VariantAttributeDescriptor">
+                        <description>Color of the product.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype-->
+        </typegroup>
+
+		<typegroup name="BunningsCategoryGroup">
+            <itemtype code="Brand" generate="true" autocreate="true" extends="GenericItem">
+                <deployment table="Brands" typecode="16062"/>
+                <custom-properties>
+                    <property name="catalogItemType">
+                        <value>java.lang.Boolean.TRUE</value>
+                    </property>
+                    <property name="catalogVersionAttributeQualifier">
+                        <value>"catalogVersion"</value>
+                    </property>
+                    <property name="uniqueKeyAttributeQualifier">
+                        <value>"name"</value>
+                    </property>
+                    <property name="catalog.sync.default.root.type">
+                        <value>Boolean.TRUE</value>
+                    </property>
+                </custom-properties>
+                <attributes>
+                    <attribute qualifier="brandCode" type="java.lang.String">
+                       <description>unique code </description>
+                        <modifiers read="true" write="true" search="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="catalogVersion" type="CatalogVersion">
+                        <modifiers read="true" write="true" search="true" optional="false" unique="true" initial="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="name" type="java.lang.String">
+                        <description>Name for the brand.</description>
+                        <modifiers read="true" write="true" unique="true" initial="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                     <attribute qualifier="description" type="localized:java.lang.String">
+                        <modifiers read="true" write="true" optional="true"/>
+                        <defaultvalue>Description</defaultvalue>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="isLeadingBrand" type="boolean">
+                        <description>Is this brand leading brand</description>
+                        <defaultvalue>FALSE</defaultvalue>
+                        <modifiers read="true" write="true" search="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="isTradeBrand" type="boolean">
+                        <description>Is this brand trade brand</description>
+                        <defaultvalue>FALSE</defaultvalue>
+                        <modifiers read="true" write="true" search="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="isMarketPlaceBrand" type="boolean">
+                        <description>Is this market link brand</description>
+                        <defaultvalue>FALSE</defaultvalue>
+                        <modifiers read="true" write="true" search="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="logo" type="Media">
+                        <description>List of logo visible on the web for the brand.</description>
+                        <modifiers read="true" write="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="logoDescription" type="java.lang.String">
+                        <description>Description of the web logo for the brand.</description>
+                        <modifiers read="true" write="true"/>
+                        <persistence type="property">
+                            <columntype database="oracle">
+                                <value>CLOB</value>
+                            </columntype>
+                            <columntype database="sap">
+                                <value>NCLOB</value>
+                            </columntype>
+                            <columntype>
+                                <value>HYBRIS.LONG_STRING</value>
+                            </columntype>
+                        </persistence>
+                    </attribute>
+                    <attribute qualifier="brandStatus" type="BrandStatusEnum">
+                        <description>Current status for the brand.</description>
+                        <modifiers read="true" write="true" optional="false"/>
+                        <defaultvalue>em().getEnumerationValue("BrandStatusEnum","CHECK")</defaultvalue>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="feedLineReference" type="java.lang.String">
+                        <description>Feed Line Reference</description>
+                        <modifiers read="true" write="true" search="true" optional="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="siteCoreItemID" type="java.lang.String">
+						<modifiers read="true" write="true" search="true"
+							optional="true" />
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="isDAMSyncRequired"
+						type="java.lang.Boolean">
+						<defaultvalue>Boolean.TRUE</defaultvalue>
+						<modifiers read="true" write="true" search="true"
+							optional="false" />
+						<persistence type="property" />				
+					</attribute>
+					 
+                </attributes>
+            </itemtype>
+
+            <itemtype code="FamilyTreeCategory"
+                      generate="true"
+                      autocreate="true"
+                      extends="GenericItem"
+                      jaloclass="com.bunnings.core.jalo.FamilyTreeCategory">
+                <deployment table="familytreecat" typecode="16028"  />
+                <attributes>
+                    <attribute qualifier="code" type="java.lang.String" >
+                        <description>unique code</description>
+                        <persistence type="property"/>
+                        <modifiers read="true" write="true" search="true" initial="true" optional="false" unique="true"/>
+                    </attribute>
+                    <attribute qualifier="name" type="localized:java.lang.String">
+                        <description>Name</description>
+                        <modifiers read="true" write="true" search="true" optional="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="navLevel" type="NavLevelTypeEnum">
+                        <description>Navigation level for a category.</description>
+                        <modifiers read="true" write="true" optional="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="familyTreeNodeType" type="FamilyTreeNodeTypes">
+                        <description>Family Tree Node types.</description>
+                        <modifiers read="true" write="true" search="true" optional="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="feedLineReference" type="java.lang.String">
+                        <description>Feed Line Reference</description>
+                        <modifiers read="true" write="true" search="true" optional="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+			<itemtype code="Category" autocreate="false" generate="false">
+                <attributes>
+                    <attribute qualifier="navLevel" type="NavLevelTypeEnum">
+                        <description>Navigation level for a category.</description>
+                        <modifiers read="true" write="true" optional="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="brands" type="BrandList">
+                        <description>List of brands associated with the category.</description>
+                        <modifiers read="true" write="true" optional="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="baseSites" type="SiteBaseList">
+                        <description>List of site bases associated with the category.</description>
+                        <modifiers read="true" write="true" optional="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+					<attribute qualifier="siteCoreItemID" type="java.lang.String">
+						<modifiers read="true" write="true" search="true"
+							optional="true" />
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="isDAMSyncRequired"
+						type="java.lang.Boolean">
+						<defaultvalue>Boolean.TRUE</defaultvalue>
+						<modifiers read="true" write="true" search="true"
+							optional="false" />
+						<persistence type="property" />
+					</attribute>
+                </attributes>
+                <indexes>
+                    <index name="typeVersionIDX" unique="false">
+                        <key attribute="itemType"/>
+                        <key attribute="catalogVersion"/>
+                    </index>
+                     <index name="versionTypeIDX" unique="false">
+                        <key attribute="catalogVersion"/>
+                        <key attribute="itemType"/>
+                    </index>
+					<index name="categoryIndex">
+				    	<key attribute="siteCoreItemID"/>
+					</index>
+				</indexes>
+            </itemtype>
+            
+             <itemtype code="ClassificationCatMapping" generate="true" autocreate="true"
+                      extends="GenericItem">
+                <deployment table="ClassificationCatMapping"
+                            typecode="17090"/>
+                <attributes>
+                    <attribute qualifier="classificationCode" type="java.lang.String">
+                        <persistence type="property"/>
+                        <modifiers initial="true" optional="false"/>
+                    </attribute>
+                    <attribute qualifier="classificationName" type="java.lang.String">
+                        <persistence type="property"/>
+                        <modifiers optional="true"/>
+                    </attribute>
+                    <attribute qualifier="webNavcategoryCode" type="java.lang.String">
+                        <persistence type="property"/>
+                        <modifiers initial="true" optional="false"/>
+                    </attribute>
+                    <attribute qualifier="webNavcategoryName" type="java.lang.String">
+                        <persistence type="property"/>
+                        <modifiers optional="true"/>
+                    </attribute>
+                    <attribute qualifier="categorylevel" type="java.lang.Integer">
+                        <persistence type="property"/>
+                        <modifiers optional="true"/>
+                    </attribute>
+                  </attributes>
+                  <indexes>
+                    <index name="ClassificationCatCode">
+                        <key attribute="classificationCode"/>
+                    </index>
+                </indexes>
+            </itemtype>
+			 <itemtype code="SiteBase" extends="GenericItem" generate="true" autocreate="true">
+                <deployment table="SiteBase" typecode="16055"/>
+                <attributes>
+                    <attribute qualifier="code" type="java.lang.String">
+                        <description>Unique code for SiteBase (e.g AU,NZ)</description>
+                        <modifiers read="true" write="true" search="true" optional="false" unique="true"
+                                   initial="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="name" type="java.lang.String">
+                        <description>Name of SiteBase</description>
+                        <modifiers read="true" write="true" search="true" optional="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+			<itemtype code="FamilyTreeSubClass" extends="GenericItem"
+                      generate="true"
+                      autocreate="true">
+                    <deployment table="familyTreeClass" typecode="16027"/>
+                    <attributes>
+                        <attribute qualifier="code" type="java.lang.String" >
+                            <description>unique code</description>
+                            <persistence type="property"/>
+                            <modifiers read="true" write="true" search="true" initial="true" optional="false" unique="true"/>
+                        </attribute>
+                        <attribute qualifier="name" type="localized:java.lang.String">
+                            <description>Name</description>
+                            <modifiers read="true" write="true" search="true" optional="true"/>
+                            <persistence type="property"/>
+                        </attribute>
+                        <attribute qualifier="feedLineReference" type="java.lang.String">
+                            <description>Feed Line Reference</description>
+                            <modifiers read="true" write="true" search="true" optional="true"/>
+                            <persistence type="property"/>
+                        </attribute>
+                        <attribute qualifier="treeCategory" type="FamilyTreeCategory">
+                            <description>Tree Category</description>
+                            <modifiers read="true" write="true" search="false" optional="true"/>
+                            <persistence type="property"/>
+                        </attribute>
+                </attributes>
+            </itemtype>
+            
+             <itemtype code="ClassificationClass"  generate="false"
+                      autocreate="false">
+                   <attributes>
+                    <attribute qualifier="productDimensionTerm" type="ProductDimensionTermType">
+                        <description>Specified the product Dimension term "L" or "D"</description>
+                        <defaultvalue>L</defaultvalue>
+                        <modifiers read="true" write="true" search="true" optional="false" initial="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="isAccessory" type="boolean">
+                        <description>Specified the product is accessory or not.</description>
+                        <defaultvalue>FALSE</defaultvalue>
+                        <modifiers read="true" write="true" search="true" optional="false" />
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="showStockLevel" type="boolean">
+                        <description>Show Stock level or not.</description>
+                        <defaultvalue>TRUE</defaultvalue>
+                        <modifiers read="true" write="true" search="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+
+        </typegroup>
+    </itemtypes>
 </items>
