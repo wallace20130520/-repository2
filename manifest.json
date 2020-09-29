@@ -1,6 +1,12 @@
 {
-    "commerceSuiteVersion": "2005",
-    "useCloudExtensionPack": true,  
+
+    "commerceSuiteVersion" : "2005",
+	"extensionPacks" : [
+	{
+		"name" : "hybris-commerce-integrations",
+		"version" : "2005.3"
+	}
+	],
       "extensions": [
          "adaptivesearchsolr",
          "adaptivesearchbackoffice",
